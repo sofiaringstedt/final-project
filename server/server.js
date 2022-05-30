@@ -4,7 +4,8 @@ import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 
-import connectDB from "./config/db.js"
+import connectDB from "./config/db.js";
+import userRoutes from "./routes/userRoutes.js"; 
 
 dotenv.config();
 connectDB();
@@ -26,6 +27,8 @@ app.use((req, res, next) => {
     })
   };
 });
+
+app.use("/", userRoutes);
 
 app.get("/", (req, res) => {
   res.send("final project yaay!!");
