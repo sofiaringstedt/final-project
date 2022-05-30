@@ -1,0 +1,4 @@
+const validatePassword = (password) => {
+  const passwordValidator = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/g;
+  return passwordValidator.test(password);
+};
