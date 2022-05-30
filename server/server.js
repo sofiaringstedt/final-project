@@ -5,7 +5,7 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 
 import connectDB from "./config/db.js";
-import userRoutes from "./routes/userRoutes.js"; 
+import userRoutes from "./routes/user.js"; 
 
 dotenv.config();
 connectDB();
