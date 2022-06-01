@@ -16,12 +16,12 @@ export const createUser = async (req,res) => {
     if (email && password && firstName && lastName) {
       res.status(201).json({
         success: true,
-        response: {
+        user: {
+          userId: user._id,
           firstName: user.firstName,
           lastName: user.lastName,
           email: user.email,
-          accessToken: user.accessToken,
-          userId: user._id
+          accessToken: user.accessToken
         }
       })
     } 
