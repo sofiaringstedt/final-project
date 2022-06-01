@@ -31,7 +31,22 @@ app.use((req, res, next) => {
 app.use("/", userRoutes);
 
 app.get("/", (req, res) => {
-  res.send("final project yaay!!");
+  res.json({
+    "Routes": [
+      {
+        "path": "/register",
+        "method": "POST"
+      },
+      {
+        "path": "/login",
+        "method": "POST"
+      },
+      {
+        "path": "/userpage",
+        "methods": "GET"
+      }
+    ]
+  });
 });
 
 app.listen(port, () => console.log(`Server running on http://localhost:${port}`));

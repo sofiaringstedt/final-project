@@ -2,8 +2,8 @@ import mongoose from "mongoose";
 import crypto from "crypto";
 
 const validateEmail = (email) => {
-  const emailValidator = /^\S+@\S+\.\S{2,}$/g;
-  return emailValidator.test(email);
+  const emailPatternValidation = /^\S+@\S+\.\S{2,}$/g;
+  return emailPatternValidation.test(email);
 };
 
 const UserSchema = mongoose.Schema({
