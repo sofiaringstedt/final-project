@@ -6,6 +6,7 @@ import mongoose from "mongoose";
 
 import connectDB from "./config/db.js";
 import userRoutes from "./routes/user.js"; 
+import cardRoutes from "./routes/card.js";
 
 dotenv.config();
 connectDB();
@@ -29,6 +30,7 @@ app.use((req, res, next) => {
 });
 
 app.use("/", userRoutes);
+app.use("/", cardRoutes);
 
 app.get("/", (req, res) => {
   res.json({
