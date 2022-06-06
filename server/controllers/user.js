@@ -39,6 +39,21 @@ export const userPage = async (req, res) => {
   }
 };
 
+export const getDoses = async (req, res) => {
+  const { userId } = req.params;
+
+  try {
+    const queriedUser = await User.findById(userId).populate("doses");
+    if (queriedUser) {
+      res.status(200).json({ response: queriedUser.cards, success: true });
+    } else {
+      res.status(404).json({ response: 'User not found', success: false });
+    }
+  } catch (error) {
+    res.status(400).json({ response: error, success: false });
+  }
+};
+
 export const createUser = async (req,res) => {
   const { firstName, lastName, email, password } = req.body;
 

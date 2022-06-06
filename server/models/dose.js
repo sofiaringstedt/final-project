@@ -17,6 +17,4 @@ const DoseSchema = mongoose.Schema({
   }
 })
 
-const Dose = mongoose.model("Dose", DoseSchema);
-
-export default Dose;
+module.exports = mongoose.model("Dose", DoseSchema);
