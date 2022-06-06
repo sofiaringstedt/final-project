@@ -1,10 +1,6 @@
 import mongoose from "mongoose";
 
-const CardSchema = mongoose.Schema({
-  userId: { 
-    type: mongoose.Schema.Types.ObjectId, 
-    ref: 'User' 
-  },
+const DoseSchema = mongoose.Schema({
   dose: {
     type: String,
     required: true,
@@ -21,6 +17,6 @@ const CardSchema = mongoose.Schema({
   }
 })
 
-const Card = mongoose.model("Card", CardSchema);
+const Dose = mongoose.model("Dose", DoseSchema);
 
-export default Card;
+export default Dose;

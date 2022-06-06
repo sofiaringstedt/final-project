@@ -1,5 +1,7 @@
-import User from "../models/user.js";
 import bcrypt from "bcrypt";
+
+import User from "../models/user.js";
+import Dose from "../models/dose.js";
 
 export const authenticateUser = async (req, res, next) => {
   const accessToken = req.header("Authorization");
@@ -14,6 +16,27 @@ export const authenticateUser = async (req, res, next) => {
       message: "You need to be logged in to see your vaccination card!"
     });
   };
+};
+
+export const userPage = async (req, res) => {
+  const { userId } = req.params;
+
+  try {
+    const queriedUser = await User.findById(userId).populate("doses", {
+      dose: 1,
+      date: 1,
+      batchNumber: 1,
+      nextDose: 1
+    });
+
+    if (queriedUser) {
+      res.status(200).json({ response: queriedUser, success: true });
+    } else {
+      res.status(404).json({ response: "User not found", success: false });
+    }
+  } catch (error) {
+    res.status(400).json({ response: error, success: false });
+  }
 };
 
 export const createUser = async (req,res) => {
@@ -98,4 +121,36 @@ export const loginUser = async (req, res) => {
       error: error.message
     });
   };
+};
+
+export const modifyUser = async (req, res) => {
+  const { userId, doseId } = req.params;
+
+  try {
+    const queriedUser = await User.findById(userId);
+
+    if (queriedUser) {
+      const queriedDose = await Dose.findById(doseId);
+
+      if (queriedDose) {
+        const updatedUser = await User.findByIdAndUpdate(
+          userId,
+          {
+            $push: {
+              doses: queriedDose,
+            },
+          },
+          { new: true }
+        );
+
+        res.status(200).json({ response: updatedUser, success: true });
+      } else {
+        res.status(404).json({ response: "Dose not found", success: false });
+      }
+    } else {
+      res.status(404).json({ response: "User not found", success: false });
+    }
+  } catch (error) {
+    res.status(400).json({ response: error, success: false });
+  }
 };

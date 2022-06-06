@@ -35,7 +35,11 @@ const UserSchema = mongoose.Schema({
   accessToken: {
     type: String,
     default: () => crypto.randomBytes(128).toString("hex")
-  }
+  },
+  doses: [{ 
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: "Dose" 
+  }],
 });
 
 const User = mongoose.model("User", UserSchema);
