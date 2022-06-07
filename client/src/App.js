@@ -9,10 +9,11 @@ import Register from "./components/Register";
 import Account from "./components/Account";
 
 import user from "./reducers/user";
-// import card from "./reducers/card";
+import card from "./reducers/card";
 
 const reducer = combineReducers({
-  user: user.reducer
+  user: user.reducer,
+  card: card.reducer
 });
 
 const store = configureStore({ reducer });

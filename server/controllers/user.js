@@ -128,8 +128,11 @@ export const loginUser = async (req, res) => {
     if (user && bcrypt.compareSync(password, user.password)){
       res.status(200).json({
         success: true,
-        accessToken: user.accessToken,
-        userId: user._id
+        userId: user._id,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        accessToken: user.accessToken
       });
     } else {
       res.status(404).json({ success: false, message: "User not found" })
