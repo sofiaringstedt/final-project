@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import user from "../reducers/user";
@@ -11,6 +11,8 @@ const Register = () => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  
+  const errorMessage = useSelector((store) => store.user.error);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -57,6 +59,7 @@ const Register = () => {
   // const accessToken = useSelector((store) => store.user.accessToken);
   return (
     <form onSubmit={submitUserData}>
+      {errorMessage && <p>{errorMessage}</p>}
       <label htmlFor="firstname"></label>
       <input 
         type="text" 
