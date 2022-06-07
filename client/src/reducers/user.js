@@ -7,7 +7,8 @@ const user = createSlice({
     firstName: null,
     lastName: null,
     email: null,
-    accessToken: null
+    accessToken: null,
+    error: null
   },
   reducers: {
     setUserId: (store, action) => {
@@ -24,6 +25,9 @@ const user = createSlice({
     },
     setAccessToken: (store, action) => {
       store.accessToken = action.payload;
+    },
+    setError: (store, action) => {
+      store.error = action.payload;
     }
   },
 });

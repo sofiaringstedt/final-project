@@ -12,6 +12,10 @@ const Register = () => {
   const [password, setPassword] = useState("");
 
   const dispatch = useDispatch();
+  const onFirstNameChange = (event) => setFirstName(event.target.value);
+  const onLastNameChange = (event) => setLastName(event.target.value);
+  const onEmailChange = (event) => setEmail(event.target.value);
+  const onPasswordChange = (event) => setPassword(event.target.value);
 
   const submitUserData = (event) => {
     event.preventDefault();
@@ -20,10 +24,10 @@ const Register = () => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ 
-        firstName: firstName, 
-        lastName: lastName, 
-        email: email, 
-        password: password 
+        firstName, 
+        lastName, 
+        email, 
+        password 
       })
     }
 
@@ -49,7 +53,7 @@ const Register = () => {
         type="text" 
         id="firstname"
         value={firstName}
-        onChange={(event) => setFirstName(event.target.value)}
+        onChange={onFirstNameChange}
         placeholder="Anna" 
       />
       <label htmlFor="lastname"></label>
@@ -57,7 +61,7 @@ const Register = () => {
         type="text" 
         id="lastname"
         value={lastName}
-        onChange={(event) => setLastName(event.target.value)}
+        onChange={onLastNameChange}
         placeholder="Jönsson" 
       />
       <label htmlFor="email"></label>
@@ -65,7 +69,7 @@ const Register = () => {
         type="text" 
         id="email"
         value={email}
-        onChange={(event) => setEmail(event.target.value)}
+        onChange={onEmailChange}
         placeholder="email@yourdomain.something" 
       />
       <label htmlFor="password"></label>
@@ -73,7 +77,7 @@ const Register = () => {
         type="password" 
         id="password"
         value={password}
-        onChange={(event) => setPassword(event.target.value)}
+        onChange={onPasswordChange}
         placeholder="Password!"
       />
       <button type="submit">Register</button>
