@@ -9,11 +9,10 @@ import Register from "./components/Register";
 import Account from "./components/Account";
 
 import user from "./reducers/user";
-import card from "./reducers/card";
+// import card from "./reducers/card";
 
 const reducer = combineReducers({
-  user: user.reducer,
-  card: card.reducer
+  user: user.reducer
 });
 
 const store = configureStore({ reducer });
@@ -26,7 +25,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/userpage" element={<Account />} />
+          <Route path="/account" element={<Account />} />
         </Routes>
       </BrowserRouter>
     </Provider>

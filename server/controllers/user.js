@@ -57,19 +57,23 @@ export const getDoses = async (req, res) => {
 export const createUser = async (req,res) => {
   const { firstName, lastName, email, password } = req.body;
 
-  const oneUppercaseCharacter = /(?=.*[A-Z])/;
-  const oneLowercaseCharacter = /(?=.*[a-z])/;
-  const oneSpecialCharacter = /(?=.*[@$!#%*?&-])/;
-
-  const response = (condition) => {
-    return res.status(400).json({
-      success: false,
-      message: `Password must contain at least ${condition}`
-    })
-  };
-
   try {
+    const oneUppercaseCharacter = /(?=.*[A-Z])/;
+    const oneLowercaseCharacter = /(?=.*[a-z])/;
+    const oneSpecialCharacter = /(?=.*[@$!#%*?&-])/;
+
     const salt = bcrypt.genSaltSync();
+
+    const response = (condition) => {
+      try {
+        return res.status(400).json({
+        success: false,
+        message: `Password must contain at least ${condition}`
+      })
+      } catch(error) {
+        console.log(error.message)
+      }
+    };
 
     if (password.length < 8) {
       return response("8 characters.")
@@ -128,7 +132,7 @@ export const loginUser = async (req, res) => {
         userId: user._id
       });
     } else {
-      throw new Error("Email and password do not match")
+      res.status(404).json({ success: false, message: "User not found" })
     }
   } catch (error) {
     res.status(400).json({

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import user from "../reducers/user";
 
@@ -12,6 +13,8 @@ const Register = () => {
   const [password, setPassword] = useState("");
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const onFirstNameChange = (event) => setFirstName(event.target.value);
   const onLastNameChange = (event) => setLastName(event.target.value);
   const onEmailChange = (event) => setEmail(event.target.value);
@@ -34,17 +37,23 @@ const Register = () => {
     fetch(API_URL("register"), options)
       .then((response) => response.json())
       .then((userData) => {
-        console.log(userData)
-        dispatch(user.actions.setUserId(userData.userId))
-        dispatch(user.actions.setFirstName(userData.firstName))
-        dispatch(user.actions.setLastName(userData.lastName))
-        dispatch(user.actions.setEmail(userData.email))
-        dispatch(user.actions.setAccessToken(userData.accessToken))
+        console.log(userData.success)
+        if (userData.success) {
+          dispatch(user.actions.setUserId(userData.userId))
+          dispatch(user.actions.setFirstName(userData.firstName))
+          dispatch(user.actions.setLastName(userData.lastName))
+          dispatch(user.actions.setEmail(userData.email))
+          dispatch(user.actions.setAccessToken(userData.accessToken))
+          dispatch(user.actions.setError(null));
+
+          navigate("/account")
+        } else {
+          dispatch(user.actions.setError(userData.message))
+        }
       })
       .catch((error) => console.log(error))
   } 
 
-  // const navigate = useNavigate();
   // const accessToken = useSelector((store) => store.user.accessToken);
   return (
     <form onSubmit={submitUserData}>
