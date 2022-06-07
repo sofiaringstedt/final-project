@@ -1,7 +1,8 @@
 import React from "react";
+import thunkMiddleware from "redux-thunk";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Provider } from "react-redux";
-import { configureStore, combineReducers } from "@reduxjs/toolkit";
+import { configureStore, combineReducers, compose, applyMiddleware  } from "@reduxjs/toolkit";
 
 import Home from "./components/Home";
 import Login from "./components/Login";
@@ -11,12 +12,29 @@ import Account from "./components/Account";
 import user from "./reducers/user";
 import card from "./reducers/card";
 
-const reducer = combineReducers({
+const reducers = combineReducers({
   user: user.reducer,
   card: card.reducer
 });
 
-const store = configureStore({ reducer });
+const persistedStateJSON = localStorage.getItem("user");
+const persistedState = persistedStateJSON ? JSON.parse(persistedStateJSON) : {};
+
+const composedEnhancers =
+  (process.env.NODE_ENV !== "production" &&
+    typeof window !== "undefined" &&
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
+  compose;
+
+const store = configureStore(
+  { reducer: reducers },
+  persistedState,
+  composedEnhancers(applyMiddleware(thunkMiddleware)) 
+);
+
+store.subscribe(() => {
+  localStorage.setItem("user", JSON.stringify(store.getState()));
+});
 
 const App = () => {
   return (

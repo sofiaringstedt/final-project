@@ -39,14 +39,21 @@ const Register = () => {
     fetch(API_URL("register"), options)
       .then((response) => response.json())
       .then((userData) => {
-        console.log(userData.success)
         if (userData.success) {
-          dispatch(user.actions.setUserId(userData.userId))
-          dispatch(user.actions.setFirstName(userData.firstName))
-          dispatch(user.actions.setLastName(userData.lastName))
-          dispatch(user.actions.setEmail(userData.email))
-          dispatch(user.actions.setAccessToken(userData.accessToken))
+          dispatch(user.actions.setUserId(userData.user.userId))
+          dispatch(user.actions.setFirstName(userData.user.firstName))
+          dispatch(user.actions.setLastName(userData.user.lastName))
+          dispatch(user.actions.setEmail(userData.user.email))
+          dispatch(user.actions.setAccessToken(userData.user.accessToken))
           dispatch(user.actions.setError(null));
+
+          localStorage.setItem("user", JSON.stringify({
+            userId: userData.user.userId,
+            firstName: userData.user.firstName,
+            lastName: userData.user.lastName,
+            email: userData.user.email,
+            accessToken: userData.user.accessToken
+          }));
 
           navigate("/account")
         } else {

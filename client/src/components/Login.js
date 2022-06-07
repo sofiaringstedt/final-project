@@ -29,6 +29,9 @@ const Login = () => {
       .then((response) => response.json())
       .then((userData) => {
         console.log(userData)
+        dispatch(user.actions.setUserId(userData.userId))
+        dispatch(user.actions.setFirstName(userData.firstName))
+        dispatch(user.actions.setLastName(userData.lastName))
         dispatch(user.actions.setEmail(userData.email))
         dispatch(user.actions.setAccessToken(userData.accessToken))
 
