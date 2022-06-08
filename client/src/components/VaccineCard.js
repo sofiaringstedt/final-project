@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { API_URL } from "../utils/urls";
 
 const VaccineCard = () => {
@@ -6,10 +6,13 @@ const VaccineCard = () => {
   const [date, setDate] = useState("");
   const [batchNumber, setBatchNumber] = useState("");
   const [nextDose, setNextDose] = useState("");
-  const [doseInfo, setDoseInfo] = useState({});
+  const [localStorageDose, setLocalStorageDose] = useState({});
+  const [doseInfo, setDoseInfo] = useState([]);
 
   const userId = JSON.parse(localStorage.getItem("user")).user.userId;
   const doseId = JSON.parse(localStorage.getItem("dose")).doseId;
+  const token = JSON.parse(localStorage.getItem("user")).user.accessToken;
+  console.log(token)
 
   console.log(userId)
   console.log(doseId)
@@ -41,11 +44,11 @@ const VaccineCard = () => {
           }))
         }
 
-        setDoseInfo(JSON.parse(localStorage.getItem("dose")))
+        setLocalStorageDose(JSON.parse(localStorage.getItem("dose")))
       })
       .catch((error) => console.log(error));
 
-    if(doseInfo) {
+    if(localStorageDose) {
       const options = {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
@@ -59,11 +62,25 @@ const VaccineCard = () => {
 
       fetch(API_URL(`user/${userId}/dose/${doseId}`), options)
         .then((response) => response.json())
-        .then((data) => console.log(data))
+        .then((data) => data)
         .catch((error) => console.log(error))
     }
 
   }
+
+  useEffect(() => {
+    const options = {
+      method: "GET",
+      headers: { Authorization: token },
+    };
+
+    fetch(API_URL(`user/${userId}`), options)
+      .then((response) => response.json())
+      .then((doseData) => setDoseInfo(doseData.response.doses))
+      .catch((error) => console.log(error))
+  },[])
+
+  console.log(doseInfo)
 
   return (
     <>
@@ -86,7 +103,9 @@ const VaccineCard = () => {
           onChange={(event) => setBatchNumber(event.target.value)} />
         <button type="submit">Add dose</button>
       </form>
-      <p>{doseInfo.dose}</p>
+      {doseInfo.map((dose) => {
+       return <p key={dose._id}>{dose.dose}</p>
+      })}
     </>
   );
 };
