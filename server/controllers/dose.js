@@ -5,6 +5,7 @@ export const createDose = async (req, res) => {
 
   try {
     const vaccineDose = await new Dose ({
+      doseId: dose._id,
       dose,
       date,
       batchNumber,
@@ -14,7 +15,13 @@ export const createDose = async (req, res) => {
     if (dose) {
       res.status(201).json({
         success: true,
-        response: vaccineDose
+        response: {
+          doseId: vaccineDose._id,
+          dose: vaccineDose.dose,
+          date: vaccineDose.date,
+          batchNumber: vaccineDose.batchNumber,
+          nextDose: vaccineDose.nextDose
+        }
       })
     }
   } catch (error) {

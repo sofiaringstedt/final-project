@@ -8,6 +8,12 @@ const VaccineCard = () => {
   const [nextDose, setNextDose] = useState("");
   const [doseInfo, setDoseInfo] = useState({});
 
+  const userId = JSON.parse(localStorage.getItem("user")).userId;
+  const doseId = doseInfo;
+
+  console.log(userId)
+  console.log(doseId)
+
   const handleDoseSubmit = (event) => {
     event.preventDefault();
 
@@ -36,7 +42,26 @@ const VaccineCard = () => {
 
         setDoseInfo(JSON.parse(localStorage.getItem("dose")))
       })
-      .catch((error) => console.log(error))
+      .catch((error) => console.log(error));
+
+    if(doseInfo) {
+      const options = {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          dose,
+          date,
+          batchNumber,
+          nextDose
+        })
+      };
+
+      fetch(API_URL(`/user/${userId}/dose/${doseId}`), options)
+        .then((response) => response.json())
+        .then((data) => console.log(data))
+        .catch((error) => console.log(error))
+    }
+
   }
 
   return (
