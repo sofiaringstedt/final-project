@@ -8,6 +8,7 @@ import Home from "./components/Home";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Account from "./components/Account";
+import VaccineCard from "./components/VaccineCard";
 
 import user from "./reducers/user";
 import card from "./reducers/card";
@@ -45,6 +46,7 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/account" element={<Account />} />
+          <Route path="/card" element={<VaccineCard />} />
         </Routes>
       </BrowserRouter>
     </Provider>
