@@ -47,7 +47,7 @@ const Register = () => {
           dispatch(user.actions.setAccessToken(userData.user.accessToken))
           dispatch(user.actions.setError(null));
 
-          localStorage.setItem("user", JSON.stringify({
+        localStorage.setItem("user", JSON.stringify({
             userId: userData.user.userId,
             firstName: userData.user.firstName,
             lastName: userData.user.lastName,
