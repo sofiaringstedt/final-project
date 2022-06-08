@@ -8,8 +8,8 @@ const VaccineCard = () => {
   const [nextDose, setNextDose] = useState("");
   const [doseInfo, setDoseInfo] = useState({});
 
-  const userId = JSON.parse(localStorage.getItem("user")).userId;
-  const doseId = doseInfo;
+  const userId = JSON.parse(localStorage.getItem("user")).user.userId;
+  const doseId = JSON.parse(localStorage.getItem("dose")).doseId;
 
   console.log(userId)
   console.log(doseId)
@@ -33,6 +33,7 @@ const VaccineCard = () => {
       .then((doseData) => {
         if (doseData.success) {
           localStorage.setItem("dose", JSON.stringify({
+            doseId: doseData.response.doseId,
             dose: doseData.response.dose,
             date: doseData.response.date,
             batchNumber: doseData.response.batchNumber,
@@ -56,7 +57,7 @@ const VaccineCard = () => {
         })
       };
 
-      fetch(API_URL(`/user/${userId}/dose/${doseId}`), options)
+      fetch(API_URL(`user/${userId}/dose/${doseId}`), options)
         .then((response) => response.json())
         .then((data) => console.log(data))
         .catch((error) => console.log(error))
