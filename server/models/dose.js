@@ -7,14 +7,14 @@ const DoseSchema = mongoose.Schema({
     trim: true
   },
   date: {
-    type: Number,
+    type: String,
     required: true
   },
   batchNumber: {
     type: String
   },
   nextDose: {
-    type: Number
+    type: String
   }
 })
 
