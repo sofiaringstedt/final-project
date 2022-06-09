@@ -13,7 +13,7 @@ export const authenticateUser = async (req, res, next) => {
   } else {
     res.status(401).json({ 
       success: false,
-      message: "You need to be logged in to see your vaccination card!"
+      response: "You need to be logged in to see your vaccination card!"
     });
   };
 };
@@ -30,12 +30,12 @@ export const userPage = async (req, res) => {
     });
 
     if (queriedUser) {
-      res.status(200).json({ response: queriedUser, success: true });
+      res.status(200).json({ success: true, response: queriedUser });
     } else {
-      res.status(404).json({ response: "User not found", success: false });
+      res.status(404).json({ success: false, response: "User not found" });
     }
   } catch (error) {
-    res.status(400).json({ response: error, success: false });
+    res.status(400).json({ success: false, response: error });
   }
 };
 
@@ -45,12 +45,12 @@ export const getDoses = async (req, res) => {
   try {
     const queriedUser = await User.findById(userId).populate("doses");
     if (queriedUser) {
-      res.status(200).json({ response: queriedUser.cards, success: true });
+      res.status(200).json({ success: true, response: queriedUser.cards });
     } else {
-      res.status(404).json({ response: 'User not found', success: false });
+      res.status(404).json({ success: false, response: "User not found" });
     }
   } catch (error) {
-    res.status(400).json({ response: error, success: false });
+    res.status(400).json({ success: false, response: error });
   }
 };
 
@@ -68,7 +68,7 @@ export const createUser = async (req,res) => {
       try {
         return res.status(400).json({
         success: false,
-        message: `Password must contain at least ${condition}`
+        response: `Password must contain at least ${condition}`
       })
       } catch(error) {
         console.log(error.message)
@@ -109,12 +109,16 @@ export const createUser = async (req,res) => {
           accessToken: user.accessToken
         }
       })
-    } 
+    } else {
+      res.status(409).json({
+        success: false,
+        response: "Could not create user"
+      })
+    }
   } catch (error) {
     res.status(409).json({
       success: false,
-      message: "Could not create user",
-      error: error.message
+      response: error
     })
   }
 };
@@ -135,12 +139,12 @@ export const loginUser = async (req, res) => {
         accessToken: user.accessToken
       });
     } else {
-      res.status(404).json({ success: false, message: "User not found" })
+      res.status(404).json({ success: false, response: "User not found" })
     }
   } catch (error) {
     res.status(400).json({
       success: false,
-      error: error.message
+      response: error
     });
   };
 };
@@ -164,15 +168,14 @@ export const modifyUser = async (req, res) => {
           },
           { new: true }
         );
-
-        res.status(200).json({ response: updatedUser, success: true });
+        res.status(200).json({ success: true, response: updatedUser });
       } else {
-        res.status(404).json({ response: "Dose not found", success: false });
+        res.status(404).json({ success: false, response: "Dose not found" });
       }
     } else {
-      res.status(404).json({ response: "User not found", success: false });
+      res.status(404).json({ success: false, response: "User not found" });
     }
   } catch (error) {
-    res.status(400).json({ response: error, success: false });
+    res.status(400).json({ success: false, response: error });
   }
 };

@@ -5,7 +5,6 @@ export const createDose = async (req, res) => {
 
   try {
     const vaccineDose = await new Dose ({
-      doseId: dose._id,
       dose,
       date,
       batchNumber,
@@ -23,12 +22,16 @@ export const createDose = async (req, res) => {
           nextDose: vaccineDose.nextDose
         }
       })
+    } else {
+      res.status(409).json({
+        success: false,
+        response: "Could not create vaccine card",
+      })
     }
   } catch (error) {
-    res.status(409).json({
+    res.status(400).json({
       success: false,
-      message: "Could not create vaccine card",
-      error: error.message
+      response: error
     })
   }
 };
