@@ -1,21 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { API_URL } from "../utils/urls";
 
 const VaccineCard = () => {
   const [dose, setDose] = useState("");
   const [date, setDate] = useState("");
   const [batchNumber, setBatchNumber] = useState("");
+   // eslint-disable-next-line
   const [nextDose, setNextDose] = useState("");
-  const [localStorageDose, setLocalStorageDose] = useState({});
   const [doseInfo, setDoseInfo] = useState([]);
+  const [errorMessage, setErrorMessage] = useState("");
 
-  const userId = JSON.parse(localStorage.getItem("user")).user.userId;
-  const doseId = JSON.parse(localStorage.getItem("dose")).doseId;
-  const token = JSON.parse(localStorage.getItem("user")).user.accessToken;
-  console.log(token)
+  const userId = JSON.parse(localStorage.getItem("user"))?.user.userId;
+  const doseId = JSON.parse(localStorage.getItem("dose"))?.doseId;
+  const token = JSON.parse(localStorage.getItem("user"))?.user.accessToken;
 
-  console.log(userId)
-  console.log(doseId)
+  console.log("token", token)
+  console.log("userId", userId)
+  console.log("dose", doseId)
 
   const handleDoseSubmit = (event) => {
     event.preventDefault();
@@ -42,13 +43,13 @@ const VaccineCard = () => {
             batchNumber: doseData.response.batchNumber,
             nextDose: doseData.response.nextDose
           }))
-        }
-
-        setLocalStorageDose(JSON.parse(localStorage.getItem("dose")))
+        } else {
+          setErrorMessage(doseData.response);
+        };
       })
       .catch((error) => console.log(error));
 
-    if(localStorageDose) {
+    if (doseId) {
       const options = {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
@@ -62,23 +63,22 @@ const VaccineCard = () => {
 
       fetch(API_URL(`user/${userId}/dose/${doseId}`), options)
         .then((response) => response.json())
-        .then((data) => data)
+        .then((data) => console.log(data))
         .catch((error) => console.log(error))
     }
-
   }
 
-  useEffect(() => {
-    const options = {
-      method: "GET",
-      headers: { Authorization: token },
-    };
+  //useEffect(() => {
+    // const options = {
+    //   method: "GET",
+    //   headers: { Authorization: token },
+    // };
 
-    fetch(API_URL(`user/${userId}`), options)
-      .then((response) => response.json())
-      .then((doseData) => setDoseInfo(doseData.response.doses))
-      .catch((error) => console.log(error))
-  },[])
+    // fetch(API_URL(`user/${userId}`), options)
+    //   .then((response) => response.json())
+    //   .then((doseData) => setDoseInfo(doseData.response.doses))
+    //   .catch((error) => console.log(error))
+  //},[])
 
   console.log(doseInfo)
 

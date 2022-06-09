@@ -1,8 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
-import user from "../reducers/user";
 
 import { API_URL } from "../utils/urls";
 
@@ -11,18 +8,16 @@ const Register = () => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   
-  const errorMessage = useSelector((store) => store.user.error);
-
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const onFirstNameChange = (event) => setFirstName(event.target.value);
-  const onLastNameChange = (event) => setLastName(event.target.value);
-  const onEmailChange = (event) => setEmail(event.target.value);
-  const onPasswordChange = (event) => setPassword(event.target.value);
+  const handleFirstNameChange = (event) => setFirstName(event.target.value);
+  const handleLastNameChange = (event) => setLastName(event.target.value);
+  const handleEmailChange = (event) => setEmail(event.target.value);
+  const handlePasswordChange = (event) => setPassword(event.target.value);
 
-  const submitUserData = (event) => {
+  const handleUserRegistration = (event) => {
     event.preventDefault();
 
     const options = {
@@ -40,14 +35,7 @@ const Register = () => {
       .then((response) => response.json())
       .then((userData) => {
         if (userData.success) {
-          dispatch(user.actions.setUserId(userData.user.userId))
-          dispatch(user.actions.setFirstName(userData.user.firstName))
-          dispatch(user.actions.setLastName(userData.user.lastName))
-          dispatch(user.actions.setEmail(userData.user.email))
-          dispatch(user.actions.setAccessToken(userData.user.accessToken))
-          dispatch(user.actions.setError(null));
-
-        localStorage.setItem("user", JSON.stringify({
+          localStorage.setItem("user", JSON.stringify({
             userId: userData.user.userId,
             firstName: userData.user.firstName,
             lastName: userData.user.lastName,
@@ -57,22 +45,21 @@ const Register = () => {
 
           navigate("/account")
         } else {
-          dispatch(user.actions.setError(userData.message))
+          setErrorMessage(userData.response)
         }
       })
       .catch((error) => console.log(error))
   } 
 
-  // const accessToken = useSelector((store) => store.user.accessToken);
   return (
-    <form onSubmit={submitUserData}>
+    <form onSubmit={handleUserRegistration}>
       {errorMessage && <p>{errorMessage}</p>}
       <label htmlFor="firstname"></label>
       <input 
         type="text" 
         id="firstname"
         value={firstName}
-        onChange={onFirstNameChange}
+        onChange={handleFirstNameChange}
         placeholder="Anna" 
       />
       <label htmlFor="lastname"></label>
@@ -80,7 +67,7 @@ const Register = () => {
         type="text" 
         id="lastname"
         value={lastName}
-        onChange={onLastNameChange}
+        onChange={handleLastNameChange}
         placeholder="Jönsson" 
       />
       <label htmlFor="email"></label>
@@ -88,7 +75,7 @@ const Register = () => {
         type="text" 
         id="email"
         value={email}
-        onChange={onEmailChange}
+        onChange={handleEmailChange}
         placeholder="email@yourdomain.something" 
       />
       <label htmlFor="password"></label>
@@ -96,7 +83,7 @@ const Register = () => {
         type="password" 
         id="password"
         value={password}
-        onChange={onPasswordChange}
+        onChange={handlePasswordChange}
         placeholder="Password!"
       />
       <button type="submit">Register</button>

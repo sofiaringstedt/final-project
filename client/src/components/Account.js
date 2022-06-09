@@ -1,13 +1,20 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const Account = () => {
-  const firstName = useSelector((store) => store.user.firstName);
+
+  const navigate = useNavigate();
+  const firstName = JSON.parse(localStorage.getItem("user"))?.firstName;
+
+  const handleSignOut = () => {
+    localStorage.removeItem("user")
+    navigate("/")
+  };
 
   return (
     <>
-      <h1> hello {firstName}</h1>
-      <button>sign out</button>
+      <h1>hello {firstName}</h1>
+      <button onClick={handleSignOut}>sign out</button>
     </>
   )
 }
