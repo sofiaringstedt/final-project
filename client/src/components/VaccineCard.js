@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { API_URL } from "../utils/urls";
 
-import { handleDoseSubmit } from "../actions/userActions";
+import { addDose } from "../actions/cardActions";
 
 const VaccineCard = () => {
   const [dose, setDose] = useState("");
@@ -11,36 +11,39 @@ const VaccineCard = () => {
   const [nextDose, setNextDose] = useState("");
   const [doseInfo, setDoseInfo] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
+  const [trackNewDose, setTrackNewDose] = useState("");
 
-   const userId = JSON.parse(localStorage.getItem("user"))?.userId;
-  // const doseId = JSON.parse(localStorage.getItem("dose"))?.doseId;
+  const userId = JSON.parse(localStorage.getItem("user"))?.userId;
   const token = JSON.parse(localStorage.getItem("user"))?.accessToken;
 
-  //    useEffect(() => {
-  //   const options = {
-  //     method: "GET",
-  //     headers: { Authorization: token },
-  //   };
+  console.log(doseInfo)
 
-  //   fetch(API_URL(`user/${userId}`), options)
-  //     .then((response) => response.json())
-  //     .then((doseData) => setDoseInfo(doseData.response.doses))
-  //     .catch((error) => console.log(error))
-  // },[token, userId])
+  const handleDoseSubmit = (event) =>{
+    event.preventDefault();
 
-    const options = {
-      method: "GET",
-      headers: { Authorization: token },
-    };
+    if (dose && date) {
+      addDose(dose, date, batchNumber, nextDose, setErrorMessage, setTrackNewDose)
+      setErrorMessage("");
+    } else {
+      setErrorMessage("Dose & date is required")
+    }
+  }
 
-    fetch(API_URL(`user/${userId}`), options)
-      .then((response) => response.json())
-      .then((doseData) => setDoseInfo(doseData.response.doses))
-      .catch((error) => console.log(error))
+    useEffect(() => {
+     const options = {
+       method: "GET",
+       headers: { Authorization: token },
+     };
+
+     fetch(API_URL(`user/${userId}`), options)
+       .then((response) => response.json())
+       .then((doseData) => setDoseInfo(doseData.response.doses))
+       .catch((error) => console.log(error))
+   },[token, userId, trackNewDose])
 
   return (
     <>
-      <form onSubmit={() => handleDoseSubmit(dose, date, batchNumber, nextDose, setErrorMessage)}>
+      <form onSubmit={handleDoseSubmit}>
         <select onChange={(event) => setDose(event.target.value)}>
           <option>Choose dose...</option>
           <option value="dose 1">Dose 1</option>
@@ -59,6 +62,7 @@ const VaccineCard = () => {
           onChange={(event) => setBatchNumber(event.target.value)} />
         <button type="submit">Add dose</button>
       </form>
+      {errorMessage && <p>{errorMessage}</p>}
       {doseInfo?.map((dose) => {
        return <p key={dose._id}>{dose.dose}</p>
       })}

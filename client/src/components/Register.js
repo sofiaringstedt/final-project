@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { API_URL } from "../utils/urls";
+import { registerUser } from "../actions/userActions";
 
 const Register = () => {
   const [firstName, setFirstName] = useState("");
@@ -17,39 +17,18 @@ const Register = () => {
   const handleEmailChange = (event) => setEmail(event.target.value);
   const handlePasswordChange = (event) => setPassword(event.target.value);
 
+  const accessToken = JSON.parse(localStorage.getItem("user"))?.accessToken;
+
   const handleUserRegistration = (event) => {
     event.preventDefault();
-
-    const options = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ 
-        firstName, 
-        lastName, 
-        email, 
-        password 
-      })
-    }
-
-    fetch(API_URL("register"), options)
-      .then((response) => response.json())
-      .then((userData) => {
-        if (userData.success) {
-          localStorage.setItem("user", JSON.stringify({
-            userId: userData.user.userId,
-            firstName: userData.user.firstName,
-            lastName: userData.user.lastName,
-            email: userData.user.email,
-            accessToken: userData.user.accessToken
-          }));
-
-          navigate("/account")
-        } else {
-          setErrorMessage(userData.response)
-        }
-      })
-      .catch((error) => console.log(error))
+    registerUser(firstName, lastName, email, password, navigate, setErrorMessage )
   } 
+
+  useEffect(() => {
+    if (accessToken) {
+      navigate("/account")
+    } 
+  },[accessToken, navigate])
 
   return (
     <form onSubmit={handleUserRegistration}>

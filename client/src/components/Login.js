@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import { useNavigate } from "react-router-dom";
 
-import { API_URL } from "../utils/urls";
+import { loginUser  } from "../actions/userActions";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -16,31 +16,7 @@ const Login = () => {
 
   const handleLogin = (event) => {
     event.preventDefault();
-
-    const options = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password })
-    };
-
-    fetch(API_URL("login"), options)
-      .then((response) => response.json())
-      .then((userData) => {
-        if (userData.success) {
-          console.log(userData)
-          localStorage.setItem("user", JSON.stringify({
-            userId: userData.userId,
-            firstName: userData.firstName,
-            lastName: userData.lastName,
-            email: userData.email,
-            accessToken: userData.accessToken
-          }));
-          navigate("/account")     
-        } else {
-          navigate("/register")
-        }
-      })
-      .catch((error) => console.log(error))
+    loginUser(email, password, navigate)
   }
 
   useEffect(() => {
