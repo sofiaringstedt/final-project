@@ -27,9 +27,9 @@ export const loginUser = (email, password, navigate) =>{
     .catch((error) => console.log(error))
 }
 
-export const registerUser = (firstName, lastName, email, password, navigate, setErrorMessage ) => {
+export const registerUser = (firstName, lastName, email, password, mode, method, navigate, setErrorMessage ) => {
   const options = {
-    method: "POST",
+    method: method,
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ 
       firstName, 
@@ -38,17 +38,21 @@ export const registerUser = (firstName, lastName, email, password, navigate, set
       password 
     })
   }
+
+  console.log(mode)
+  console.log(method)
   
-  fetch(API_URL("register"), options)
+  fetch(API_URL(mode), options)
     .then((response) => response.json())
     .then((userData) => {
+      console.log(userData)
       if (userData.success) {
         localStorage.setItem("user", JSON.stringify({
-          userId: userData.user.userId,
-          firstName: userData.user.firstName,
-          lastName: userData.user.lastName,
-          email: userData.user.email,
-          accessToken: userData.user.accessToken
+          userId: userData.response.userId,
+          firstName: userData.response.firstName,
+          lastName: userData.response.lastName,
+          email: userData.response.email,
+          accessToken: userData.response.accessToken
         }));
   
       navigate("/account")

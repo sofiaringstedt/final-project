@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import { registerUser } from "../actions/userActions";
 
-const Register = () => {
+const Register = ({ mode, method }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -18,18 +18,18 @@ const Register = () => {
   const handleEmailChange = (event) => setEmail(event.target.value);
   const handlePasswordChange = (event) => setPassword(event.target.value);
 
-  const accessToken = JSON.parse(localStorage.getItem("user"))?.accessToken;
+  // const accessToken = JSON.parse(localStorage.getItem("user"))?.accessToken;
 
   const handleUserRegistration = (event) => {
     event.preventDefault();
-    registerUser(firstName, lastName, email, password, navigate, setErrorMessage)
+    registerUser(firstName, lastName, email, password, mode, method, navigate, setErrorMessage,)
   }
 
-  useEffect(() => {
-    if (accessToken) {
-      navigate("/account")
-    }
-  }, [accessToken, navigate])
+  // useEffect(() => {
+  //   if (accessToken) {
+  //     navigate("/account")
+  //   }
+  // }, [accessToken, navigate])
 
   return (
     <>
