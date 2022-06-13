@@ -189,7 +189,7 @@ export const modifyUser = async (req, res) => {
 
     const editUser = await User.findByIdAndUpdate(
       userId,
-      { $set: { userId, firstName, lastName, email, password: bcrypt.hashSync(password, salt)} },
+      { $set: { firstName, lastName, email, password: bcrypt.hashSync(password, salt)} },
       { new: true }
     );
 

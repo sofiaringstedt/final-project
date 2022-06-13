@@ -21,6 +21,8 @@ const VaccineCard = () => {
   const userId = JSON.parse(localStorage.getItem("user"))?.userId;
   const token = JSON.parse(localStorage.getItem("user"))?.accessToken;
 
+  console.log(userId)
+
   const lastDoseIndex = doseInfo?.length - 1;
   const latestDoseDate = doseInfo[lastDoseIndex]?.date;
 
