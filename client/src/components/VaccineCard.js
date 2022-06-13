@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { API_URL } from "../utils/urls";
+import styled from "styled-components";
 
 import { addDose, startCounter } from "../actions/cardActions";
 
@@ -38,7 +39,7 @@ const VaccineCard = () => {
     const interval = setInterval(() => {
       startCounter(setCountDownDay, setCountDownHour, setCountDownMinute, setCountDownSecond, latestDoseDate)
     }, 1000);
-    return () => clearInterval(interval)
+    return () => clearInterval(interval);
   }, [lastDoseIndex, latestDoseDate]);
 
   useEffect(() => {
@@ -55,11 +56,29 @@ const VaccineCard = () => {
 
   return (
     <>
-      {doseInfo.length > 0 && 
-        <div>
-          <p>{countDownDay}: {countDownHour}: {countDownMinute}: {countDownSecond}</p>
-        </div>
-      }
+      <Header>
+        <h1>Vaccination countdown</h1>
+        {doseInfo.length > 0 &&
+          <CountdownContainer>
+            <CountdownWrapper>
+              <p>{countDownDay}</p>
+              <p>Days</p>
+            </CountdownWrapper>
+            <CountdownWrapper>
+              <p>{countDownHour}</p>
+              <p>Hours</p>
+            </CountdownWrapper>
+            <CountdownWrapper>
+              <p>{countDownMinute}</p>
+              <p>Minutes</p>
+            </CountdownWrapper>
+            <CountdownWrapper>
+              <p>{countDownSecond}</p>
+              <p>Seconds</p>
+            </CountdownWrapper>
+          </CountdownContainer>
+        }
+      </Header>
       <form onSubmit={handleDoseSubmit}>
         <select onChange={(event) => setDose(event.target.value)}>
           <option>Choose dose...</option>
@@ -79,15 +98,56 @@ const VaccineCard = () => {
           onChange={(event) => setBatchNumber(event.target.value)} />
         <button type="submit">Add dose</button>
       </form>
-      {errorMessage && <p>{errorMessage}</p>}
-      {doseInfo?.map((dose) => {
-        return <div key={dose._id}>
-          <p >{dose.dose}</p>
-          <p>{dose.date}</p>
-        </div>
-      })}
+      <div>
+        <h2>Vaccine Card</h2>
+        <HeaderTags>
+          <TagParagraph>Dose</TagParagraph>
+          <TagParagraph>Date</TagParagraph>
+          <TagParagraph>Batch Number</TagParagraph>
+        </HeaderTags>
+        {errorMessage && <p>{errorMessage}</p>}
+        {doseInfo?.map((dose) => {
+          return <DoseContainer key={dose._id}>
+            <DoseParagraph>{dose.dose}</DoseParagraph>
+            <DoseParagraph>{dose.date}</DoseParagraph>
+            <DoseParagraph>{dose?.batchNumber}</DoseParagraph>
+          </DoseContainer>
+        })}
+      </div>
     </>
   );
 };
+
+const Header = styled.div`
+  background: #E2F5FA;
+  padding: 10px;
+`;
+
+const CountdownContainer = styled.div`
+  display: flex;
+  margin-bottom: 50px;
+`;
+
+const CountdownWrapper = styled.div`
+  margin-right: 20px;
+  background: darkorange;
+  padding: 10px;
+`;
+
+const DoseContainer = styled.div`
+  display: flex;
+`;
+
+const DoseParagraph = styled.p`
+  margin-right: 30px;
+`;
+
+const HeaderTags = styled.div`
+  display: flex;
+`;
+
+const TagParagraph = styled.p`
+  margin-right: 40px;
+`;
 
 export default VaccineCard;

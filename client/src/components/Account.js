@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import tickInfoLogo from "../assets/tick-info-logo.svg";
@@ -10,7 +10,11 @@ import signOut from "../assets/log-out.svg";
 
 const Account = () => {
   const navigate = useNavigate();
+
+  const accessToken = JSON.parse(localStorage.getItem("user"))?.accessToken;
   const firstName = JSON.parse(localStorage.getItem("user"))?.firstName;
+  const lastName = JSON.parse(localStorage.getItem("user"))?.lastName;
+  const email = JSON.parse(localStorage.getItem("user"))?.email;
   
   const handleSignOut = () => {
     localStorage.removeItem("user")
@@ -18,10 +22,22 @@ const Account = () => {
     navigate("/")
   };
 
+  useEffect(() => {
+    if (!accessToken) {
+      navigate("/login");
+    }
+  }, [accessToken, navigate]);
+
   return (
     <>
-      <h1>hello {firstName}</h1>
+      <h1>Hello, {firstName}</h1>
       <img src={tickInfoLogo} alt="Tick info logo" />
+      <div>
+        <p>{firstName} {lastName}</p>
+        <p>{email}</p>
+        <p>Next dose: xx</p>
+      </div>
+      <hr />
       <ul>
         <li onClick={()=> navigate("/")}> <img src={house} alt="home icon"/> Home</li>
         <li > <img src={bell} alt="bell icon" /> Reminder</li>
@@ -30,7 +46,7 @@ const Account = () => {
         <li onClick={handleSignOut}> <img src={signOut} alt="sign out icon" />sign out</li>
       </ul>
     </>
-  )
-}
+  );
+};
 
-export default Account
+export default Account;
