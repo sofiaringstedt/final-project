@@ -150,6 +150,60 @@ export const loginUser = async (req, res) => {
 };
 
 export const modifyUser = async (req, res) => {
+  const { userId } = req.params;
+  const { firstName, lastName, email, password } = req.body;
+
+  try {
+    const oneUppercaseCharacter = /(?=.*[A-Z])/;
+    const oneLowercaseCharacter = /(?=.*[a-z])/;
+    const oneSpecialCharacter = /(?=.*[@$!#%*?&-])/;
+
+    const salt = bcrypt.genSaltSync();
+
+    const response = (condition) => {
+      try {
+        return res.status(400).json({
+        success: false,
+        response: `Password must contain at least ${condition}`
+      })
+      } catch(error) {
+        console.log(error.message)
+      }
+    };
+
+    if (password.length < 8) {
+      return response("8 characters.")
+    } 
+
+    if (!oneUppercaseCharacter.test(password)) {
+      return response("one uppercase letter.")
+    } 
+
+    if (!oneLowercaseCharacter.test(password)) {
+      return response("one lowercase letter.")
+    } 
+
+    if (!oneSpecialCharacter.test(password)) {
+      return response("one special character (@$!#%*?&-).")
+    } 
+
+    const editUser = await User.findByIdAndUpdate(
+      userId,
+      { $set: {userId, firstName, lastName, email, password: bcrypt.hashSync(password, salt)} },
+      { new: true }
+    );
+
+    if (editUser) {
+      res.status(201).json({ success: true, response: editUser });
+    } else {
+      res.status(409).json({ success: false, response: "Could not edit user"});
+    }
+  } catch (error) {
+    res.status(400).json({ success: false, response: error });
+  }
+};
+
+export const addDoseToUser = async (req, res) => {
   const { userId, doseId } = req.params;
 
   try {
