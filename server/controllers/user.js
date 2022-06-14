@@ -58,38 +58,13 @@ export const createUser = async (req,res) => {
   const { firstName, lastName, email, password } = req.body;
 
   try {
-    const oneUppercaseCharacter = /(?=.*[A-Z])/;
-    const oneLowercaseCharacter = /(?=.*[a-z])/;
-    const oneSpecialCharacter = /(?=.*[@$!#%*?&-])/;
+    const passwordValidator = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[#?!@$%^&*-/+]).{8,}$/;
 
     const salt = bcrypt.genSaltSync();
 
-    const response = (condition) => {
-      try {
-        return res.status(400).json({
-        success: false,
-        response: `Password must contain at least ${condition}`
-      })
-      } catch(error) {
-        console.log(error.message)
-      }
+    if (!passwordValidator.test(password)){
+      throw "password must be at least 8 characters long with 1 uppercase, 1 lowercase, and 1 special character (#?!@$%^&*-/+)."
     };
-
-    if (password.length < 8) {
-      return response("8 characters.")
-    } 
-
-    if (!oneUppercaseCharacter.test(password)) {
-      return response("one uppercase letter.")
-    } 
-
-    if (!oneLowercaseCharacter.test(password)) {
-      return response("one lowercase letter.")
-    } 
-
-    if (!oneSpecialCharacter.test(password)) {
-      return response("one special character (@$!#%*?&-).")
-    } 
 
     const user = await new User({
       firstName,
@@ -116,11 +91,11 @@ export const createUser = async (req,res) => {
       })
     }
   } catch (error) {
-    res.status(409).json({
+    res.status(400).json({
       success: false,
       response: error
-    })
-  }
+    });
+  };
 };
 
 export const loginUser = async (req, res) => {
@@ -154,38 +129,13 @@ export const modifyUser = async (req, res) => {
   const { firstName, lastName, email, password } = req.body;
 
   try {
-    const oneUppercaseCharacter = /(?=.*[A-Z])/;
-    const oneLowercaseCharacter = /(?=.*[a-z])/;
-    const oneSpecialCharacter = /(?=.*[@$!#%*?&-])/;
+    const passwordValidator = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[#?!@$%^&*-/+]).{8,}$/;
 
     const salt = bcrypt.genSaltSync();
 
-    const response = (condition) => {
-      try {
-        return res.status(400).json({
-        success: false,
-        response: `Password must contain at least ${condition}`
-      })
-      } catch(error) {
-        console.log(error.message)
-      }
+    if (!passwordValidator.test(password)) {
+      throw "password must be at least 8 characters long with 1 uppercase, 1 lowercase, and 1 special character (#?!@$%^&*-/+)."
     };
-
-    if (password.length < 8) {
-      return response("8 characters.")
-    } 
-
-    if (!oneUppercaseCharacter.test(password)) {
-      return response("one uppercase letter.")
-    } 
-
-    if (!oneLowercaseCharacter.test(password)) {
-      return response("one lowercase letter.")
-    } 
-
-    if (!oneSpecialCharacter.test(password)) {
-      return response("one special character (@$!#%*?&-).")
-    } 
 
     const editUser = await User.findByIdAndUpdate(
       userId,
@@ -194,7 +144,9 @@ export const modifyUser = async (req, res) => {
     );
 
     if (editUser) {
-      res.status(201).json({ success: true, response: editUser });
+      res.status(201).json({ success: true, response: {
+        userId: editUser._id, firstName, lastName, email, accessToken: editUser.accessToken
+      } });
     } else {
       res.status(409).json({ success: false, response: "Could not edit user"});
     }

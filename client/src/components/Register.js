@@ -18,18 +18,10 @@ const Register = ({ mode, method }) => {
   const handleEmailChange = (event) => setEmail(event.target.value);
   const handlePasswordChange = (event) => setPassword(event.target.value);
 
-  // const accessToken = JSON.parse(localStorage.getItem("user"))?.accessToken;
-
   const handleUserRegistration = (event) => {
     event.preventDefault();
     registerUser(firstName, lastName, email, password, mode, method, navigate, setErrorMessage,)
   }
-
-  // useEffect(() => {
-  //   if (accessToken) {
-  //     navigate("/account")
-  //   }
-  // }, [accessToken, navigate])
 
   return (
     <>

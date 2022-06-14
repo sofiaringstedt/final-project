@@ -11,7 +11,7 @@ export const loginUser = (email, password, navigate) =>{
     .then((response) => response.json())
     .then((userData) => {
       if (userData.success) {
-        console.log(userData)
+        // console.log(userData)
         localStorage.setItem("user", JSON.stringify({
           userId: userData.userId,
           firstName: userData.firstName,
@@ -38,9 +38,6 @@ export const registerUser = (firstName, lastName, email, password, mode, method,
       password 
     })
   }
-
-  console.log(mode)
-  console.log(method)
   
   fetch(API_URL(mode), options)
     .then((response) => response.json())
