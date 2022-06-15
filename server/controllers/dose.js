@@ -56,7 +56,7 @@ export const deleteDose = async (req, res) => {
   const { doseId } = req.params;
 
   try {
-    const deletedDose = await Dose.findOneAndDelete({ _id: doseId });
+    const deletedDose = await Dose.findByIdAndDelete(doseId);
 
     if (deletedDose) {
       res.status(200).json({ success: true, response: deletedDose });
