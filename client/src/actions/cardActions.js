@@ -1,6 +1,6 @@
 import { API_URL } from "../utils/urls";
 
-export const addDose = (dose, date, batchNumber, nextDose, setErrorMessage, setTrackNewDose) => {
+export const addDose = (dose, date, batchNumber, nextDose, setDate, setBatchNumber, setErrorMessage, setTrackNewDose) => {
   const userId = JSON.parse(localStorage.getItem("user"))?.userId;
 
   const options = {
@@ -35,19 +35,16 @@ export const addDose = (dose, date, batchNumber, nextDose, setErrorMessage, setT
             batchNumber,
             nextDose
           })
-        }
+        };
 
         fetch(API_URL(`user/${userId}/dose/${doseData.response.doseId}`), options)
           .then((response) => response.json())
-          .then((data) => {
-            console.log(data)
-            // if(data.success) {
-            //   setTrackNewDose(data)
-            // } else {
-            //   setErrorMessage(data.response)
-            // }
-          })
+          .then((data) => setTrackNewDose(data))
           .catch((error) => console.log(error))
+          .finally(() => {
+            setDate("")
+            setBatchNumber("")
+          })
 
       } else {
         setErrorMessage(doseData.response);
@@ -57,7 +54,6 @@ export const addDose = (dose, date, batchNumber, nextDose, setErrorMessage, setT
 };
 
 export const startCounter = (setCountDownDay, setCountDownHour, setCountDownMinute, setCountDownSecond, latestDoseDate) => {
-  console.log(latestDoseDate)
   const latestDoseTime = new Date(`${latestDoseDate}, 00:00:00`).getTime();
   const currentTime = new Date().getTime();
 
