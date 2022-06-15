@@ -144,9 +144,12 @@ export const modifyUser = async (req, res) => {
     );
 
     if (editUser) {
-      res.status(201).json({ success: true, response: {
-        userId: editUser._id, firstName, lastName, email, accessToken: editUser.accessToken
-      } });
+      res.status(201).json({ 
+        success: true, 
+        response: {
+          userId: editUser._id, firstName, lastName, email, accessToken: editUser.accessToken
+        } 
+      });
     } else {
       res.status(409).json({ success: false, response: "Could not edit user"});
     }
@@ -163,25 +166,30 @@ export const addDoseToUser = async (req, res) => {
 
     if (queriedUser) {
       const queriedDose = await Dose.findById(doseId);
+      const findUserDoses = await User.findById(userId).populate("doses", { dose: 1, _id: 0 });
 
-      if (queriedDose) {
-        const updatedUser = await User.findByIdAndUpdate(
-          userId,
-          {
-            $push: {
-              doses: queriedDose,
-            },
-          },
-          { new: true }
-        );
-        res.status(200).json({ success: true, response: updatedUser });
+      if (findUserDoses.doses.some(dose => dose.dose === queriedDose.dose)) {
+        res.status(400).json({ success: false, response: `${queriedDose.dose} already registered` });
       } else {
-        res.status(404).json({ success: false, response: "Dose not found" });
+        if (queriedDose) {
+          const updatedUser = await User.findByIdAndUpdate(
+            userId,
+            {
+              $push: {
+                doses: queriedDose,
+              },
+            },
+            { new: true }
+          );
+          res.status(200).json({ success: true, response: updatedUser });
+        } else {
+          res.status(404).json({ success: false, response: "Dose not found" });
+        }
       }
     } else {
       res.status(404).json({ success: false, response: "User not found" });
     }
   } catch (error) {
-    res.status(400).json({ success: false, response: error });
+    res.status(400).json({ success: false, response: error.message });
   }
 };
