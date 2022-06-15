@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { API_URL } from "../utils/urls";
 import styled from "styled-components";
 
 import { addDose, startCounter } from "../actions/cardActions";
+import { API_URL } from "../utils/urls";
 
 const VaccineCard = () => {
   const [dose, setDose] = useState("");
@@ -38,7 +38,7 @@ const VaccineCard = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      startCounter(setCountDownDay, setCountDownHour, setCountDownMinute, setCountDownSecond, latestDoseDate)
+      startCounter(setCountDownDay, setCountDownHour, setCountDownMinute, setCountDownSecond, doseInfo, latestDoseDate)
     }, 1000);
     return () => clearInterval(interval);
   }, [lastDoseIndex, latestDoseDate]);
