@@ -167,11 +167,9 @@ export const addDoseToUser = async (req, res) => {
     if (queriedUser) {
       const queriedDose = await Dose.findById(doseId);
       const findUserDoses = await User.findById(userId).populate("doses", { dose: 1, _id: 0 });
+      const userAddedDose = findUserDoses.doses.some(dose => dose.dose === queriedDose.dose)
 
-      if (findUserDoses.doses.some(dose => dose.dose === queriedDose.dose)) {
-        res.status(400).json({ success: false, response: `${queriedDose.dose} already registered` });
-      } else {
-        if (queriedDose) {
+      if (queriedDose && !userAddedDose) {
           const updatedUser = await User.findByIdAndUpdate(
             userId,
             {
@@ -181,10 +179,10 @@ export const addDoseToUser = async (req, res) => {
             },
             { new: true }
           );
+
           res.status(200).json({ success: true, response: updatedUser });
-        } else {
-          res.status(404).json({ success: false, response: "Dose not found" });
-        }
+      } else {
+        res.status(400).json({ success: false, response: `${queriedDose.dose} already registered or dose not found` });
       }
     } else {
       res.status(404).json({ success: false, response: "User not found" });

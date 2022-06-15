@@ -82,10 +82,10 @@ const VaccineCard = () => {
       <form onSubmit={handleDoseSubmit}>
         <select onChange={(event) => setDose(event.target.value)}>
           <option>Choose dose...</option>
-          <option value="dose 1">Dose 1</option>
-          <option value="dose 2">Dose 2</option>
-          <option value="dose 3">Dose 3</option>
-          <option value="dose 4">Dose 4</option>
+          <option value="Dose 1">Dose 1</option>
+          <option value="Dose 2">Dose 2</option>
+          <option value="Dose 3">Dose 3</option>
+          <option value="Dose 4">Dose 4</option>
         </select>
         <input
           type="date"
