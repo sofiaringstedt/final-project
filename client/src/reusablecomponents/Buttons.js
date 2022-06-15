@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Button = () =>{
     return (
         <ButtonWrapper>
-        <RegisterButton> Register </RegisterButton>
+        <RegisterButton> </RegisterButton>
         </ButtonWrapper>
     )
     
@@ -15,8 +15,8 @@ export default Button
 const RegisterButton = styled.button`
   background-color: #175C4C ;
   color: #FFFFFF;
-  height:40px;
-  width: 300px;
+  height:45px;
+  width: 320px;
   border: none;
   border-radius: 30px;
   -webkit-box-shadow: 3px 7px 9px -2px rgba(0,0,0,0.84); 

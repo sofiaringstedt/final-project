@@ -6,7 +6,6 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import Account from "./components/Account";
 import VaccineCard from "./components/VaccineCard";
-import Button from "./components/Buttons";
 
 const App = () => {
   const [mode, setMode] = useState("register");
@@ -21,7 +20,6 @@ const App = () => {
         <Route path="/account" element={<Account setMode={setMode} setMethod={setMethod} />} />
         <Route path="/card" element={<VaccineCard />} />
       </Routes>
-        <Button/>
     </BrowserRouter>
   );
 };

@@ -4,6 +4,8 @@ import styled from "styled-components";
 
 import { registerUser } from "../actions/userActions";
 
+import InputField from "../reusablecomponents/InputField";
+
 const Register = ({ mode, method }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -29,46 +31,46 @@ const Register = ({ mode, method }) => {
       <h1>Create account</h1>
       <Form onSubmit={handleUserRegistration}>
         {errorMessage && <p>{errorMessage}</p>}
-        <div>
+        <InputContainer>
           <label htmlFor="firstname"></label>
-          <input
+          <InputField
             type="text"
             id="firstname"
             value={firstName}
             onChange={handleFirstNameChange}
             placeholder="Anna"
           />
-        </div>
-        <div>
+        </InputContainer>
+        <InputContainer>
           <label htmlFor="lastname"></label>
-          <input
+          <InputField
             type="text"
             id="lastname"
             value={lastName}
             onChange={handleLastNameChange}
             placeholder="Jönsson"
           />
-        </div>
-        <div>
+        </InputContainer>
+        <InputContainer>
           <label htmlFor="email"></label>
-          <input
+          <InputField
             type="text"
             id="email"
             value={email}
             onChange={handleEmailChange}
             placeholder="email@yourdomain.something"
           />
-        </div>
-        <div>
+        </InputContainer>
+        <InputContainer>
           <label htmlFor="password"></label>
-          <input
+          <InputField
             type="password"
             id="password"
             value={password}
             onChange={handlePasswordChange}
             placeholder="Password!"
           />
-        </div>
+        </InputContainer>
         <Button type="submit">Register</Button>
       </Form>
     </>
@@ -84,4 +86,7 @@ const Form = styled.form`
 
 const Button = styled.button`
   width: fit-content;
+`;
+const InputContainer = styled.div`
+margin-bottom: 20px;
 `;
