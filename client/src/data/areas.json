@@ -1,0 +1,184 @@
+[{
+  "id": 1,
+  "cityName": "Stockholm",
+  "coordinates": {
+    "lat": 59.3294,
+    "long": 18.0686
+  }
+},
+{
+  "id": 2,
+  "cityName": "Uppsala",
+  "coordinates": {
+    "lat": 59.8498,
+    "long": 17.6389
+  }
+},
+{
+  "id": 3,
+  "cityName": "Gnesta",
+  "coordinates": {
+    "lat": 59.0500,
+    "long": 17.3000
+  }
+},
+{ 
+  "id": 4,
+  "cityName": "Linköping",
+  "coordinates": {
+    "lat": 58.4094,
+    "long": 15.6257
+  }
+},
+{
+  "id": 5,
+  "cityName": "Motala",
+  "coordinates": {
+    "lat": 58.5500,
+    "long": 15.0500
+  }
+},
+{
+  "id": 6,
+  "cityName": "Höör",
+  "coordinates": {
+    "lat": 55.9333,
+    "long": 13.5333
+  }
+},
+{
+  "id": 7,
+  "cityName": "Lidköping",
+  "coordinates": {
+    "lat": 58.5000,
+    "long": 13.1667
+  }
+},
+{
+  "id": 8,
+  "cityName": "Lerdala",
+  "coordinates": {
+    "lat": 58.4777,
+    "long": 13.7144
+  }
+},
+{
+  "id": 9,
+  "cityName": "Tidaholm",
+  "coordinates": {
+    "lat": 58.1794,
+    "long": 13.9599
+  }
+},
+{
+  "id": 10,
+  "cityName": "Falköping",
+  "coordinates": {
+    "lat": 58.1700,
+    "long": 13.5551
+  }
+},
+{
+  "id": 11,
+  "cityName": "Mellerud",
+  "coordinates": {
+    "lat": 58.7000,
+    "long": 12.4667
+  }
+},
+{
+  "id": 12,
+  "cityName": "Brålanda",
+  "coordinates": {
+    "lat": 58.5634,
+    "long": 12.3492
+  }
+},
+{
+  "id": 13,
+  "cityName": "Lysekil",
+  "coordinates": {
+    "lat": 58.2833,
+    "long": 11.4333
+  }
+},
+{
+  "id": 14,
+  "cityName": "Kungshamn",
+  "coordinates": {
+    "lat": 58.3500,
+    "long": 11.2500
+  }
+},
+{
+  "id": 15,
+  "cityName": "Uddevalla",
+  "coordinates": {
+    "lat": 58.3667,
+    "long": 11.9333
+  }
+},
+{
+  "id": 16,
+  "cityName": "Trollhättan",
+  "coordinates": {
+    "lat": 58.2671,
+    "long": 12.3000
+  }
+},
+{
+  "id": 17,
+  "cityName": "Kungälv",
+  "coordinates": {
+    "lat": 57.8667,
+    "long": 11.9667
+  }
+},
+{
+  "id": 18,
+  "cityName": "Säffle",
+  "coordinates": {
+    "lat": 59.1330,
+    "long": 12.9213
+  }
+},
+{
+  "id": 19,
+  "cityName": "Örebro",
+  "coordinates": {
+    "lat": 59.2669,
+    "long": 15.1965
+  }
+},
+{
+  "id": 20,
+  "cityName": "Västerås",
+  "coordinates": {
+    "lat": 59.6173,
+    "long": 16.5422
+  }
+},
+{
+  "id": 21,
+  "cityName": "Västerås",
+  "coordinates": {
+    "lat": 59.4227,
+    "long": 16.1059
+  }
+},
+{
+  "id": 22,
+  "cityName": "Ludvika",
+  "coordinates": {
+    "lat": 60.1333,
+    "long": 15.1833
+  }
+},
+{
+  "id": 23,
+  "cityName": "Borlänge",
+  "coordinates": {
+    "lat": 60.4833,
+    "long": 15.4167
+  }
+}]
