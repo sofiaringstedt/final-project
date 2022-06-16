@@ -1,6 +1,7 @@
 [{
   "id": 1,
   "cityName": "Stockholm",
+  "highRisk": true,
   "coordinates": {
     "lat": 59.3294,
     "long": 18.0686
@@ -9,6 +10,7 @@
 {
   "id": 2,
   "cityName": "Uppsala",
+  "highRisk": true,
   "coordinates": {
     "lat": 59.8498,
     "long": 17.6389
@@ -49,6 +51,7 @@
 {
   "id": 7,
   "cityName": "Lidköping",
+  "highRisk": true,
   "coordinates": {
     "lat": 58.5000,
     "long": 13.1667
@@ -153,6 +156,7 @@
 {
   "id": 20,
   "cityName": "Västerås",
+  "highRisk": true,
   "coordinates": {
     "lat": 59.6173,
     "long": 16.5422
@@ -180,5 +184,41 @@
   "coordinates": {
     "lat": 60.4833,
     "long": 15.4167
+  }
+},
+{
+  "id": 24,
+  "cityName": "Eskilstuna",
+  "highRisk": true,
+  "coordinates": {
+    "lat": 59.3666,
+    "long": 16.5077
+  }
+},
+{
+  "id": 25,
+  "cityName": "Arvika",
+  "highRisk": true,
+  "coordinates": {
+    "lat": 59.6552,
+    "long": 12.5851
+  }
+},
+{
+  "id": 26,
+  "cityName": "Tanumshede",
+  "highRisk": true,
+  "coordinates": {
+    "lat": 58.7239,
+    "long": 11.3252
+  }
+},
+{
+  "id": 27,
+  "cityName": "Orust",
+  "highRisk": true,
+  "coordinates": {
+    "lat": 58.1802,
+    "long": 11.6341
   }
 }]
