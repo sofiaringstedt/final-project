@@ -1,10 +1,20 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
 
 import { addDose, startCounter } from "../actions/cardActions";
 import { API_URL } from "../utils/urls";
 
 import CardForm from "../reusablecomponents/CardForm";
+
+import { 
+  Spinner, 
+  Header,
+  CountdownContainer,
+  CountdownWrapper,
+  DoseContainer,
+  DoseParagraph,
+  HeaderTags,
+  TagParagraph 
+} from "../styled-components/vaccineCard"
 
 const VaccineCard = () => {
   const [dose, setDose] = useState("");
@@ -14,7 +24,8 @@ const VaccineCard = () => {
   const [nextDose, setNextDose] = useState("");
   const [doseInfo, setDoseInfo] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
-  const [trackNewDose, setTrackNewDose] = useState("");
+  const [trackNewDose, setTrackNewDose] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [countDownDay, setCountDownDay] = useState(null);
   const [countDownHour, setCountDownHour] = useState(null);
   const [countDownMinute, setCountDownMinute] = useState(null);
@@ -31,7 +42,7 @@ const VaccineCard = () => {
     event.preventDefault();
 
     if (dose !== "" && date !== "") {
-      addDose(dose, date, batchNumber, nextDose, setDate, setDose, setBatchNumber, setErrorMessage, setTrackNewDose);
+      addDose(dose, date, batchNumber, nextDose, setDate, setDose, setBatchNumber, setErrorMessage, setTrackNewDose, setLoading);
       setErrorMessage("");
     } else {
       setErrorMessage("Dose and date is required");
@@ -52,11 +63,19 @@ const VaccineCard = () => {
       headers: { Authorization: token },
     };
 
+    setLoading(true);
+    setTrackNewDose(false);
+
     fetch(API_URL(`user/${userId}`), options)
       .then((response) => response.json())
       .then((doseData) => setDoseInfo(doseData.response.doses))
       .catch((error) => console.log(error))
+      .finally(() => setLoading(false))
   }, [token, userId, trackNewDose]);
+
+  if (loading) {
+    return <Spinner></Spinner>
+  };
 
   return (
     <>
@@ -112,37 +131,5 @@ const VaccineCard = () => {
     </>
   );
 };
-
-const Header = styled.div`
-  background: #E2F5FA;
-  padding: 10px;
-`;
-
-const CountdownContainer = styled.div`
-  display: flex;
-  margin-bottom: 50px;
-`;
-
-const CountdownWrapper = styled.div`
-  margin-right: 20px;
-  background: darkorange;
-  padding: 10px;
-`;
-
-const DoseContainer = styled.div`
-  display: flex;
-`;
-
-const DoseParagraph = styled.p`
-  margin-right: 30px;
-`;
-
-const HeaderTags = styled.div`
-  display: flex;
-`;
-
-const TagParagraph = styled.p`
-  margin-right: 40px;
-`;
 
 export default VaccineCard;

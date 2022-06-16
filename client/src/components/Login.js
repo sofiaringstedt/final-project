@@ -9,6 +9,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -16,7 +17,7 @@ const Login = () => {
 
   const handleLogin = (event) => {
     event.preventDefault();
-    loginUser(email, password, setErrorMessage, navigate);
+    loginUser(email, password, setLoading, setErrorMessage, navigate);
   };
 
   useEffect(() => {
