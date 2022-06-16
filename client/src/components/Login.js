@@ -1,68 +1,61 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import UserForm from "../reusablecomponents/UserForm";
 
 import { loginUser } from "../actions/userActions";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const navigate = useNavigate();
-
-  const handleEmailChange = (event) => setEmail(event.target.value);
-  const handlePasswordChange = (event) => setPassword(event.target.value);
 
   const accessToken = JSON.parse(localStorage.getItem("user"))?.accessToken;
 
   const handleLogin = (event) => {
     event.preventDefault();
-    loginUser(email, password, navigate)
-  }
+    loginUser(email, password, setErrorMessage, navigate);
+  };
 
   useEffect(() => {
     if (accessToken) {
-      navigate("/account")
+      navigate("/account");
     }
-  }, [accessToken, navigate])
+  }, [accessToken, navigate]);
 
   return (
-    <>
-      <button onClick={() => navigate("/")}>Home</button>
-      <h1>Log in</h1>
-      <Form onSubmit={handleLogin}>
-        <div>
-          <label htmlFor="email"></label>
-          <input
-            type="text"
-            id="email"
-            value={email}
-            onChange={handleEmailChange}
-            placeholder="email" />
-        </div>
-        <div>
-          <label htmlFor="password"></label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={handlePasswordChange}
-            placeholder="password" />
-        </div>
-        <p>I am a new user, <Link to="/register">Create Account</Link></p>
-        <Button type="submit">Login</Button>
-      </Form>
-    </>
+    <FormContainer>
+      <GoBackButton onClick={() => navigate("/")}>X</GoBackButton>
+      <StyledHeading>Log in</StyledHeading>
+      <UserForm
+        email={email}
+        password={password}
+        errorMessage={errorMessage}
+        setEmail={setEmail}
+        setPassword={setPassword}
+        handleForm={handleLogin}
+      />
+    </FormContainer>
   );
 };
 
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
+const FormContainer = styled.div`
+  margin-top: 50px;
 `;
 
-const Button = styled.button`
-  width: fit-content;
+const StyledHeading = styled.h1`
+  margin-left: 40px;
+  font-weight: 600;
+  font-size: 20px;
+`;
+
+const GoBackButton = styled.button`
+  border: none;
+  background-color: transparent;
+  font-size: 20px;
+  margin-left: 35px;
 `;
 
 export default Login;
