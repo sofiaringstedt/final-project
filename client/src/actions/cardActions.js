@@ -1,6 +1,6 @@
 import { API_URL } from "../utils/urls";
 
-export const addDose = (dose, date, batchNumber, nextDose, setDate, setBatchNumber, setErrorMessage, setTrackNewDose) => {
+export const addDose = (dose, date, batchNumber, nextDose, setDate, setDose, setBatchNumber, setErrorMessage, setTrackNewDose) => {
   const userId = JSON.parse(localStorage.getItem("user"))?.userId;
 
   const options = {
@@ -42,6 +42,7 @@ export const addDose = (dose, date, batchNumber, nextDose, setDate, setBatchNumb
           .then((data) => setTrackNewDose(data))
           .catch((error) => console.log(error))
           .finally(() => {
+            setDose("")
             setDate("")
             setBatchNumber("")
           })
