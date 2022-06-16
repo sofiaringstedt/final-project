@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+
 import UserForm from "../reusablecomponents/UserForm";
 
 import { loginUser } from "../actions/userActions";
+import { Spinner } from "../styled-components/MainStyles";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -15,7 +17,7 @@ const Login = () => {
 
   const accessToken = JSON.parse(localStorage.getItem("user"))?.accessToken;
 
-  const handleLogin = (event) => {
+  const onUserLogin = (event) => {
     event.preventDefault();
     loginUser(email, password, setLoading, setErrorMessage, navigate);
   };
@@ -25,6 +27,10 @@ const Login = () => {
       navigate("/account");
     }
   }, [accessToken, navigate]);
+
+  if (loading) {
+    return <Spinner></Spinner>
+  };
 
   return (
     <FormContainer>
@@ -36,7 +42,7 @@ const Login = () => {
         errorMessage={errorMessage}
         setEmail={setEmail}
         setPassword={setPassword}
-        handleForm={handleLogin}
+        handleForm={onUserLogin}
       />
     </FormContainer>
   );

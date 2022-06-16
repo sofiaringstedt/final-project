@@ -1,20 +1,12 @@
 import React, { useState, useEffect } from "react";
+import styled from "styled-components";
 
 import { addDose, startCounter } from "../actions/cardActions";
 import { API_URL } from "../utils/urls";
 
 import CardForm from "../reusablecomponents/CardForm";
 
-import { 
-  Spinner, 
-  Header,
-  CountdownContainer,
-  CountdownWrapper,
-  DoseContainer,
-  DoseParagraph,
-  HeaderTags,
-  TagParagraph 
-} from "../styled-components/vaccineCard"
+import { Spinner } from "../styled-components/MainStyles";
 
 const VaccineCard = () => {
   const [dose, setDose] = useState("");
@@ -131,5 +123,37 @@ const VaccineCard = () => {
     </>
   );
 };
+
+const Header = styled.div`
+  background: #E2F5FA;
+  padding: 10px;
+`;
+
+const CountdownContainer = styled.div`
+  display: flex;
+  margin-bottom: 50px;
+`;
+
+const CountdownWrapper = styled.div`
+  margin-right: 20px;
+  background: darkorange;
+  padding: 10px;
+`;
+
+const DoseContainer = styled.div`
+  display: flex;
+`;
+
+const DoseParagraph = styled.p`
+  margin-right: 30px;
+`;
+
+const HeaderTags = styled.div`
+  display: flex;
+`;
+
+const TagParagraph = styled.p`
+  margin-right: 40px;
+`;
 
 export default VaccineCard;

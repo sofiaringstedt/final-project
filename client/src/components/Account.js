@@ -18,15 +18,15 @@ const Account = ({ setMode, setMethod }) => {
   const userId = JSON.parse(localStorage.getItem("user"))?.userId;
   
   const handleSignOut = () => {
-    localStorage.removeItem("user")
-    localStorage.removeItem("dose")
-    navigate("/")
+    localStorage.removeItem("user");
+    localStorage.removeItem("dose");
+    navigate("/");
   };
 
-  const handleEditUser = () =>{
-    setMode(`user/${userId}`)
+  const handleEditUser = () => {
+    setMode(`user/${userId}`);
     setMethod("PUT");
-    navigate("/register")
+    navigate("/register");
   };
 
   useEffect(() => {
