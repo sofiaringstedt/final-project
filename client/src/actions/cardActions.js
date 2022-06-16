@@ -1,6 +1,17 @@
 import { API_URL } from "../utils/urls";
 
-export const addDose = (dose, date, batchNumber, nextDose, setDate, setBatchNumber, setErrorMessage, setTrackNewDose) => {
+export const addDose = (
+  dose, 
+  date, 
+  batchNumber, 
+  nextDose, 
+  setDate, 
+  setDose, 
+  setBatchNumber, 
+  setErrorMessage, 
+  setTrackNewDose,
+  setLoading
+) => {
   const userId = JSON.parse(localStorage.getItem("user"))?.userId;
 
   const options = {
@@ -13,6 +24,8 @@ export const addDose = (dose, date, batchNumber, nextDose, setDate, setBatchNumb
       nextDose
     })
   };
+
+  setLoading(true); 
 
   fetch(API_URL("dose"), options)
     .then((response) => response.json())
@@ -39,9 +52,10 @@ export const addDose = (dose, date, batchNumber, nextDose, setDate, setBatchNumb
 
         fetch(API_URL(`user/${userId}/dose/${doseData.response.doseId}`), options)
           .then((response) => response.json())
-          .then((data) => setTrackNewDose(data))
+          .then(() => setTrackNewDose(true))
           .catch((error) => console.log(error))
           .finally(() => {
+            setDose("")
             setDate("")
             setBatchNumber("")
           })
@@ -50,7 +64,8 @@ export const addDose = (dose, date, batchNumber, nextDose, setDate, setBatchNumb
         setErrorMessage(doseData.response);
       };
     })
-    .catch((error) => console.log(error));
+    .catch((error) => console.log(error))
+    .finally(() => setLoading(false));
 };
 
 export const startCounter = (setCountDownDay, setCountDownHour, setCountDownMinute, setCountDownSecond, doseInfo, latestDoseDate) => {

@@ -35,7 +35,7 @@ export const userPage = async (req, res) => {
       res.status(404).json({ success: false, response: "User not found" });
     }
   } catch (error) {
-    res.status(400).json({ success: false, response: error });
+    res.status(400).json({ success: false, message: "Invalid request", response: error });
   }
 };
 
@@ -50,51 +50,49 @@ export const getDoses = async (req, res) => {
       res.status(404).json({ success: false, response: "User not found" });
     }
   } catch (error) {
-    res.status(400).json({ success: false, response: error });
+    res.status(400).json({ success: false, message: "Invalid request", response: error });
   }
 };
 
 export const createUser = async (req, res) => {
   const { firstName, lastName, email, password } = req.body;
+  const queriedUser = await User.findOne({ email });
 
   try {
-    const passwordValidator = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[#?!@$%^&*-/+]).{8,}$/;
-
     const salt = bcrypt.genSaltSync();
+    const passwordValidator = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[#?!@$%^&*-/+]).{8,}$/;
 
     if (!passwordValidator.test(password)) {
       throw "password must be at least 8 characters long with 1 uppercase, 1 lowercase, and 1 special character (#?!@$%^&*-/+)."
     };
 
-    const user = await new User({
-      firstName,
-      lastName,
-      email,
-      password: bcrypt.hashSync(password, salt)
-    }).save();
+    if (!queriedUser) {
+      const user = await new User({
+        firstName,
+        lastName,
+        email,
+        password: bcrypt.hashSync(password, salt)
+      }).save();
 
-    if (email && password && firstName && lastName) {
-      res.status(201).json({
-        success: true,
-        response: {
-          userId: user._id,
-          firstName: user.firstName,
-          lastName: user.lastName,
-          email: user.email,
-          accessToken: user.accessToken
-        }
-      })
+      if (email && password && firstName && lastName) {
+        res.status(201).json({
+          success: true,
+          response: {
+            userId: user._id,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            email: user.email,
+            accessToken: user.accessToken
+          }
+        });
+      } else {
+        res.status(409).json({ success: false, response: "Could not create user" })
+      }
     } else {
-      res.status(409).json({
-        success: false,
-        response: "Could not create user"
-      })
+      res.status(409).json({ success: false, response: "User already registered" })
     }
   } catch (error) {
-    res.status(400).json({
-      success: false,
-      response: error
-    });
+    res.status(400).json({ success: false, response: error });
   };
 };
 
@@ -117,10 +115,7 @@ export const loginUser = async (req, res) => {
       res.status(404).json({ success: false, response: "User not found" })
     }
   } catch (error) {
-    res.status(400).json({
-      success: false,
-      response: error
-    });
+    res.status(400).json({ success: false, message: "Invalid request", response: error });
   };
 };
 
@@ -129,25 +124,24 @@ export const modifyUser = async (req, res) => {
   const { firstName, lastName, email, password } = req.body;
 
   try {
-    const passwordValidator = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[#?!@$%^&*-/+]).{8,}$/;
-
     const salt = bcrypt.genSaltSync();
+    const passwordValidator = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[#?!@$%^&*-/+]).{8,}$/;
 
     if (!passwordValidator.test(password)) {
       throw "password must be at least 8 characters long with 1 uppercase, 1 lowercase, and 1 special character (#?!@$%^&*-/+)."
     };
 
-    const editUser = await User.findByIdAndUpdate(
+    const editedUser = await User.findByIdAndUpdate(
       userId,
       { $set: { firstName, lastName, email, password: bcrypt.hashSync(password, salt) } },
       { new: true }
     );
 
-    if (editUser) {
+    if (editedUser) {
       res.status(201).json({
         success: true,
         response: {
-          userId: editUser._id, firstName, lastName, email, accessToken: editUser.accessToken
+          userId: editedUser._id, firstName, lastName, email, accessToken: editedUser.accessToken
         }
       });
     } else {
@@ -155,7 +149,7 @@ export const modifyUser = async (req, res) => {
     }
   } catch (error) {
     res.status(400).json({ success: false, response: error });
-  }
+  };
 };
 
 export const addDoseToUser = async (req, res) => {
@@ -188,6 +182,6 @@ export const addDoseToUser = async (req, res) => {
       res.status(404).json({ success: false, response: "User not found" });
     }
   } catch (error) {
-    res.status(400).json({ success: false, response: error });
+    res.status(400).json({ success: false, message: "Invalid request", response: error });
   };
 };

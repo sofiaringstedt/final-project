@@ -1,13 +1,14 @@
 import React, {useState} from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Account from "./components/Account";
 import VaccineCard from "./components/VaccineCard";
+import Map from "./components/Map";
 import Reminder from "./components/Reminder"
-import Map from "./components/Map"
+import NotFound from "./components/NotFound";
 
 const App = () => {
   const [mode, setMode] = useState("register");
@@ -23,6 +24,8 @@ const App = () => {
         <Route path="/card" element={<VaccineCard />} />
         <Route path="/map" element={<Map />} />
         <Route path="/reminder" element={<Reminder />} />
+        <Route path="/404" element={<NotFound />} />
+        <Route path="*" element={<Navigate to={"/404"} replace />} />
       </Routes>
     </BrowserRouter>
   );

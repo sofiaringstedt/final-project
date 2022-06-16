@@ -36,6 +36,14 @@ app.get("/", (req, res) => {
   res.json({
     "Routes": [
       {
+        "path": "/user/:userId",
+        "methods": "GET"
+      },
+      {
+        "path": "/user/:userId/doses",
+        "methods": "GET"
+      },
+      {
         "path": "/register",
         "method": "POST"
       },
@@ -44,12 +52,28 @@ app.get("/", (req, res) => {
         "method": "POST"
       },
       {
-        "path": "/userpage",
+        "path": "/user/:userId",
+        "methods": "PUT"
+      },
+      {
+        "path": "/user/:userId/dose/:doseId",
+        "methods": "PATCH"
+      },
+      {
+        "path": "/dose",
         "methods": "GET"
+      },
+      {
+        "path": "/dose",
+        "methods": "POST"
+      },
+      {
+        "path": "/dose/:doseId",
+        "methods": "DELETE"
       }
     ]
   });
 });
 
-app.listen(port, () => console.log(`Server running on http://localhost:${port}`));
+app.listen(port);
 
