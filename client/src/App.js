@@ -6,6 +6,7 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import Account from "./components/Account";
 import VaccineCard from "./components/VaccineCard";
+import Reminder from "./components/Reminder"
 import Map from "./components/Map"
 
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
         <Route path="/account" element={<Account setMode={setMode} setMethod={setMethod} />} />
         <Route path="/card" element={<VaccineCard />} />
         <Route path="/map" element={<Map />} />
+        <Route path="/reminder" element={<Reminder />} />
       </Routes>
     </BrowserRouter>
   );
