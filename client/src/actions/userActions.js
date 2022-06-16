@@ -1,6 +1,6 @@
 import { API_URL } from "../utils/urls";
 
-export const loginUser = (email, password, setLoading, setErrorMessage, navigate) =>{
+export const loginUser = (email, password, setLoading, setErrorMessage, navigate) => {
   const options = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -20,7 +20,7 @@ export const loginUser = (email, password, setLoading, setErrorMessage, navigate
           email: userData.email,
           accessToken: userData.accessToken
         }));
-        navigate("/account");    
+        navigate("/account");
       } else {
         setErrorMessage(userData.response);
         navigate("/register");
@@ -30,29 +30,29 @@ export const loginUser = (email, password, setLoading, setErrorMessage, navigate
     .finally(() => setLoading(false));
 }
 
-export const registerUser = (
-  firstName, 
-  lastName, 
-  email, 
-  password, 
-  mode, 
-  method, 
-  setLoading, 
-  setErrorMessage, 
+export const registerOrEditUser = (
+  firstName,
+  lastName,
+  email,
+  password,
+  mode,
+  method,
+  setLoading,
+  setErrorMessage,
   navigate
-  ) => {
+) => {
   const options = {
     method: method,
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ 
-      firstName, 
-      lastName, 
-      email, 
-      password 
+    body: JSON.stringify({
+      firstName,
+      lastName,
+      email,
+      password
     })
   };
-  
-  setLoading(true); 
+
+  setLoading(true);
 
   fetch(API_URL(mode), options)
     .then((response) => response.json())
@@ -65,12 +65,12 @@ export const registerUser = (
           email: userData.response.email,
           accessToken: userData.response.accessToken
         }));
-  
-      navigate("/account")
+
+        navigate("/account")
       } else {
         setErrorMessage(userData.response)
       }
     })
-  .catch((error) => console.log(error))
-  .finally(() => setLoading(false));
+    .catch((error) => console.log(error))
+    .finally(() => setLoading(false));
 };

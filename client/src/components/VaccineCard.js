@@ -106,12 +106,12 @@ const VaccineCard = () => {
       />
       <div>
         <h2>Vaccine Card</h2>
+        {errorMessage && <p>{errorMessage}</p>}
         <HeaderTags>
           <TagParagraph>Dose</TagParagraph>
           <TagParagraph>Date</TagParagraph>
           <TagParagraph>Batch Number</TagParagraph>
         </HeaderTags>
-        {errorMessage && <p>{errorMessage}</p>}
         {doseInfo?.map((dose) => {
           return <DoseContainer key={dose._id}>
             <DoseParagraph>{dose.dose}</DoseParagraph>

@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { registerUser } from "../actions/userActions";
+import { registerOrEditUser } from "../actions/userActions";
+
 import UserForm from "../reusablecomponents/UserForm";
+
+import { Spinner } from "../styled-components/MainStyles";
 
 const Register = ({ mode, method }) => {
   const [firstName, setFirstName] = useState("");
@@ -10,21 +13,17 @@ const Register = ({ mode, method }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
   const onRegisterOrEditUser = (event) => {
     event.preventDefault();
-    registerUser(
-      firstName,
-      lastName,
-      email,
-      password,
-      mode,
-      method,
-      navigate,
-      setErrorMessage
-    );
+    registerOrEditUser(firstName, lastName, email, password, mode, method, setLoading, setErrorMessage, navigate)
+  };
+
+  if (loading) {
+    return <Spinner></Spinner>
   };
 
   return (
