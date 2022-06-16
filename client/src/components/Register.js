@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 
 import { registerOrEditUser } from "../actions/userActions";
 
-import UserForm from "../reusablecomponents/UserForm";
+import UserForm from "../reusables/UserForm";
 
-import { Spinner } from "../styled-components/MainStyles";
+import { Spinner } from "../styled-components/mainStyles";
 
 const Register = ({ mode, method }) => {
   const [firstName, setFirstName] = useState("");

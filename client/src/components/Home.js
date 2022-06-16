@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Header from "../reusablecomponents/Header";
 
 import dose from "../assets/dose.svg";
 import tick from "../assets/tick.svg";
@@ -10,7 +9,9 @@ import map from "../assets/map.svg";
 import resources from "../assets/resources.svg";
 // import hero from "../assets/hero.svg";
 
-import { Hero, HeroTextBox, ImageList, LogInButton } from "../styledcomponents/StyledHome";
+import Header from "../reusables/Header";
+
+import { Hero, HeroTextBox, ImageList, LogInButton } from "../styled-components/home"
 
 const Home = () => {
   const navigate = useNavigate();

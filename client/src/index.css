@@ -1,8 +1,5 @@
 body {
   margin: 0;
-  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif; */
   font-family: 'Source Serif Pro', serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -17,6 +14,12 @@ ol, ul {
 	list-style: none;
   padding: 0;
 }
-.styledLink{
+
+.leaflet-container {
+  width: 100vw;
+  height: 100vh;
+}
+
+.styledLink {
   color: #175C4C;
 }

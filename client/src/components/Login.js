@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
 
-import UserForm from "../reusablecomponents/UserForm";
+import UserForm from "../reusables/UserForm";
 
 import { loginUser } from "../actions/userActions";
-import { Spinner } from "../styled-components/MainStyles";
+
+import { Spinner } from "../styled-components/mainStyles";
+import { FormContainer, StyledHeading, GoBackButton } from "../styled-components/Login";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -47,22 +48,5 @@ const Login = () => {
     </FormContainer>
   );
 };
-
-const FormContainer = styled.div`
-  margin-top: 50px;
-`;
-
-const StyledHeading = styled.h1`
-  margin-left: 40px;
-  font-weight: 600;
-  font-size: 20px;
-`;
-
-const GoBackButton = styled.button`
-  border: none;
-  background-color: transparent;
-  font-size: 20px;
-  margin-left: 35px;
-`;
 
 export default Login;

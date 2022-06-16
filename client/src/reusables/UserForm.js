@@ -1,7 +1,16 @@
 import React from "react";
-import styled from "styled-components";
 
 import { Link } from "react-router-dom";
+
+import {
+  StyledInputField,
+  InputContainer,
+  Form,
+  StyledParagraph,
+  InputWrapper,
+  SubmitButton,
+  ButtonWrapper
+} from "../styled-components/userForm";
 
 const UserForm = (props) => {
   const {
@@ -85,45 +94,3 @@ const UserForm = (props) => {
 };
 
 export default UserForm;
-
-const StyledInputField = styled.input`
-  height: 45px;
-  width: 320px;
-  border-radius: 10px;
-  border: solid #aaaaaa 1px;
-`;
-
-const InputContainer = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-`;
-
-const StyledParagraph = styled.p`
-  margin: 10px 40px 50px 30px;
-`;
-
-const InputWrapper = styled.label`
-  margin-bottom: 20px;
-`;
-
-const SubmitButton = styled.button`
-  background-color: #175C4C ;
-  color: #FFFFFF;
-  height:45px;
-  width: 320px;
-  border: none;
-  border-radius: 30px;
-  -webkit-box-shadow: 3px 7px 9px -2px rgba(0,0,0,0.84); 
-  box-shadow: 0px 4px 4px rgba(0,0,0,0.25);
-  font-family: 'Source Serif Pro', serif;
-  font-weight: 600;
-`
-const ButtonWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-`

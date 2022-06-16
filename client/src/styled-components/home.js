@@ -13,8 +13,9 @@ export const LogInButton = styled.button`
   font-family: 'Source Serif Pro', serif;
   font-weight: 600;
   font-size: medium;
-  `;
-  export const Hero = styled.div`
+`;
+
+export const Hero = styled.div`
   background-image: url(${hero});
   height: 400px;
   width: 100%;
@@ -22,13 +23,15 @@ export const LogInButton = styled.button`
   background-size: auto;
   background-repeat: no-repeat;
   background-position: 50% 50%;
-  `;
-   export const HeroTextBox = styled.div`
-   /* position: relative; */
-   `;
-   export const ImageList = styled.div`
-   display: flex;
-   flex-direction: row;
-   flex-wrap: wrap;
-   width: 200px;
-   `
+`;
+
+export const HeroTextBox = styled.div`
+  /* position: relative; */
+`;
+
+export const ImageList = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 200px;
+`;
