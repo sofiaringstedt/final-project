@@ -1,6 +1,6 @@
 import { API_URL } from "../utils/urls";
 
-export const addDose = (dose, date, batchNumber, nextDose, setErrorMessage, setTrackNewDose) => {
+export const addDose = (dose, date, batchNumber, nextDose, setDate, setBatchNumber, setErrorMessage, setTrackNewDose) => {
   const userId = JSON.parse(localStorage.getItem("user"))?.userId;
 
   const options = {
@@ -35,12 +35,16 @@ export const addDose = (dose, date, batchNumber, nextDose, setErrorMessage, setT
             batchNumber,
             nextDose
           })
-        }
+        };
 
         fetch(API_URL(`user/${userId}/dose/${doseData.response.doseId}`), options)
           .then((response) => response.json())
           .then((data) => setTrackNewDose(data))
           .catch((error) => console.log(error))
+          .finally(() => {
+            setDate("")
+            setBatchNumber("")
+          })
 
       } else {
         setErrorMessage(doseData.response);
@@ -49,8 +53,12 @@ export const addDose = (dose, date, batchNumber, nextDose, setErrorMessage, setT
     .catch((error) => console.log(error));
 };
 
-export const startCounter = (setCountDownDay, setCountDownHour, setCountDownMinute, setCountDownSecond, latestDoseDate) => {
-  console.log(latestDoseDate)
+export const startCounter = (setCountDownDay, setCountDownHour, setCountDownMinute, setCountDownSecond, doseInfo, latestDoseDate) => {
+  const doseOne = doseInfo.some(dose => dose.dose.includes("Dose 1"))
+  const doseTwo = doseInfo.some(dose => dose.dose.includes("Dose 2"))
+  const doseThree = doseInfo.some(dose => dose.dose.includes("Dose 3"))
+  const doseFour = doseInfo.some(dose => dose.dose.includes("Dose 4"))
+
   const latestDoseTime = new Date(`${latestDoseDate}, 00:00:00`).getTime();
   const currentTime = new Date().getTime();
 
@@ -61,7 +69,18 @@ export const startCounter = (setCountDownDay, setCountDownHour, setCountDownMinu
   const hour = minute * 60;
   const day = hour * 24;
 
-  setCountDownDay(Math.floor(nextDoseTime / day));
+  if (doseOne) {
+     setCountDownDay(Math.floor(nextDoseTime / day) + 30);
+  } else if (doseTwo) {
+    setCountDownDay(Math.floor(nextDoseTime / day) + 30);
+  } else if (doseThree) {
+    setCountDownDay(Math.floor(nextDoseTime / day) + 152);
+  } else if (doseFour) {
+    setCountDownDay(Math.floor(nextDoseTime / day) + 1095);
+  } else {
+    setCountDownDay(Math.floor(nextDoseTime / day))
+  };
+ 
   setCountDownHour(Math.floor((nextDoseTime % day) / hour));
   setCountDownMinute(Math.floor((nextDoseTime % hour) / minute));
   setCountDownSecond(Math.floor((nextDoseTime % minute) / second));

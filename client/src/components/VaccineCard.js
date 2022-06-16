@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { API_URL } from "../utils/urls";
 import styled from "styled-components";
 
 import { addDose, startCounter } from "../actions/cardActions";
+import { API_URL } from "../utils/urls";
 
 const VaccineCard = () => {
   const [dose, setDose] = useState("");
@@ -23,21 +23,22 @@ const VaccineCard = () => {
 
   const lastDoseIndex = doseInfo?.length - 1;
   const latestDoseDate = doseInfo[lastDoseIndex]?.date;
+  const trackSelectedDose = (doseString) => doseInfo.some(dose => dose.dose.includes(doseString));
 
   const handleDoseSubmit = (event) => {
     event.preventDefault();
 
-    if (dose && date) {
-      addDose(dose, date, batchNumber, nextDose, setErrorMessage, setTrackNewDose)
+    if (dose !== "" && date !== "") {
+      addDose(dose, date, batchNumber, nextDose, setDate, setBatchNumber, setErrorMessage, setTrackNewDose);
       setErrorMessage("");
     } else {
-      setErrorMessage("Dose & date is required")
+      setErrorMessage("Dose and date is required");
     }
   };
 
   useEffect(() => {
     const interval = setInterval(() => {
-      startCounter(setCountDownDay, setCountDownHour, setCountDownMinute, setCountDownSecond, latestDoseDate)
+      startCounter(setCountDownDay, setCountDownHour, setCountDownMinute, setCountDownSecond, doseInfo, latestDoseDate)
     }, 1000);
     return () => clearInterval(interval);
   }, [lastDoseIndex, latestDoseDate]);
@@ -80,12 +81,12 @@ const VaccineCard = () => {
         }
       </Header>
       <form onSubmit={handleDoseSubmit}>
-        <select onChange={(event) => setDose(event.target.value)}>
+        <select id="test" onChange={(event) => setDose(event.target.value)}>
           <option>Choose dose...</option>
-          <option value="dose 1">Dose 1</option>
-          <option value="dose 2">Dose 2</option>
-          <option value="dose 3">Dose 3</option>
-          <option value="dose 4">Dose 4</option>
+          <option value="Dose 1" disabled={trackSelectedDose("Dose 1")}>Dose 1</option>
+          <option value="Dose 2" disabled={trackSelectedDose("Dose 2")}>Dose 2</option>
+          <option value="Dose 3" disabled={trackSelectedDose("Dose 3")}>Dose 3</option>
+          <option value="Dose 4" disabled={trackSelectedDose("Dose 4")}>Dose 4</option>
         </select>
         <input
           type="date"
@@ -96,7 +97,7 @@ const VaccineCard = () => {
           value={batchNumber}
           placeholder="Optional"
           onChange={(event) => setBatchNumber(event.target.value)} />
-        <button type="submit">Add dose</button>
+        <button type="submit" onClick={() => test.selectedIndex = 0}>Add dose</button>
       </form>
       <div>
         <h2>Vaccine Card</h2>
