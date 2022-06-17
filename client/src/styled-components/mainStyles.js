@@ -11,9 +11,6 @@ export const Spinner = styled.div`
   border-radius: 50%;
   width: 80px;
   height: 80px;
-  animation: spin;
-  animation-name: ${spinnerAnimation};
-  animation-duration: 1s;
-  animation-iteration-count: infinite;
+  animation: ${spinnerAnimation} 1s spin infinite;
   margin: 50px auto 0 auto;
 `;

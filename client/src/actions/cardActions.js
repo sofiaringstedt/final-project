@@ -65,7 +65,10 @@ export const addDose = (
       };
     })
     .catch((error) => console.log(error))
-    .finally(() => setLoading(false));
+    .finally(() => {
+      setTrackNewDose(false);
+      setLoading(false);
+    });
 };
 
 export const startCounter = (setCountDownDay, setCountDownHour, setCountDownMinute, setCountDownSecond, doseInfo, latestDoseDate) => {
