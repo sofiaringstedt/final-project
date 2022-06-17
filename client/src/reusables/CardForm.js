@@ -5,10 +5,10 @@ const CardForm = (props) => {
 
   const currentDose = dosesArray.map(dose => dose.dose);
 
-  const trackedDoseOne = currentDose.includes("Dose 1")
-  const trackedDoseTwo = currentDose.includes("Dose 2")
-  const trackedDoseThree = currentDose.includes("Dose 3")
-  const trackedDoseFour = currentDose.includes("Dose 4")
+  const trackedDoseOne = currentDose.includes("Dose 1");
+  const trackedDoseTwo = currentDose.includes("Dose 2");
+  const trackedDoseThree = currentDose.includes("Dose 3");
+  const trackedDoseFour = currentDose.includes("Dose 4");
 
   return (
     <form onSubmit={handleForm}>

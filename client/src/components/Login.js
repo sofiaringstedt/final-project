@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import UserForm from "../reusables/UserForm";
+import HomeButton from "reusables/HomeButton";
 
 import { loginUser } from "../actions/userActions";
 
 import { Spinner } from "../styled-components/mainStyles";
-import { FormContainer, StyledHeading, GoBackButton } from "../styled-components/login";
+import { FormContainer, StyledHeading } from "../styled-components/login";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -35,7 +36,7 @@ const Login = () => {
 
   return (
     <FormContainer>
-      <GoBackButton onClick={() => navigate("/")}>X</GoBackButton>
+      <HomeButton />
       <StyledHeading>Log in</StyledHeading>
       <UserForm
         email={email}

@@ -58,7 +58,7 @@ const Home = () => {
             {" "}
             <img src={map} alt="sign out icon" />
           </li>
-          <li>
+          <li onClick={() => navigate("/resources")}>
             {" "}
             <img src={resources} alt="resources icon" />
           </li>
