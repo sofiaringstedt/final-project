@@ -1,224 +1,965 @@
-[{
-  "id": 1,
-  "cityName": "Stockholm",
-  "highRisk": true,
-  "coordinates": {
-    "lat": 59.3294,
-    "long": 18.0686
+[
+  {
+    "city": "Stockholm",
+    "lat": "59.3294", 
+    "lng": "18.0686", 
+    "riskLevel": "mid",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Stockholm"
+  },
+  {
+    "city": "Knivsta", 
+    "lat": "59.7167", 
+    "lng": "17.8000", 
+    "riskLevel": "mid",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Uppsala"
+  },
+  {
+    "city": "Norrtälje", 
+    "lat": "59.7667", 
+    "lng": "18.7000",
+    "riskLevel": "high",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Stockholm"
+  }, 
+  {
+    "city": "Östhammar", 
+    "lat": "60.2589", 
+    "lng": "18.3736", 
+    "riskLevel": "mid",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Uppsala"
+  },
+  {
+    "city": "Tierp", 
+    "lat": "60.0955", 
+    "lng": "19.8669", 
+    "riskLevel": "mid",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Uppsala"
+  }, 
+  {
+    "city": "Älvkarlebyn", 
+    "lat": "60.3333", 
+    "lng": "17.5000", 
+    "riskLevel": "low",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Uppsala"
+  },
+  {
+    "city": "Gävle", 
+    "lat": "60.6670", 
+    "lng": "17.1666",
+    "riskLevel": "mid",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Gävleborg"
+  }, 
+  {
+    "city": "Uppsala", 
+    "lat": "59.8498", 
+    "lng": "17.6389",
+    "riskLevel": "high",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Uppsala"
+  }, 
+  {
+    "city": "Heby", 
+    "lat": "59.9333", 
+    "lng": "16.8833", 
+    "riskLevel": "mid",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Uppsala"
+  }, 
+  {
+    "city": "Avesta", 
+    "lat": "60.1500", 
+    "lng": "16.2000",
+    "riskLevel": "low",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Dalarna"
+  }, 
+  {
+    "city": "Borlänge", 
+    "lat": "60.4833", 
+    "lng": "15.4167",
+    "riskLevel": "low",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Dalarna"
+  }, 
+  {
+    "city": "Sala", 
+    "lat": "59.9167", 
+    "lng": "16.6000", 
+    "riskLevel": "mid",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Västmanland"
+  }, 
+  {
+    "city": "Enköping", 
+    "lat": "59.6333", 
+    "lng": "17.0667", 
+    "riskLevel": "high",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Uppsala"
+  }, 
+  {
+    "city": "Västerås", 
+    "lat": "59.6173", 
+    "lng": "16.5422",
+    "riskLevel": "high",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Västmanland"
+  }, 
+  {
+    "city": "Österåker", 
+    "lat": "59.4834", 
+    "lng": "18.2997",
+    "riskLevel": "high",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Stockholm"
+  },
+  {
+    "city": "Värmdö", 
+    "lat": "59.3204", 
+    "lng": "18.5279",
+    "riskLevel": "high",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Stockholm"
+  }, 
+  {
+    "city": "Haninge", 
+    "lat": "59.1677", 
+    "lng": "18.1447",
+    "riskLevel": "high",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Stockholm"
+  }, 
+  {
+    "city": "Ekerö", 
+    "lat": "59.2667", 
+    "lng": "17.7333",
+    "riskLevel": "high",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Stockholm"
+  }, 
+  {
+    "city": "Södertälje", 
+    "lat": "59.1978", 
+    "lng": "17.6272",
+    "riskLevel": "high",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Stockholm"
+  },
+  {
+    "city": "Strängnäs", 
+    "lat": "59.3833", 
+    "lng": "17.0333",
+
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Södermanland"
+  },
+  {
+    "city": "Eskilstuna", 
+    "lat": "59.3487", 
+    "lng": "16.4490",
+    "riskLevel": "high",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Södermanland"
+  },
+  {
+    "city": "Flen", 
+    "lat": "59.0667", 
+    "lng": "16.5833",
+    "riskLevel": "mid",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Södermanland"
+  }, 
+  {
+    "city": "Nyköping", 
+    "lat": "58.7582", 
+    "lng": "17.0185",
+    "riskLevel": "mid",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Södermanland"
+  }, 
+  {
+    "city": "Katrineholm", 
+    "lat": "59.0000", 
+    "lng": "16.2000",
+    "riskLevel": "mid",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Södermanland"
+  },
+  {
+    "city": "Arboga", 
+    "lat": "59.4000", 
+    "lng": "15.8333",
+    "riskLevel": "mid",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Västmanland"
+  }, 
+  {
+    "city": "Köping", 
+    "lat": "59.5141", 
+    "lng": "15.9915",
+    "riskLevel": "mid",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Västmanland"
+  },
+  {
+    "city": "Lindesberg", 
+    "lat": "59.6024", 
+    "lng": "15.2130", 
+    "riskLevel": "mid",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Örebro"
+  }, 
+  {
+    "city": "Nora", 
+    "lat": "59.5167", 
+    "lng": "15.0333",
+    "riskLevel": "low",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Örebro"
+  },
+  {
+    "city": "Karlskoga", 
+    "lat": "59.3151", 
+    "lng": "14.4917", 
+    "riskLevel": "low",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Örebro"
+  },
+  {
+    "city": "Örebro", 
+    "lat": "59.2669", 
+    "lng": "15.1965", 
+    "riskLevel": "mid",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Örebro"
+  }, 
+  {
+    "city": "Hallsberg", 
+    "lat": "59.0667", 
+    "lng": "15.1167", 
+    "riskLevel": "mid",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Örebro"
+  }, 
+  {
+    "city": "Kristinehamn", 
+    "lat": "59.3333", 
+    "lng": "14.1167", 
+    "riskLevel": "mid",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Värmland"
+  }, 
+  {
+    "city": "Karlstad", 
+    "lat": "59.3808", 
+    "lng": "13.5016", 
+    "riskLevel": "low",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Värmland"
+  }, 
+  {
+    "city": "Kil", 
+    "lat": "59.5167", 
+    "lng": "13.3167", 
+    "riskLevel": "mid",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Värmland"
+  }, 
+  {
+    "city": "Grums", 
+    "lat": "59.3167", 
+    "lng": "13.1000", 
+    "riskLevel": "mid",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Värmland"
+  }, 
+  {
+    "city": "Arvika", 
+    "lat": "59.6578", 
+    "lng": "12.5942", 
+    "riskLevel": "high",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Värmland"
+  }, 
+  {
+    "city": "Säffle", 
+    "lat": "59.1330", 
+    "lng": "12.9213", 
+    "riskLevel": "low",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Värmland"
+  }, 
+  {
+    "city": "Bengtsfors", 
+    "lat": "59.0333", 
+    "lng": "12.2167", 
+    "riskLevel": "mid",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Västra Götaland"
+  }, 
+  {
+    "city": "Åmål", 
+    "lat": "59.0500", 
+    "lng": "12.7000", 
+    "riskLevel": "low",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Västra Götaland"
+  }, 
+  {
+    "city": "Mellerud", 
+    "lat": "58.7000", 
+    "lng": "12.4667", 
+    "riskLevel": "mid",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Västra Götaland"
+  },
+  {
+    "city": "Vänersborg", 
+    "lat": "58.3630", 
+    "lng": "12.3300", 
+    "riskLevel": "mid",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Västra Götaland"
+  }, 
+  {
+    "city": "Lysekil", 
+    "lat": "58.2833", 
+    "lng": "11.4333", 
+    "riskLevel": "low",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Västra Götaland"
+  }, 
+  {
+    "city": "Uddevalla", 
+    "lat": "58.3667", 
+    "lng": "11.9333", 
+    "riskLevel": "mid",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Västra Götaland"
+  }, 
+  {
+    "city": "Trollhättan", 
+    "lat": "58.2671", 
+    "lng": "12.3000", 
+    "riskLevel": "mid",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Västra Götaland"
+  },
+  {
+    "city": "Lilla Edet", 
+    "lat": "58.1333", 
+    "lng": "12.1333", 
+    "riskLevel": "mid",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Västra Götaland"
+  }, 
+  {
+    "city": "Stenungsund", 
+    "lat": "58.0833", 
+    "lng": "11.8167", 
+    "riskLevel": "mid",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Västra Götaland"
+  }, 
+  {
+    "city": "Kungälv", 
+    "lat": "57.8667", 
+    "lng": "11.9667", 
+    "riskLevel": "low",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Västra Götaland"
+  }, 
+  {
+    "city": "Göteborg", 
+    "lat": "57.6717", 
+    "lng": "11.9810", 
+    "riskLevel": "high",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Västra Götaland"
+  }, 
+  {
+    "city": "Mölndal", 
+    "lat": "57.6542", 
+    "lng": "12.0139", 
+    "riskLevel": "low",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Västra Götaland"
+  }, 
+  {
+    "city": "Kungsbacka", 
+    "lat": "57.4833", 
+    "lng": "12.0667", 
+    "riskLevel": "mid",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Halland"
+  },
+  {
+    "city": "Lerum", 
+    "lat": "57.7667", 
+    "lng": "12.2667",
+    "riskLevel": "low", 
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Västra Götaland"
+  }, 
+  {
+    "city": "Alingsås", 
+    "lat": "57.9333", 
+    "lng": "12.5167",
+    "riskLevel": "low", 
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Västra Götaland"
+  }, 
+  {
+    "city": "Vårgårda", 
+    "lat": "58.0341", 
+    "lng": "12.8083", 
+    "riskLevel": "low", 
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Västra Götaland"
+  }, 
+  {
+    "city": "Herrljunga", 
+    "lat": "58.0752", 
+    "lng": "13.0238", 
+    "riskLevel": "low",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Västra Götaland"
+  }, 
+  {
+    "city": "Lidköping", 
+    "lat": "58.5000", 
+    "lng": "13.1667", 
+    "riskLevel": "high",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Västra Götaland"
+  }, 
+  {
+    "city": "Grästorp", 
+    "lat": "58.3333", 
+    "lng": "12.6833", 
+    "riskLevel": "low",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Västra Götaland"
+  }, 
+  {
+    "city": "Vara", 
+    "lat": "58.2667", 
+    "lng": "12.9500", 
+    "riskLevel": "mid",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Västra Götaland"
+  }, 
+  {
+    "city": "Falköping", 
+    "lat": "58.1700", 
+    "lng": "13.5551", 
+    "riskLevel": "mid",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Västra Götaland"
+  }, 
+  {
+    "city": "Tidaholm", 
+    "lat": "58.1794", 
+    "lng": "13.9599", 
+    "riskLevel": "mid",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Västra Götaland"
+  }, 
+  {
+    "city": "Skara", 
+    "lat": "58.3667", 
+    "lng": "13.4167", 
+    "riskLevel": "mid",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Västra Götaland"
+  }, 
+  {
+    "city": "Skövde", 
+    "lat": "58.4000", 
+    "lng": "13.8500", 
+    "riskLevel": "low",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Västra Götaland"
+  }, 
+  {
+    "city": "Götene", 
+    "lat": "58.5333", 
+    "lng": "13.4833",
+    "riskLevel": "mid", 
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Västra Götaland"
+  }, 
+  {
+    "city": "Mariestad", 
+    "lat": "58.7050", 
+    "lng": "13.8280", 
+    "riskLevel": "low", 
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Västra Götaland"
+  }, 
+  {
+    "city": "Gullspång", 
+    "lat": "58.9862", 
+    "lng": "14.0956", 
+    "riskLevel": "low", 
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Västra Götaland"
+  }, 
+  {
+    "city": "Töreboda", 
+    "lat": "58.7020", 
+    "lng": "14.1184", 
+    "riskLevel": "low", 
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Västra Götaland"
+  }, 
+  {
+    "city": "Tibro", 
+    "lat": "58.4190", 
+    "lng": "14.1580", 
+    "riskLevel": "low",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Västra Götaland"
+  }, 
+  {
+    "city": "Laxå", 
+    "lat": "58.9833", 
+    "lng": "14.6167", 
+    "riskLevel": "mid",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Örebro"
+  }, 
+  {
+    "city": "Askersund", 
+    "lat": "58.8869", 
+    "lng": "14.9151",
+    "riskLevel": "mid",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Örebro"
+  }, 
+  {
+    "city": "Motala", 
+    "lat": "58.5500", 
+    "lng": "15.0500", 
+    "riskLevel": "mid",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Östergötland"
+  }, 
+  {
+    "city": "Karlsborg", 
+    "lat": "58.5268", 
+    "lng": "14.5231", 
+    "riskLevel": "mid",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Västra Götaland"
+  }, 
+  {
+    "city": "Finspång", 
+    "lat": "58.7167", 
+    "lng": "15.7833", 
+    "riskLevel": "low",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Östergötland"
+  }, 
+  {
+    "city": "Vadstena", 
+    "lat": "58.4500", 
+    "lng": "14.9000", 
+    "riskLevel": "mid",
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Östergötland"
+  }, 
+  {
+    "city": "Mjölby", 
+    "lat": "58.3321", 
+    "lng": "15.1312",
+    "riskLevel": "mid", 
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Östergötland"
+  }, 
+  {
+    "city": "Linköping", 
+    "lat": "58.4094", 
+    "lng": "15.6257", 
+    "riskLevel": "mid", 
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Östergötland"
+  }, 
+  {
+    "city": "Åtvidaberg", 
+    "lat": "58.2000", 
+    "lng": "16.0000",
+    "riskLevel": "low", 
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Östergötland"
+  }, 
+  {
+    "city": "Boxholm", 
+    "lat": "58.2000", 
+    "lng": "15.0500", 
+    "riskLevel": "low", 
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Östergötland"
+  }, 
+  {
+    "city": "Tranås", 
+    "lat": "58.0322", 
+    "lng": "14.9750", 
+    "riskLevel": "low", 
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Jönköping"
+  }, 
+  {
+    "city": "Västervik", 
+    "lat": "57.7500", 
+    "lng": "16.6333", 
+    "riskLevel": "low", 
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Kalmar"
+  }, 
+  {
+    "city": "Vimmerby", 
+    "lat": "57.6657", 
+    "lng": "15.8579", 
+    "riskLevel": "low", 
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Kalmar"
+  }, 
+  {
+    "city": "Eksjö", 
+    "lat": "57.6667", 
+    "lng": "14.9500", 
+    "riskLevel": "mid", 
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Jönköping"
+  }, 
+  {
+    "city": "Aneby", 
+    "lat": "57.8333", 
+    "lng": "14.8000", 
+    "riskLevel": "mid", 
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Jönköping"
+  }, 
+  {
+    "city": "Habo", 
+    "lat": "57.9066", 
+    "lng": "14.0856", 
+    "riskLevel": "mid", 
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Jönköping"
+  }, 
+  {
+    "city": "Jönköping", 
+    "lat": "57.7833", 
+    "lng": "14.1667", 
+    "riskLevel": "mid", 
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Jönköping"
+  }, 
+  {
+    "city": "Borås", 
+    "lat": "57.7304", 
+    "lng": "12.9200", 
+    "riskLevel": "mid", 
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Västra Götaland"
+  }, 
+  {
+    "city": "Halmstad", 
+    "lat": "56.6754", 
+    "lng": "12.8587", 
+    "riskLevel": "low", 
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Halland"
+  }, 
+  {
+    "city": "Laholm", 
+    "lat": "56.5167", 
+    "lng": "13.0333", 
+    "riskLevel": "low", 
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Halland"
+  }, 
+  {
+    "city": "Alvesta", 
+    "lat": "56.9000", 
+    "lng": "14.5500", 
+    "riskLevel": "low", 
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Kronoberg"
+  }, 
+  {
+    "city": "Växjö", 
+    "lat": "56.8837", 
+    "lng": "14.8167", 
+    "riskLevel": "low", 
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Kronoberg"
+  }, 
+  {
+    "city": "Mönsterås", 
+    "lat": "57.0333", 
+    "lng": "16.4333", 
+    "riskLevel": "mid", 
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Kalmar"
+  }, 
+  {
+    "city": "Kalmar", 
+    "lat": "56.6694", 
+    "lng": "16.3218", 
+    "riskLevel": "low", 
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Kalmar"
+  }, 
+  {
+    "city": "Karlskrona", 
+    "lat": "56.1611", 
+    "lng": "15.5881", 
+    "riskLevel": "low", 
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Blekinge"
+  }, 
+  {
+    "city": "Ronneby", 
+    "lat": "56.2000", 
+    "lng": "15.3000",
+    "riskLevel": "mid",  
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Blekinge"
+  }, 
+  {
+    "city": "Sjöbo", 
+    "lat": "55.6333", 
+    "lng": "13.7000",
+    "riskLevel": "low",   
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Skåne"
+  }, 
+  {
+    "city": "Hörby", 
+    "lat": "55.8500", 
+    "lng": "13.6500", 
+    "riskLevel": "low",   
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Skåne"
+  }, 
+  {
+    "city": "Höör", 
+    "lat": "55.9333", 
+    "lng": "13.5333", 
+    "riskLevel": "low",  
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Skåne"
+  }, 
+  {
+    "city": "Kristianstad", 
+    "lat": "56.0337", 
+    "lng": "14.1333", 
+    "riskLevel": "mid",  
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Skåne"
+  }, 
+  {
+    "city": "Hässleholm", 
+    "lat": "56.1568", 
+    "lng": "13.7702", 
+    "riskLevel": "mid",  
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Skåne"
+  }, 
+  {
+    "city": "Dals-Ed", 
+    "lat": "58.9744", 
+    "lng": "11.8652", 
+    "riskLevel": "low",  
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Skåne"
+  }, 
+  {
+    "city": "Tanumshede", 
+    "lat": "58.7239", 
+    "lng": "11.3252", 
+    "riskLevel": "high",  
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Skåne"
+  }, 
+  {
+    "city": "Orust", 
+    "lat": "58.1829", 
+    "lng": "11.6930", 
+    "riskLevel": "mid",  
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Skåne"
+  }, 
+  {
+    "city": "Ale", 
+    "lat": "57.9885", 
+    "lng": "12.2259", 
+    "riskLevel": "mid",  
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Skåne"
+  }, 
+  {
+    "city": "Essunga", 
+    "lat": "58.1962", 
+    "lng": "12.7919", 
+    "riskLevel": "mid",  
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Skåne"
+  }, 
+  {
+    "city": "Odeshög", 
+    "lat": "58.2301", 
+    "lng": "14.6473", 
+    "riskLevel": "low",  
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Skåne"
+  }, 
+  {
+    "city": "Kinda", 
+    "lat": "57.9913", 
+    "lng": "15.6251", 
+    "riskLevel": "low",  
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Skåne"
+  }, 
+  {
+    "city": "Hylte", 
+    "lat": "56.9980", 
+    "lng": "13.2244", 
+    "riskLevel": "low",  
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Skåne"
+  }, 
+  {
+    "city": "Östra Göinge", 
+    "lat": "56.2545", 
+    "lng": "14.0692", 
+    "riskLevel": "mid",  
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Skåne"
+  }, 
+  {
+    "city": "Uppvidinge", 
+    "lat": "57.0074", 
+    "lng": "15.4083", 
+    "riskLevel": "low",  
+    "country": "Sweden", 
+    "iso2": "SE", 
+    "county": "Skåne"
   }
-},
-{
-  "id": 2,
-  "cityName": "Uppsala",
-  "highRisk": true,
-  "coordinates": {
-    "lat": 59.8498,
-    "long": 17.6389
-  }
-},
-{
-  "id": 3,
-  "cityName": "Gnesta",
-  "coordinates": {
-    "lat": 59.0500,
-    "long": 17.3000
-  }
-},
-{ 
-  "id": 4,
-  "cityName": "Linköping",
-  "coordinates": {
-    "lat": 58.4094,
-    "long": 15.6257
-  }
-},
-{
-  "id": 5,
-  "cityName": "Motala",
-  "coordinates": {
-    "lat": 58.5500,
-    "long": 15.0500
-  }
-},
-{
-  "id": 6,
-  "cityName": "Höör",
-  "coordinates": {
-    "lat": 55.9333,
-    "long": 13.5333
-  }
-},
-{
-  "id": 7,
-  "cityName": "Lidköping",
-  "highRisk": true,
-  "coordinates": {
-    "lat": 58.5000,
-    "long": 13.1667
-  }
-},
-{
-  "id": 8,
-  "cityName": "Lerdala",
-  "coordinates": {
-    "lat": 58.4777,
-    "long": 13.7144
-  }
-},
-{
-  "id": 9,
-  "cityName": "Tidaholm",
-  "coordinates": {
-    "lat": 58.1794,
-    "long": 13.9599
-  }
-},
-{
-  "id": 10,
-  "cityName": "Falköping",
-  "coordinates": {
-    "lat": 58.1700,
-    "long": 13.5551
-  }
-},
-{
-  "id": 11,
-  "cityName": "Mellerud",
-  "coordinates": {
-    "lat": 58.7000,
-    "long": 12.4667
-  }
-},
-{
-  "id": 12,
-  "cityName": "Brålanda",
-  "coordinates": {
-    "lat": 58.5634,
-    "long": 12.3492
-  }
-},
-{
-  "id": 13,
-  "cityName": "Lysekil",
-  "coordinates": {
-    "lat": 58.2833,
-    "long": 11.4333
-  }
-},
-{
-  "id": 14,
-  "cityName": "Kungshamn",
-  "coordinates": {
-    "lat": 58.3500,
-    "long": 11.2500
-  }
-},
-{
-  "id": 15,
-  "cityName": "Uddevalla",
-  "coordinates": {
-    "lat": 58.3667,
-    "long": 11.9333
-  }
-},
-{
-  "id": 16,
-  "cityName": "Trollhättan",
-  "coordinates": {
-    "lat": 58.2671,
-    "long": 12.3000
-  }
-},
-{
-  "id": 17,
-  "cityName": "Kungälv",
-  "coordinates": {
-    "lat": 57.8667,
-    "long": 11.9667
-  }
-},
-{
-  "id": 18,
-  "cityName": "Säffle",
-  "coordinates": {
-    "lat": 59.1330,
-    "long": 12.9213
-  }
-},
-{
-  "id": 19,
-  "cityName": "Örebro",
-  "coordinates": {
-    "lat": 59.2669,
-    "long": 15.1965
-  }
-},
-{
-  "id": 20,
-  "cityName": "Västerås",
-  "highRisk": true,
-  "coordinates": {
-    "lat": 59.6173,
-    "long": 16.5422
-  }
-},
-{
-  "id": 21,
-  "cityName": "Västerås",
-  "coordinates": {
-    "lat": 59.4227,
-    "long": 16.1059
-  }
-},
-{
-  "id": 22,
-  "cityName": "Ludvika",
-  "coordinates": {
-    "lat": 60.1333,
-    "long": 15.1833
-  }
-},
-{
-  "id": 23,
-  "cityName": "Borlänge",
-  "coordinates": {
-    "lat": 60.4833,
-    "long": 15.4167
-  }
-},
-{
-  "id": 24,
-  "cityName": "Eskilstuna",
-  "highRisk": true,
-  "coordinates": {
-    "lat": 59.3666,
-    "long": 16.5077
-  }
-},
-{
-  "id": 25,
-  "cityName": "Arvika",
-  "highRisk": true,
-  "coordinates": {
-    "lat": 59.6552,
-    "long": 12.5851
-  }
-},
-{
-  "id": 26,
-  "cityName": "Tanumshede",
-  "highRisk": true,
-  "coordinates": {
-    "lat": 58.7239,
-    "long": 11.3252
-  }
-},
-{
-  "id": 27,
-  "cityName": "Orust",
-  "highRisk": true,
-  "coordinates": {
-    "lat": 58.1802,
-    "long": 11.6341
-  }
-}]
+]
