@@ -60,11 +60,8 @@ const VaccineCard = () => {
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {
-          console.log("deleted dose response", data)
           const filteredDoseArray = doseInfo.filter((el) => el._id !== removeDose._id);
           setDoseInfo(filteredDoseArray)
-          console.log("Filtered dose array", filteredDoseArray)
-          console.log("Dose array", doseInfo)
         } else {
           setErrorMessage(data.response)
         }

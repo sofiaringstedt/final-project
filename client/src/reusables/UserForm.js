@@ -77,12 +77,14 @@ const UserForm = (props) => {
             placeholder="Password!"
           ></StyledInputField>
         </InputWrapper>
-        <StyledParagraph>
-          I am a new user,{" "}
-          <Link className="styledLink" to="/register">
-            Create Account
-          </Link>
-        </StyledParagraph>
+        {!displayOnlyInRegistration && 
+          <StyledParagraph>
+            I am a new user,{" "}
+            <Link className="styledLink" to="/register">
+              Create Account
+            </Link>
+          </StyledParagraph>
+        }
          <ButtonWrapper>
         <SubmitButton type="submit">
           {displayOnlyInRegistration ? "Register" : "Login"}
