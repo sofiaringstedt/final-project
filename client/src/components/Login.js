@@ -6,7 +6,7 @@ import UserForm from "../reusables/UserForm";
 import { loginUser } from "../actions/userActions";
 
 import { Spinner } from "../styled-components/mainStyles";
-import { FormContainer, StyledHeading, GoBackButton } from "../styled-components/Login";
+import { FormContainer, StyledHeading, GoBackButton } from "../styled-components/login";
 
 const Login = () => {
   const [email, setEmail] = useState("");
