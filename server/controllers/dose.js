@@ -1,4 +1,5 @@
 import Dose from "../models/dose.js";
+import User from "../models/user.js";
 
 export const displayDose = async (req, res) => {
   const userDose = await Dose.find();
@@ -14,7 +15,7 @@ export const createDose = async (req, res) => {
   const { dose, date, batchNumber, nextDose } = req.body;
 
   try {
-    const vaccineDose = await new Dose ({
+    const vaccineDose = await new Dose({
       dose,
       date,
       batchNumber,
@@ -47,6 +48,7 @@ export const deleteDose = async (req, res) => {
   const { doseId } = req.params;
 
   try {
+    await User.updateOne({ doses: doseId }, { $pull: { doses: doseId } });
     const deletedDose = await Dose.findByIdAndDelete(doseId);
 
     if (deletedDose) {

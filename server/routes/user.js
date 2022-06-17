@@ -1,5 +1,12 @@
 import express from "express";
-import { authenticateUser, userPage, getDoses, createUser, loginUser, modifyUser, addDoseToUser } from "../controllers/user";
+import { 
+  authenticateUser, 
+  userPage, getDoses, 
+  createUser, 
+  loginUser, 
+  modifyUser, 
+  addDoseToUser
+} from "../controllers/user";
 
 const router = express.Router();
 

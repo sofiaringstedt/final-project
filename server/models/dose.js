@@ -16,6 +16,6 @@ const DoseSchema = mongoose.Schema({
   nextDose: {
     type: String
   }
-})
+});
 
 module.exports = mongoose.model("Dose", DoseSchema);
