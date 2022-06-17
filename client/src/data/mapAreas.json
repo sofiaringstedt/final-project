@@ -37,17 +37,17 @@
   },
   {
     "city": "Tierp", 
-    "lat": "60.0955", 
-    "lng": "19.8669", 
+    "lat": "60.3485", 
+    "lng": "17.5204", 
     "riskLevel": "mid",
     "country": "Sweden", 
     "iso2": "SE", 
     "county": "Uppsala"
   }, 
   {
-    "city": "Älvkarlebyn", 
-    "lat": "60.3333", 
-    "lng": "17.5000", 
+    "city": "Skutskär", 
+    "lat": "60.6261", 
+    "lng": "17.4162", 
     "riskLevel": "low",
     "country": "Sweden", 
     "iso2": "SE", 
