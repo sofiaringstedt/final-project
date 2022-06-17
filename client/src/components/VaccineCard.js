@@ -5,7 +5,7 @@ import { API_URL } from "../utils/urls";
 
 import CardForm from "../reusables/CardForm";
 
-import { Spinner } from "../styled-components/mainStyles";
+// import { Spinner } from "../styled-components/mainStyles";
 import { 
   Header, 
   CountdownContainer, 
@@ -94,9 +94,9 @@ const VaccineCard = () => {
       .finally(() => setLoading(false))
   }, [token, userId, trackNewDose]);
 
-  if (loading) {
-    return <Spinner></Spinner>
-  };
+  // if (loading) {
+  //   return <Spinner></Spinner>
+  // };
 
   return (
     <>
