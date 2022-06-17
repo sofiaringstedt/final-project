@@ -25,6 +25,7 @@ const VaccineCard = () => {
   const [doseInfo, setDoseInfo] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
   const [trackNewDose, setTrackNewDose] = useState(false);
+  // const [trackDeletedDose, setTrackDeletedDose] = useState(false);
   const [loading, setLoading] = useState(false);
   const [countDownDay, setCountDownDay] = useState(null);
   const [countDownHour, setCountDownHour] = useState(null);
@@ -49,13 +50,34 @@ const VaccineCard = () => {
     }
   };
 
+  const handleDoseDelete = (removeDose) => {
+    const options = {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" }
+    };
+
+    fetch(API_URL(`dose/${removeDose._id}`), options)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          console.log("deleted dose response", data)
+          const filteredDoseArray = doseInfo.filter((el) => el._id !== removeDose._id);
+          setDoseInfo(filteredDoseArray)
+          console.log("Filtered dose array", filteredDoseArray)
+          console.log("Dose array", doseInfo)
+        } else {
+          setErrorMessage(data.response)
+        }
+      })
+      .catch((error) => console.log(error))
+  };
+
   useEffect(() => {
     const interval = setInterval(() => {
       startCounter(setCountDownDay, setCountDownHour, setCountDownMinute, setCountDownSecond, doseInfo, latestDoseDate)
     }, 1000);
     return () => clearInterval(interval);
-    // eslint-disable-next-line 
-  }, [lastDoseIndex, latestDoseDate]);
+  }, [lastDoseIndex, latestDoseDate, doseInfo]);
 
   useEffect(() => {
     const options = {
@@ -64,7 +86,6 @@ const VaccineCard = () => {
     };
 
     setLoading(true);
-    setTrackNewDose(false);
 
     fetch(API_URL(`user/${userId}`), options)
       .then((response) => response.json())
@@ -125,6 +146,7 @@ const VaccineCard = () => {
             <DoseParagraph>{dose.dose}</DoseParagraph>
             <DoseParagraph>{dose.date}</DoseParagraph>
             <DoseParagraph>{dose?.batchNumber}</DoseParagraph>
+            <button onClick={() => handleDoseDelete(dose)}>Delete</button>
           </DoseContainer>
         })}
       </div>
