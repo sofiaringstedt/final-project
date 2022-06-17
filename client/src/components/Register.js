@@ -5,7 +5,7 @@ import { registerOrEditUser } from "../actions/userActions";
 
 import UserForm from "../reusables/UserForm";
 
-// import { Spinner } from "../styled-components/mainStyles";
+import { Spinner } from "../styled-components/mainStyles";
 
 const Register = ({ mode, method }) => {
   const [firstName, setFirstName] = useState("");
@@ -22,9 +22,9 @@ const Register = ({ mode, method }) => {
     registerOrEditUser(firstName, lastName, email, password, mode, method, setLoading, setErrorMessage, navigate)
   };
 
-  // if (loading) {
-  //   return <Spinner></Spinner>
-  // };
+  if (loading) {
+    return <Spinner></Spinner>
+  };
 
   return (
     <>

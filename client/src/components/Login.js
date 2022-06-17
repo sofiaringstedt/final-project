@@ -5,8 +5,8 @@ import UserForm from "../reusables/UserForm";
 
 import { loginUser } from "../actions/userActions";
 
-// import { Spinner } from "../styled-components/mainStyles";
-// import { FormContainer, StyledHeading, GoBackButton } from "../styled-components/login";
+import { Spinner } from "../styled-components/mainStyles";
+import { FormContainer, StyledHeading, GoBackButton } from "../styled-components/login";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -29,9 +29,9 @@ const Login = () => {
     }
   }, [accessToken, navigate]);
 
-  // if (loading) {
-  //   return <Spinner></Spinner>
-  // };
+  if (loading) {
+    return <Spinner></Spinner>
+  };
 
   return (
     <FormContainer>
