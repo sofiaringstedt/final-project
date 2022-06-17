@@ -22,10 +22,9 @@ const VaccineCard = () => {
   const [batchNumber, setBatchNumber] = useState("");
   // eslint-disable-next-line
   const [nextDose, setNextDose] = useState("");
-  const [doseInfo, setDoseInfo] = useState([]);
+  const [dosesArray, setDosesArray] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
   const [trackNewDose, setTrackNewDose] = useState(false);
-  // const [trackDeletedDose, setTrackDeletedDose] = useState(false);
   const [loading, setLoading] = useState(false);
   const [countDownDay, setCountDownDay] = useState(null);
   const [countDownHour, setCountDownHour] = useState(null);
@@ -35,9 +34,8 @@ const VaccineCard = () => {
   const userId = JSON.parse(localStorage.getItem("user"))?.userId;
   const token = JSON.parse(localStorage.getItem("user"))?.accessToken;
 
-  const lastDoseIndex = doseInfo?.length - 1;
-  const latestDoseDate = doseInfo[lastDoseIndex]?.date;
-  const trackSelectedDose = (doseString) => doseInfo.some(dose => dose.dose.includes(doseString));
+  const lastDoseIndex = dosesArray?.length - 1;
+  const latestDoseDate = dosesArray[lastDoseIndex]?.date;
 
   const onDoseSubmit = (event) => {
     event.preventDefault();
@@ -60,8 +58,8 @@ const VaccineCard = () => {
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {
-          const filteredDoseArray = doseInfo.filter((el) => el._id !== removeDose._id);
-          setDoseInfo(filteredDoseArray)
+          const filteredDoseArray = dosesArray.filter((el) => el._id !== removeDose._id);
+          setDosesArray(filteredDoseArray)
         } else {
           setErrorMessage(data.response)
         }
@@ -71,10 +69,10 @@ const VaccineCard = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      startCounter(setCountDownDay, setCountDownHour, setCountDownMinute, setCountDownSecond, doseInfo, latestDoseDate)
+      startCounter(setCountDownDay, setCountDownHour, setCountDownMinute, setCountDownSecond, dosesArray, latestDoseDate)
     }, 1000);
     return () => clearInterval(interval);
-  }, [lastDoseIndex, latestDoseDate, doseInfo]);
+  }, [lastDoseIndex, latestDoseDate, dosesArray]);
 
   useEffect(() => {
     const options = {
@@ -86,7 +84,7 @@ const VaccineCard = () => {
 
     fetch(API_URL(`user/${userId}`), options)
       .then((response) => response.json())
-      .then((doseData) => setDoseInfo(doseData.response.doses))
+      .then((doseData) => setDosesArray(doseData.response.doses))
       .catch((error) => console.log(error))
       .finally(() => setLoading(false))
   }, [token, userId, trackNewDose]);
@@ -99,7 +97,7 @@ const VaccineCard = () => {
     <>
       <Header>
         <h1>Vaccination countdown</h1>
-        {doseInfo.length > 0 &&
+        {dosesArray.length > 0 &&
           <CountdownContainer>
             <CountdownWrapper>
               <p>{countDownDay}</p>
@@ -128,7 +126,7 @@ const VaccineCard = () => {
         setDate={setDate}
         setBatchNumber={setBatchNumber}
         handleForm={onDoseSubmit}
-        trackSelectedDose={trackSelectedDose} 
+        dosesArray={dosesArray} 
       />
       <div>
         <h2>Vaccine Card</h2>
@@ -138,7 +136,7 @@ const VaccineCard = () => {
           <TagParagraph>Date</TagParagraph>
           <TagParagraph>Batch Number</TagParagraph>
         </HeaderTags>
-        {doseInfo?.map((dose) => {
+        {dosesArray?.map((dose) => {
           return <DoseContainer key={dose._id}>
             <DoseParagraph>{dose.dose}</DoseParagraph>
             <DoseParagraph>{dose.date}</DoseParagraph>

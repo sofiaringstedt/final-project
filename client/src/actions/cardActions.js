@@ -71,7 +71,14 @@ export const addDose = (
     });
 };
 
-export const startCounter = (setCountDownDay, setCountDownHour, setCountDownMinute, setCountDownSecond, doseInfo, latestDoseDate) => {
+export const startCounter = (
+  setCountDownDay, 
+  setCountDownHour, 
+  setCountDownMinute, 
+  setCountDownSecond, 
+  dosesArray, 
+  latestDoseDate
+  ) => {
   const latestDoseTime = new Date(`${latestDoseDate}, 24:00:0`).getTime();
   const currentTime = new Date().getTime();
 
@@ -86,7 +93,7 @@ export const startCounter = (setCountDownDay, setCountDownHour, setCountDownMinu
   setCountDownMinute(Math.floor((nextDoseTime % hour) / minute));
   setCountDownSecond(Math.floor((nextDoseTime % minute) / second));
 
-  const currentDose = doseInfo.map(dose => dose.dose);
+  const currentDose = dosesArray.map(dose => dose.dose);
 
   if (currentDose.includes("Dose 1")) {
     setCountDownDay(Math.floor(nextDoseTime / day) + 30);
