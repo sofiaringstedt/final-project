@@ -36,8 +36,8 @@ export const addDose = (
   };
 
   const nextDoseDate = new Date(addDaysToNextDose);
-  const formattedNextDoseDate = nextDoseDate
-    .toLocaleString("sv", { year: "numeric", month: "2-digit", day: "2-digit" });
+  const dateOptions = { year: "numeric", month: "2-digit", day: "2-digit" };
+  const formattedNextDoseDate = nextDoseDate.toLocaleString("sv", dateOptions);
 
   const options = {
     method: "POST",
@@ -165,13 +165,6 @@ export const startCounter = (
   setCountDownHour(Math.floor((nextDoseTime % day) / hour));
   setCountDownMinute(Math.floor((nextDoseTime % hour) / minute));
   setCountDownSecond(Math.floor((nextDoseTime % minute) / second));
-
- 
-
-  // if (currentDose.includes("Dose 1")) setCountDownDay(Math.floor(nextDoseTime / day) + 30);
-  // if (currentDose.includes("Dose 2")) setCountDownDay(Math.floor(nextDoseTime / day) + 30);
-  // if (currentDose.includes("Dose 3")) setCountDownDay(Math.floor(nextDoseTime / day) + 152);
-  // if (currentDose.includes("Dose 4")) setCountDownDay(Math.floor(nextDoseTime / day) + 1095);
 };
 
 

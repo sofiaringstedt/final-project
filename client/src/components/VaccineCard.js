@@ -23,7 +23,6 @@ const VaccineCard = () => {
   const [dose, setDose] = useState("");
   const [date, setDate] = useState("");
   const [batchNumber, setBatchNumber] = useState("");
-  const [nextDose, setNextDose] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [dosesArray, setDosesArray] = useState([]);
   const [trackNewDose, setTrackNewDose] = useState(false);

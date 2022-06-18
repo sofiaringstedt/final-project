@@ -3,6 +3,19 @@ import bcrypt from "bcrypt";
 import User from "../models/user.js";
 import Dose from "../models/dose.js";
 
+const passwordEmailValidations = (password, email) => {
+  const emailPatternValidation = /^\S+@\S+\.\S{2,}$/g;
+  const passwordPatternValidaton = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[#?!@$%^&*-/+]).{8,}$/;
+
+  if (!passwordPatternValidaton.test(password)) {
+    throw "password must be at least 8 characters long with 1 uppercase, 1 lowercase, and 1 special character (#?!@$%^&*-/+)."
+  };
+
+  if (!emailPatternValidation.test(email)) {
+    throw "Email must contain a @ symbol and end with ('.' word)."
+  };
+};
+
 export const authenticateUser = async (req, res, next) => {
   const accessToken = req.header("Authorization");
   const user = await User.findOne({ accessToken });
@@ -60,11 +73,7 @@ export const createUser = async (req, res) => {
 
   try {
     const salt = bcrypt.genSaltSync();
-    const passwordValidator = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[#?!@$%^&*-/+]).{8,}$/;
-
-    if (!passwordValidator.test(password)) {
-      throw "password must be at least 8 characters long with 1 uppercase, 1 lowercase, and 1 special character (#?!@$%^&*-/+)."
-    };
+    passwordEmailValidations(password, email);
 
     if (!queriedUser) {
       const user = await new User({
@@ -125,11 +134,7 @@ export const modifyUser = async (req, res) => {
 
   try {
     const salt = bcrypt.genSaltSync();
-    const passwordValidator = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[#?!@$%^&*-/+]).{8,}$/;
-
-    if (!passwordValidator.test(password)) {
-      throw "password must be at least 8 characters long with 1 uppercase, 1 lowercase, and 1 special character (#?!@$%^&*-/+)."
-    };
+    passwordEmailValidations(password, email);
 
     const editedUser = await User.findByIdAndUpdate(
       userId,
