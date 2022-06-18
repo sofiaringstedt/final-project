@@ -23,17 +23,29 @@ const Home = () => {
       <Header />
       <section>
         <Hero>
-        {/* <Hero src={hero} alt="green background" /> */}
-        <HeroTextBox>
-        <h1>Vaccination against TBE</h1>
-        <p>
-          {" "}
-          TBE is a viral disease that is spread by ticks. The virus can cause
-          inflammation in the brain or meninges. You should be vaccinated
-          against TBE if you are staying in areas where the TBE virus is
-          present.
-        </p>
-        </HeroTextBox>
+          {/* <Hero src={hero} alt="green background" /> */}
+          <HeroTextBox>
+            <h1>Vaccination against TBE</h1>
+            <p>
+              {" "}
+              TBE, tick-borne encephalitis is a viral disease that is spread by ticks. 
+              The virus can cause inflammation in the brain or meninges. You should be 
+              vaccinated against TBE if you are staying in areas where the TBE virus is
+              present.
+            </p>
+            <p>
+              A single tick bite can give you TBE, there are currently no medicines that 
+              cures TBE, but vaccines protect.
+              {" "}
+              The basic vaccination against TBE consists of three doses. You usually get 
+              two doses every 1-3 months. The third dose can be taken at the earliest after 
+              5 months and at most 12 months after dose 2. The third dose should be given 
+              within the same tick season, or at least before the start of the following tick season.
+              {" "}
+              To maintain your protection, you need to take a fourth dose three years after the third 
+              dose and then one dose every five years.
+            </p>
+          </HeroTextBox>
         </Hero>
       </section>
       <ImageList>

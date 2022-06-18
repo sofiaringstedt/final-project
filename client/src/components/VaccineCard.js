@@ -6,14 +6,17 @@ import { API_URL } from "../utils/urls";
 import CardForm from "../reusables/CardForm";
 
 import { Spinner } from "../styled-components/mainStyles";
-import { 
-  Header, 
-  CountdownContainer, 
+import {
+  Header,
+  CountdownTitle,
+  CountdownContainer,
   CountdownWrapper,
+  Time,
+  Interval,
   DoseContainer,
   DoseParagraph,
   HeaderTags,
-  TagParagraph 
+  TagParagraph
 } from "../styled-components/vaccineCard";
 
 const VaccineCard = () => {
@@ -25,6 +28,8 @@ const VaccineCard = () => {
   const [dosesArray, setDosesArray] = useState([]);
   const [trackNewDose, setTrackNewDose] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [countDownYear, setCountDownYear] = useState(null);
+  const [countDownMonth, setCountDownMonth] = useState(null);
   const [countDownDay, setCountDownDay] = useState(null);
   const [countDownHour, setCountDownHour] = useState(null);
   const [countDownMinute, setCountDownMinute] = useState(null);
@@ -49,7 +54,16 @@ const VaccineCard = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      startCounter(setCountDownDay, setCountDownHour, setCountDownMinute, setCountDownSecond, dosesArray, latestDoseDate)
+      startCounter(
+        setCountDownYear,
+        setCountDownMonth,
+        setCountDownDay,
+        setCountDownHour,
+        setCountDownMinute,
+        setCountDownSecond,
+        dosesArray,
+        latestDoseDate
+      )
     }, 1000);
     return () => clearInterval(interval);
   }, [lastDoseIndex, latestDoseDate, dosesArray]);
@@ -76,29 +90,57 @@ const VaccineCard = () => {
   return (
     <>
       <Header>
-        <h1>Vaccination countdown</h1>
+        <CountdownTitle>Book next dose in</CountdownTitle>
         {dosesArray.length > 0 &&
           <CountdownContainer>
+            {countDownYear === 0
+              ?
+              null
+              :
+              <CountdownWrapper>
+                <Time>{countDownYear < 10 ? `0${countDownYear}` : countDownYear}</Time>
+                <Interval>Years</Interval>
+              </CountdownWrapper>
+            }
+            {countDownMonth === 0
+              ?
+              null
+              :
+              <CountdownWrapper>
+                <Time>{countDownMonth < 10 ? `0${countDownMonth}` : countDownMonth}</Time>
+                <Interval>Months</Interval>
+              </CountdownWrapper>
+            }
             <CountdownWrapper>
-              <p>{countDownDay}</p>
-              <p>Days</p>
+              <Time>{countDownDay < 10 ? `0${countDownDay}` : countDownDay}</Time>
+              <Interval>Days</Interval>
             </CountdownWrapper>
             <CountdownWrapper>
-              <p>{countDownHour}</p>
-              <p>Hours</p>
+              <Time>{countDownHour}</Time>
+              <Interval>Hours</Interval>
             </CountdownWrapper>
-            <CountdownWrapper>
-              <p>{countDownMinute}</p>
-              <p>Minutes</p>
-            </CountdownWrapper>
-            <CountdownWrapper>
-              <p>{countDownSecond}</p>
-              <p>Seconds</p>
-            </CountdownWrapper>
+            {countDownYear && countDownMonth
+              ?
+              null
+              :
+              <CountdownWrapper>
+                <Time>{countDownMinute < 10 ? `0${countDownMinute}`: countDownMinute}</Time>
+                <Interval>Mins</Interval>
+              </CountdownWrapper>
+            }
+            {countDownMonth
+              ?
+              null
+              :
+              <CountdownWrapper>
+                <Time>{countDownSecond < 10 ? `0${countDownSecond}` : countDownSecond}</Time>
+                <Interval>Secs</Interval>
+              </CountdownWrapper>
+            }
           </CountdownContainer>
         }
       </Header>
-      <CardForm 
+      <CardForm
         dose={dose}
         date={date}
         batchNumber={batchNumber}
@@ -106,7 +148,7 @@ const VaccineCard = () => {
         setDate={setDate}
         setBatchNumber={setBatchNumber}
         handleForm={onDoseSubmit}
-        dosesArray={dosesArray} 
+        dosesArray={dosesArray}
       />
       <div>
         <h2>Vaccine Card</h2>
