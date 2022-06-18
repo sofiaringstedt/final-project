@@ -23,7 +23,6 @@ export const loginUser = (email, password, setLoading, setErrorMessage, navigate
         navigate("/account");
       } else {
         setErrorMessage(userData.response);
-        navigate("/register");
       };
     })
     .catch((error) => console.log(error))

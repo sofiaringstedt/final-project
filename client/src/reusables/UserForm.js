@@ -36,7 +36,6 @@ const UserForm = (props) => {
   return (
     <InputContainer>
       <Form onSubmit={handleForm}>
-        {errorMessage && <p>{errorMessage}</p>}
         {displayOnlyInRegistration && (
           <>
             <InputWrapper htmlFor="firstname">
@@ -77,6 +76,7 @@ const UserForm = (props) => {
             placeholder="Password!"
           ></StyledInputField>
         </InputWrapper>
+        {errorMessage && <p>{errorMessage}</p>}
         {!displayOnlyInRegistration && 
           <StyledParagraph>
             I am a new user,{" "}

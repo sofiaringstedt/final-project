@@ -113,15 +113,16 @@ export const handleDoseDelete = (removeDose, dosesArray, setDosesArray, setError
 
         const allDosesFromLocalStorage = JSON.parse(localStorage.getItem("allDoses"));
 
-        allDosesFromLocalStorage.pop();
-        allDoses.pop();
+        allDosesFromLocalStorage?.pop();
+        allDoses?.pop();
 
         localStorage.setItem("allDoses", JSON.stringify(allDosesFromLocalStorage));
         localStorage.setItem("dose", JSON.stringify(allDosesFromLocalStorage[allDosesFromLocalStorage?.length - 1]));
 
         if (allDosesFromLocalStorage?.length < 1 || allDosesFromLocalStorage  === undefined) {
-          localStorage.removeItem("dose")
-          localStorage.removeItem("allDoses")
+          const keysToRemove = ["dose", "allDoses"];
+
+          keysToRemove.forEach(key => localStorage.removeItem(key));
         }
       } else {
         setErrorMessage(data.response);

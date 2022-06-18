@@ -15,8 +15,9 @@ import { Hero, HeroTextBox, ImageList, LogInButton } from "../styled-components/
 
 const Home = () => {
   const navigate = useNavigate();
-
   const handleLogin = () => navigate("/login");
+  
+  const accessToken = JSON.parse(localStorage.getItem("user"))?.accessToken;
 
   return (
     <>
@@ -38,7 +39,7 @@ const Home = () => {
       </section>
       <ImageList>
         <ul>
-          <li onClick={() => navigate("/login")}>
+          <li onClick={() => accessToken !== undefined ? navigate("/card") : navigate("/login")}>
             {" "}
             <img src={dose} alt="syringe icon" />
           </li>

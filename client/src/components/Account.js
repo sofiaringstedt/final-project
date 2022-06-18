@@ -21,8 +21,8 @@ const Account = ({ setMode, setMethod }) => {
   const currentDose = JSON.parse(localStorage.getItem("dose"))?.dose;
   
   const handleSignOut = () => {
-    localStorage.removeItem("user");
-    localStorage.removeItem("dose");
+    const keysToRemove = ["user", "dose", "allDoses"];
+    keysToRemove.forEach(key => localStorage.removeItem(key));
     navigate("/");
   };
 

@@ -115,7 +115,7 @@ const VaccineCard = () => {
               <Interval>Days</Interval>
             </CountdownWrapper>
             <CountdownWrapper>
-              <Time>{countDownHour}</Time>
+              <Time>{countDownHour < 10 ? `0${countDownHour}` : countDownHour}</Time>
               <Interval>Hours</Interval>
             </CountdownWrapper>
             {countDownYear && countDownMonth

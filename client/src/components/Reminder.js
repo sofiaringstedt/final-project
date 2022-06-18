@@ -1,10 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+
 import HomeButton from "../reusables/HomeButton";
 
+import { API_URL } from "../utils/urls";
+
 const Reminder = () => {
-  const nextDoseFromLocalStorage = JSON.parse(localStorage.getItem("dose"))?.nextDose;
+  const [nextDose, setNextDose] = useState("");
+
+  const userId = JSON.parse(localStorage.getItem("user"))?.userId;
+  const token = JSON.parse(localStorage.getItem("user"))?.accessToken;
+
+  useEffect(() => {
+    const options = {
+      method: "GET",
+      headers: { Authorization: token },
+    };
+
+    fetch(API_URL(`user/${userId}`), options)
+      .then((response) => response.json())
+      .then((doseData) => setNextDose(doseData.response.doses[doseData.response.doses.length - 1].nextDose))
+      .catch((error) => console.log(error))
+  }, [token, userId]);
+ 
   const dateOptions = { month: "long", day: "numeric", year: "numeric" };
-  const formattedDate = new Date(nextDoseFromLocalStorage).toLocaleDateString("en-US", dateOptions);
+  const formattedDate = new Date(nextDose).toLocaleDateString("en-US", dateOptions);
 
   return (
     <>
@@ -22,7 +41,7 @@ const Reminder = () => {
         To maintain your protection, you need to take a fourth dose three years after the third
         dose and then one dose every five years.
       </p>
-      <p>{nextDoseFromLocalStorage ? `Next dose on ${formattedDate}` : "There are no doses in your vaccine card."}</p>
+      <p>{nextDose ? `Next dose on ${formattedDate}` : "There are no doses in your vaccine card."}</p>
     </>
   );
 };
