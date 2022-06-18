@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import { addDose, startCounter } from "../actions/cardActions";
+import { addDose, handleDoseDelete, startCounter } from "../actions/cardActions";
 import { API_URL } from "../utils/urls";
 
 import CardForm from "../reusables/CardForm";
@@ -20,10 +20,9 @@ const VaccineCard = () => {
   const [dose, setDose] = useState("");
   const [date, setDate] = useState("");
   const [batchNumber, setBatchNumber] = useState("");
-  // eslint-disable-next-line
   const [nextDose, setNextDose] = useState("");
-  const [dosesArray, setDosesArray] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
+  const [dosesArray, setDosesArray] = useState([]);
   const [trackNewDose, setTrackNewDose] = useState(false);
   const [loading, setLoading] = useState(false);
   const [countDownDay, setCountDownDay] = useState(null);
@@ -41,30 +40,11 @@ const VaccineCard = () => {
     event.preventDefault();
 
     if (dose !== "" && date !== "") {
-      addDose(dose, date, batchNumber, nextDose, setDate, setDose, setBatchNumber, setErrorMessage, setTrackNewDose, setLoading);
+      addDose(dose, date, batchNumber, setDose, setDate, setBatchNumber, setErrorMessage, setTrackNewDose, setLoading);
       setErrorMessage("");
     } else {
       setErrorMessage("Dose and date is required");
     }
-  };
-
-  const handleDoseDelete = (removeDose) => {
-    const options = {
-      method: "DELETE",
-      headers: { "Content-Type": "application/json" }
-    };
-
-    fetch(API_URL(`dose/${removeDose._id}`), options)
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.success) {
-          const filteredDoseArray = dosesArray.filter((el) => el._id !== removeDose._id);
-          setDosesArray(filteredDoseArray)
-        } else {
-          setErrorMessage(data.response)
-        }
-      })
-      .catch((error) => console.log(error))
   };
 
   useEffect(() => {
@@ -141,7 +121,7 @@ const VaccineCard = () => {
             <DoseParagraph>{dose.dose}</DoseParagraph>
             <DoseParagraph>{dose.date}</DoseParagraph>
             <DoseParagraph>{dose?.batchNumber}</DoseParagraph>
-            <button onClick={() => handleDoseDelete(dose)}>Delete</button>
+            <button onClick={() => handleDoseDelete(dose, dosesArray, setDosesArray, setErrorMessage)}>Delete</button>
           </DoseContainer>
         })}
       </div>

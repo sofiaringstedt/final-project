@@ -36,7 +36,7 @@ export const createDose = async (req, res) => {
     } else {
       res.status(409).json({
         success: false,
-        response: "Could not create vaccine card",
+        response: "Could not create dose",
       })
     }
   } catch (error) {
