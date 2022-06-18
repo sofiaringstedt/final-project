@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 
 import { addDose, handleDoseDelete, startCounter } from "../actions/cardActions";
-import { API_URL } from "../utils/urls";
 
 import CardForm from "../reusables/CardForm";
 
@@ -19,23 +18,18 @@ import {
   TagParagraph
 } from "../styled-components/vaccineCard";
 
-const VaccineCard = () => {
+const VaccineCard = ({ dosesArray, setDosesArray, setTrackDose }) => {
   const [dose, setDose] = useState("");
   const [date, setDate] = useState("");
   const [batchNumber, setBatchNumber] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const [dosesArray, setDosesArray] = useState([]);
-  const [trackNewDose, setTrackNewDose] = useState(false);
-  const [loading, setLoading] = useState(false);
   const [countDownYear, setCountDownYear] = useState(null);
   const [countDownMonth, setCountDownMonth] = useState(null);
   const [countDownDay, setCountDownDay] = useState(null);
   const [countDownHour, setCountDownHour] = useState(null);
   const [countDownMinute, setCountDownMinute] = useState(null);
   const [countDownSecond, setCountDownSecond] = useState(null);
-
-  const userId = JSON.parse(localStorage.getItem("user"))?.userId;
-  const token = JSON.parse(localStorage.getItem("user"))?.accessToken;
+  const [loading, setLoading] = useState(false);
 
   const lastDoseIndex = dosesArray?.length - 1;
   const latestDoseDate = dosesArray[lastDoseIndex]?.date;
@@ -44,7 +38,7 @@ const VaccineCard = () => {
     event.preventDefault();
 
     if (dose !== "" && date !== "") {
-      addDose(dose, date, batchNumber, setDose, setDate, setBatchNumber, setErrorMessage, setTrackNewDose, setLoading);
+      addDose(dose, date, batchNumber, setDose, setDate, setBatchNumber, setErrorMessage, setTrackDose, setLoading);
       setErrorMessage("");
     } else {
       setErrorMessage("Dose and date is required");
@@ -66,21 +60,6 @@ const VaccineCard = () => {
     }, 1000);
     return () => clearInterval(interval);
   }, [lastDoseIndex, latestDoseDate, dosesArray]);
-
-  useEffect(() => {
-    const options = {
-      method: "GET",
-      headers: { Authorization: token },
-    };
-
-    setLoading(true);
-
-    fetch(API_URL(`user/${userId}`), options)
-      .then((response) => response.json())
-      .then((doseData) => setDosesArray(doseData.response.doses))
-      .catch((error) => console.log(error))
-      .finally(() => setLoading(false))
-  }, [token, userId, trackNewDose]);
 
   if (loading) {
     return <Spinner></Spinner>
@@ -162,7 +141,7 @@ const VaccineCard = () => {
             <DoseParagraph>{dose.dose}</DoseParagraph>
             <DoseParagraph>{dose.date}</DoseParagraph>
             <DoseParagraph>{dose?.batchNumber}</DoseParagraph>
-            <button onClick={() => handleDoseDelete(dose, dosesArray, setDosesArray, setErrorMessage)}>Delete</button>
+            <button onClick={() => handleDoseDelete(dose, dosesArray, setDosesArray, setTrackDose, setErrorMessage)}>Delete</button>
           </DoseContainer>
         })}
       </div>

@@ -1,27 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 import HomeButton from "../reusables/HomeButton";
 
-import { API_URL } from "../utils/urls";
-
-const Reminder = () => {
-  const [nextDose, setNextDose] = useState("");
-
-  const userId = JSON.parse(localStorage.getItem("user"))?.userId;
-  const token = JSON.parse(localStorage.getItem("user"))?.accessToken;
-
-  useEffect(() => {
-    const options = {
-      method: "GET",
-      headers: { Authorization: token },
-    };
-
-    fetch(API_URL(`user/${userId}`), options)
-      .then((response) => response.json())
-      .then((doseData) => setNextDose(doseData.response.doses[doseData.response.doses.length - 1].nextDose))
-      .catch((error) => console.log(error))
-  }, [token, userId]);
- 
+const Reminder = ({ nextDose }) => {
   const dateOptions = { month: "long", day: "numeric", year: "numeric" };
   const formattedDate = new Date(nextDose).toLocaleDateString("en-US", dateOptions);
 

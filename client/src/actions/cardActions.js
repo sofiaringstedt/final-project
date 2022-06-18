@@ -10,7 +10,7 @@ export const addDose = (
   setDate,
   setBatchNumber,
   setErrorMessage,
-  setTrackNewDose,
+  setTrackDose,
   setLoading
 ) => {
   const userId = JSON.parse(localStorage.getItem("user"))?.userId;
@@ -79,7 +79,7 @@ export const addDose = (
 
         fetch(API_URL(`user/${userId}/dose/${doseData.response.doseId}`), options)
           .then((response) => response.json())
-          .then(() => setTrackNewDose(true))
+          .then(() => setTrackDose(true))
           .catch((error) => console.log(error))
           .finally(() => {
             setDose("")
@@ -93,16 +93,18 @@ export const addDose = (
     })
     .catch((error) => console.log(error))
     .finally(() => {
-      setTrackNewDose(false);
+      setTrackDose(false);
       setLoading(false);
     });
 };
 
-export const handleDoseDelete = (removeDose, dosesArray, setDosesArray, setErrorMessage) => {
+export const handleDoseDelete = (removeDose, dosesArray, setDosesArray, setTrackDose, setErrorMessage) => {
   const options = {
     method: "DELETE",
     headers: { "Content-Type": "application/json" }
   };
+
+  setTrackDose(true)
 
   fetch(API_URL(`dose/${removeDose._id}`), options)
     .then((response) => response.json())
@@ -119,7 +121,7 @@ export const handleDoseDelete = (removeDose, dosesArray, setDosesArray, setError
         localStorage.setItem("allDoses", JSON.stringify(allDosesFromLocalStorage));
         localStorage.setItem("dose", JSON.stringify(allDosesFromLocalStorage[allDosesFromLocalStorage?.length - 1]));
 
-        if (allDosesFromLocalStorage?.length < 1 || allDosesFromLocalStorage  === undefined) {
+        if (allDosesFromLocalStorage.length < 1 || allDosesFromLocalStorage  === undefined) {
           const keysToRemove = ["dose", "allDoses"];
 
           keysToRemove.forEach(key => localStorage.removeItem(key));
@@ -129,6 +131,7 @@ export const handleDoseDelete = (removeDose, dosesArray, setDosesArray, setError
       }
     })
     .catch((error) => console.log(error))
+    .finally(() => setTrackDose(false))
 };
 
 export const startCounter = (

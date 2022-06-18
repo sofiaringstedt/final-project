@@ -10,7 +10,7 @@ import signOut from "../assets/log-out.svg";
 
 import { Icons } from "../styled-components/account"
 
-const Account = ({ setMode, setMethod }) => {
+const Account = ({ setMode, setMethod, totalDoses }) => {
   const navigate = useNavigate();
 
   const accessToken = JSON.parse(localStorage.getItem("user"))?.accessToken;
@@ -18,7 +18,6 @@ const Account = ({ setMode, setMethod }) => {
   const lastName = JSON.parse(localStorage.getItem("user"))?.lastName;
   const email = JSON.parse(localStorage.getItem("user"))?.email;
   const userId = JSON.parse(localStorage.getItem("user"))?.userId;
-  const currentDose = JSON.parse(localStorage.getItem("dose"))?.dose;
   
   const handleSignOut = () => {
     const keysToRemove = ["user", "dose", "allDoses"];
@@ -45,7 +44,7 @@ const Account = ({ setMode, setMethod }) => {
       <div>
         <p>{firstName} {lastName}</p>
         <p>{email}</p>
-        <p>Doses taken: {!currentDose ? 0 : currentDose?.replace(/\D+/g, '')}</p>
+        <p>Doses taken: {totalDoses}</p>
       </div>
       <hr />
       <ul>
