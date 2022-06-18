@@ -18,6 +18,7 @@ const Account = ({ setMode, setMethod }) => {
   const lastName = JSON.parse(localStorage.getItem("user"))?.lastName;
   const email = JSON.parse(localStorage.getItem("user"))?.email;
   const userId = JSON.parse(localStorage.getItem("user"))?.userId;
+  const currentDose = JSON.parse(localStorage.getItem("dose"))?.dose;
   
   const handleSignOut = () => {
     localStorage.removeItem("user");
@@ -44,12 +45,12 @@ const Account = ({ setMode, setMethod }) => {
       <div>
         <p>{firstName} {lastName}</p>
         <p>{email}</p>
-        <p>Next dose: xx</p>
+        <p>Doses taken: {!currentDose ? 0 : currentDose?.replace(/\D+/g, '')}</p>
       </div>
       <hr />
       <ul>
         <li onClick={()=> navigate("/")}> <Icons src={house} alt="home icon"></Icons> Home</li>
-        <li > <Icons src={bell} alt="bell icon"></Icons> Reminder</li>
+        <li onClick={() => navigate("/reminder")}> <Icons src={bell} alt="bell icon"></Icons> Reminder</li>
         <li onClick={() => navigate("/card")}> <Icons src={clipBoard} alt="clipboard icon"></Icons> Vaccine card</li>
         <li onClick={handleEditUser}> <Icons src={dots} alt="three dots icon"></Icons>Edit profile</li>
         <li onClick={handleSignOut}> <Icons src={signOut} alt="sign out icon"></Icons> sign out</li>

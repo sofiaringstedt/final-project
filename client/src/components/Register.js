@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { registerOrEditUser } from "../actions/userActions";
 
 import UserForm from "../reusables/UserForm";
+import HomeButton from "reusables/HomeButton";
 
 import { Spinner } from "../styled-components/mainStyles";
 
@@ -28,7 +29,7 @@ const Register = ({ mode, method }) => {
 
   return (
     <>
-      <button onClick={() => navigate("/")}>Home</button>
+      <HomeButton />
       <h1>Create account</h1>
       <UserForm
         firstName={firstName}

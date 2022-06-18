@@ -1,8 +1,13 @@
 import styled, { keyframes } from "styled-components";
 
-const spinnerAnimation = keyframes`
-  0 % { transform: rotate(0deg) }
-  100 % { transform: rotate(360deg) }
+const rotate = keyframes`
+  from { 
+    transform: rotate(0deg); 
+  }
+  
+  to {
+    transform: rotate(360deg); 
+  }
 `;
 
 export const Spinner = styled.div`
@@ -11,9 +16,6 @@ export const Spinner = styled.div`
   border-radius: 50%;
   width: 80px;
   height: 80px;
-  animation: spin;
-  animation-name: ${spinnerAnimation};
-  animation-duration: 1s;
-  animation-iteration-count: infinite;
+  animation: ${rotate} 1s linear infinite;
   margin: 50px auto 0 auto;
 `;

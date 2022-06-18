@@ -10,9 +10,11 @@ export const StyledHeading = styled.h1`
   font-size: 20px;
 `;
 
-export const GoBackButton = styled.button`
-  border: none;
-  background-color: transparent;
-  font-size: 20px;
-  margin-left: 35px;
-`;
+// try to make this button reusable with styling
+
+// export const GoBackButton = styled.button`
+//   border: none;
+//   background-color: transparent;
+//   font-size: 20px;
+//   margin-left: 35px;
+// `;

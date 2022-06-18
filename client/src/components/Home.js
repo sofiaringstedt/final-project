@@ -23,17 +23,17 @@ const Home = () => {
       <Header />
       <section>
         <Hero>
-        {/* <Hero src={hero} alt="green background" /> */}
-        <HeroTextBox>
-        <h1>Vaccination against TBE</h1>
-        <p>
-          {" "}
-          TBE is a viral disease that is spread by ticks. The virus can cause
-          inflammation in the brain or meninges. You should be vaccinated
-          against TBE if you are staying in areas where the TBE virus is
-          present.
-        </p>
-        </HeroTextBox>
+          {/* <Hero src={hero} alt="green background" /> */}
+          <HeroTextBox>
+            <h1>Vaccination against TBE</h1>
+            <p>
+              {" "}
+              TBE, tick-borne encephalitis is a viral disease that is spread by ticks. 
+              The virus can cause inflammation in the brain or meninges. You should be 
+              vaccinated against TBE if you are staying in areas where the TBE virus is
+              present.
+            </p>
+          </HeroTextBox>
         </Hero>
       </section>
       <ImageList>
@@ -58,7 +58,7 @@ const Home = () => {
             {" "}
             <img src={map} alt="sign out icon" />
           </li>
-          <li>
+          <li onClick={() => navigate("/resources")}>
             {" "}
             <img src={resources} alt="resources icon" />
           </li>
