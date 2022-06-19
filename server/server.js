@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 
 import connectDB from "./config/db.js";
+import cityRoutes from "./routes/city.js";
 import userRoutes from "./routes/user.js"; 
 import doseRoutes from "./routes/dose.js";
 
@@ -29,12 +30,17 @@ app.use((req, res, next) => {
   };
 });
 
+app.use("/", cityRoutes);
 app.use("/", userRoutes);
 app.use("/", doseRoutes);
 
 app.get("/", (req, res) => {
   res.json({
     "Routes": [
+      {
+        "path": "/cities",
+        "methods": "GET"
+      },
       {
         "path": "/user/:userId",
         "methods": "GET"
