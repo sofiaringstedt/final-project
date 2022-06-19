@@ -9,7 +9,7 @@ import { loginUser } from "../actions/userActions";
 import { Spinner } from "../styled-components/mainStyles";
 import { FormContainer, StyledHeading } from "../styled-components/login";
 
-const Login = () => {
+const Login = ({ setLoggedIn }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -21,7 +21,7 @@ const Login = () => {
 
   const onUserLogin = (event) => {
     event.preventDefault();
-    loginUser(email, password, setLoading, setErrorMessage, navigate);
+    loginUser(email, password, setLoggedIn, setLoading, setErrorMessage, navigate);
   };
 
   useEffect(() => {

@@ -39,14 +39,15 @@ export const DoseContainer = styled.div`
   display: flex;
 `;
 
+export const TagParagraph = styled.p`
+  margin-right: 60px;
+`;
+
 export const DoseParagraph = styled.p`
-  margin-right: 30px;
+  margin-right: 60px;
 `;
 
 export const HeaderTags = styled.div`
   display: flex;
 `;
 
-export const TagParagraph = styled.p`
-  margin-right: 40px;
-`;

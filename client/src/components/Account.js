@@ -10,7 +10,7 @@ import signOut from "../assets/log-out.svg";
 
 import { Icons } from "../styled-components/account"
 
-const Account = ({ setMode, setMethod, totalDoses }) => {
+const Account = ({ setMode, setMethod, setLoggedIn, totalDoses }) => {
   const navigate = useNavigate();
 
   const accessToken = JSON.parse(localStorage.getItem("user"))?.accessToken;
@@ -22,6 +22,7 @@ const Account = ({ setMode, setMethod, totalDoses }) => {
   const handleSignOut = () => {
     const keysToRemove = ["user", "dose", "allDoses"];
     keysToRemove.forEach(key => localStorage.removeItem(key));
+    setLoggedIn(false);
     navigate("/");
   };
 

@@ -1,6 +1,6 @@
 import { API_URL } from "../utils/urls";
 
-export const loginUser = (email, password, setLoading, setErrorMessage, navigate) => {
+export const loginUser = (email, password, setLoading, setLoggedIn,  setErrorMessage, navigate) => {
   const options = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -13,6 +13,8 @@ export const loginUser = (email, password, setLoading, setErrorMessage, navigate
     .then((response) => response.json())
     .then((userData) => {
       if (userData.success) {
+        setLoggedIn(true);
+        
         localStorage.setItem("user", JSON.stringify({
           userId: userData.userId,
           firstName: userData.firstName,

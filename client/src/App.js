@@ -20,6 +20,7 @@ const App = () => {
   const [totalDoses, setTotalDoses] = useState(0);
   const [loading, setLoading] = useState(false);
   const [trackDose, setTrackDose] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
   const [dosesArray, setDosesArray] = useState([]);
 
   const userId = JSON.parse(localStorage.getItem("user"))?.userId;
@@ -38,19 +39,26 @@ const App = () => {
       .then((doseData) => {
         setDosesArray(doseData.response.doses);
         setTotalDoses(doseData.response.doses.length);
-        setNextDose(doseData?.response?.doses[doseData?.response?.doses.length - 1]?.nextDose);
+        setNextDose(doseData.response.doses[doseData.response.doses.length - 1]?.nextDose);
       })
       .catch((error) => console.log(error))
       .finally(() => setLoading(false))
-  }, [token, userId, trackDose]);
+  }, [loggedIn, trackDose]);
   
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login setLoggedIn={setLoggedIn}  />} />
         <Route path="/register" element={<Register mode={mode} method={method} />} />
-        <Route path="/account" element={<Account setMode={setMode} setMethod={setMethod} totalDoses={totalDoses} />} />
+        <Route path="/account" element={
+          <Account 
+            setMode={setMode} 
+            setMethod={setMethod}
+            setLoggedIn={setLoggedIn} 
+            totalDoses={totalDoses} 
+            />} 
+          />
         <Route path="/card" element={
           <VaccineCard 
             dosesArray={dosesArray}

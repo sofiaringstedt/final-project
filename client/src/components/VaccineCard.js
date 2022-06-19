@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { addDose, handleDoseDelete, startCounter } from "../actions/cardActions";
 
 import CardForm from "../reusables/CardForm";
+import HomeButton from "reusables/HomeButton";
 
 import { Spinner } from "../styled-components/mainStyles";
 import {
@@ -68,6 +69,7 @@ const VaccineCard = ({ dosesArray, setDosesArray, setTrackDose }) => {
   return (
     <>
       <Header>
+        <HomeButton />
         <CountdownTitle>Book next dose in</CountdownTitle>
         {dosesArray.length > 0 &&
           <CountdownContainer>
@@ -135,12 +137,14 @@ const VaccineCard = ({ dosesArray, setDosesArray, setTrackDose }) => {
           <TagParagraph>Dose</TagParagraph>
           <TagParagraph>Date</TagParagraph>
           <TagParagraph>Batch Number</TagParagraph>
+          <TagParagraph>Next Dose</TagParagraph>
         </HeaderTags>
         {dosesArray?.map((dose) => {
           return <DoseContainer key={dose._id}>
             <DoseParagraph>{dose.dose}</DoseParagraph>
             <DoseParagraph>{dose.date}</DoseParagraph>
             <DoseParagraph>{dose?.batchNumber}</DoseParagraph>
+            <DoseParagraph>{dose.nextDose}</DoseParagraph>
             <button onClick={() => handleDoseDelete(dose, dosesArray, setDosesArray, setTrackDose, setErrorMessage)}>Delete</button>
           </DoseContainer>
         })}
