@@ -71,7 +71,7 @@ const VaccineCard = ({ dosesArray, setDosesArray, setTrackDose }) => {
       <Header>
         <HomeButton />
         <CountdownTitle>Book next dose in</CountdownTitle>
-        {dosesArray.length > 0 &&
+        {dosesArray.length > 0 && 
           <CountdownContainer>
             {countDownYear === 0
               ?
@@ -145,7 +145,9 @@ const VaccineCard = ({ dosesArray, setDosesArray, setTrackDose }) => {
             <DoseParagraph>{dose.date}</DoseParagraph>
             <DoseParagraph>{dose?.batchNumber}</DoseParagraph>
             <DoseParagraph>{dose.nextDose}</DoseParagraph>
-            <button onClick={() => handleDoseDelete(dose, dosesArray, setDosesArray, setTrackDose, setErrorMessage)}>Delete</button>
+            <button onClick={() => {
+              handleDoseDelete(dose, dosesArray, setDosesArray, setTrackDose, setErrorMessage)
+              }}>Delete</button>
           </DoseContainer>
         })}
       </div>

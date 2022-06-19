@@ -1,11 +1,16 @@
+import React, { useState } from "react";
 import { MapContainer, TileLayer, Circle, Popup } from "react-leaflet";
 
-import areas from "../data/mapAreas.json"
+import { displayCities } from "actions/mapActions";
 
 const Map = () => {
-  const filteredLowRiskAreas = areas.filter(lowRiskAreas => lowRiskAreas.riskLevel === "low");
-  const filteredMidRiskAreas = areas.filter(midRiskAreas => midRiskAreas.riskLevel === "mid");
-  const filteredHighRiskAreas = areas.filter(highRiskAreas => highRiskAreas.riskLevel === "high");
+  const [riskAreas, setRiskAreas] = useState([]);
+
+  displayCities(setRiskAreas)
+
+  const filteredLowRiskAreas = riskAreas.filter(lowRiskAreas => lowRiskAreas.riskLevel === "low");
+  const filteredMidRiskAreas = riskAreas.filter(midRiskAreas => midRiskAreas.riskLevel === "mid");
+  const filteredHighRiskAreas = riskAreas.filter(highRiskAreas => highRiskAreas.riskLevel === "high");
 
   const mapRiskAreas = (filteredRiskAreas, dotColor) => {
    return filteredRiskAreas.map((mapArea) => {

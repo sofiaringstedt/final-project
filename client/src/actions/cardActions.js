@@ -159,16 +159,16 @@ export const startCounter = (
 
   const currentDose = dosesArray.map(dose => dose.dose);
 
-  setCountDownYear(Math.floor((nextDoseTime % year) / decade));
-  if (currentDose.includes("Dose 4")) setCountDownYear(Math.floor((nextDoseTime % year) / decade) + 3);;
-  setCountDownMonth(Math.floor((nextDoseTime % year) / month));
-  if (currentDose.includes("Dose 3")) setCountDownMonth(Math.floor((nextDoseTime % year) / month) + 5);
-  setCountDownDay(Math.floor((nextDoseTime % month) / day));
-  if (currentDose.includes("Dose 1")) setCountDownDay(Math.floor(nextDoseTime / day) + 30);
-  if (currentDose.includes("Dose 2")) setCountDownDay(Math.floor(nextDoseTime / day) + 30);
-  setCountDownHour(Math.floor((nextDoseTime % day) / hour));
-  setCountDownMinute(Math.floor((nextDoseTime % hour) / minute));
-  setCountDownSecond(Math.floor((nextDoseTime % minute) / second));
+  setCountDownYear(Math.floor((nextDoseTime % year) / decade) || 0);
+  if (currentDose.includes("Dose 4")) setCountDownYear(Math.floor((nextDoseTime % year) / decade) + 3 || 0);
+  setCountDownMonth(Math.floor((nextDoseTime % year) / month) || 0);
+  if (currentDose.includes("Dose 3")) setCountDownMonth(Math.floor((nextDoseTime % year) / month) + 5 || 0);
+  setCountDownDay(Math.floor((nextDoseTime % month) / day) || 0);
+  if (currentDose.includes("Dose 1")) setCountDownDay(Math.floor(nextDoseTime / day) + 30 || 0);
+  if (currentDose.includes("Dose 2")) setCountDownDay(Math.floor(nextDoseTime / day) + 30 || 0);
+  setCountDownHour(Math.floor((nextDoseTime % day) / hour) || 0);
+  setCountDownMinute(Math.floor((nextDoseTime % hour) / minute) || 0);
+  setCountDownSecond(Math.floor((nextDoseTime % minute) / second) || 0);
 };
 
 
