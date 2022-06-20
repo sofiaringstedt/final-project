@@ -73,43 +73,23 @@ const VaccineCard = ({ dosesArray, setDosesArray, setTrackDose }) => {
         <CountdownTitle>Book next dose in</CountdownTitle>
         {dosesArray.length > 0 &&
           <CountdownContainer>
-            {countDownYear === 0
+            {countDownYear
               ?
-              null
+              <CountdownWrapper>
+                <Time>{countDownYear < 10 ? `0${countDownYear}` : countDownYear}</Time>
+                <Interval>Years</Interval>
+              </CountdownWrapper>
               :
-              <>
-                {countDownYear
-                  ?
-                  <CountdownWrapper>
-                    <Time>{countDownYear < 10 ? `0${countDownYear}` : countDownYear}</Time>
-                    <Interval>Years</Interval>
-                  </CountdownWrapper>
-                  :
-                  <CountdownWrapper>
-                    <Time>00</Time>
-                    <Interval>Years</Interval>
-                  </CountdownWrapper>
-                }
-              </>
+              null
             }
-            {countDownMonth === 0
+            {countDownMonth
               ?
-              null
+              <CountdownWrapper>
+                <Time>{countDownMonth < 10 ? `0${countDownMonth}` : countDownMonth}</Time>
+                <Interval>Months</Interval>
+              </CountdownWrapper>
               :
-              <>
-                {countDownMonth
-                  ?
-                  <CountdownWrapper>
-                    <Time>{countDownMonth < 10 ? `0${countDownMonth}` : countDownMonth}</Time>
-                    <Interval>Months</Interval>
-                  </CountdownWrapper>
-                  :
-                  <CountdownWrapper>
-                    <Time>00</Time>
-                    <Interval>Months</Interval>
-                  </CountdownWrapper>
-                }
-              </>
+              null
             }
             {countDownDay
               ?
@@ -118,10 +98,7 @@ const VaccineCard = ({ dosesArray, setDosesArray, setTrackDose }) => {
                 <Interval>Days</Interval>
               </CountdownWrapper>
               :
-              <CountdownWrapper>
-                <Time>00</Time>
-                <Interval>Days</Interval>
-              </CountdownWrapper>
+              null
             }
             {countDownHour
               ?
@@ -130,10 +107,7 @@ const VaccineCard = ({ dosesArray, setDosesArray, setTrackDose }) => {
                 <Interval>Hours</Interval>
               </CountdownWrapper>
               :
-              <CountdownWrapper>
-                <Time>00</Time>
-                <Interval>Hours</Interval>
-              </CountdownWrapper>
+              null
             }
             {countDownYear && countDownMonth
               ?
@@ -147,10 +121,7 @@ const VaccineCard = ({ dosesArray, setDosesArray, setTrackDose }) => {
                     <Interval>Mins</Interval>
                   </CountdownWrapper>
                   :
-                  <CountdownWrapper>
-                    <Time>00</Time>
-                    <Interval>Mins</Interval>
-                  </CountdownWrapper>
+                  null
                 }
               </>
             }
@@ -166,10 +137,7 @@ const VaccineCard = ({ dosesArray, setDosesArray, setTrackDose }) => {
                     <Interval>Secs</Interval>
                   </CountdownWrapper>
                   :
-                  <CountdownWrapper>
-                    <Time>00</Time>
-                    <Interval>Secs</Interval>
-                  </CountdownWrapper>
+                  null
                 }
               </>
             }
