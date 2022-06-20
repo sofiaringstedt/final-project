@@ -11,7 +11,7 @@ import resources from "../assets/resources.svg";
 
 import Header from "../reusables/Header";
 
-import { Hero, HeroTextBox, ImageList, LogInButton } from "../styled-components/home"
+import { Hero, HeroTextBox,HeroParagraph, ImageList, LogInButton } from "../styled-components/home"
 
 const Home = () => {
   const navigate = useNavigate();
@@ -27,13 +27,13 @@ const Home = () => {
           {/* <Hero src={hero} alt="green background" /> */}
           <HeroTextBox>
             <h1>Vaccination against TBE</h1>
-            <p>
+            <HeroParagraph>
               {" "}
               TBE, tick-borne encephalitis is a viral disease that is spread by ticks. 
               The virus can cause inflammation in the brain or meninges. You should be 
               vaccinated against TBE if you are staying in areas where the TBE virus is
               present.
-            </p>
+            </HeroParagraph>
           </HeroTextBox>
         </Hero>
       </section>

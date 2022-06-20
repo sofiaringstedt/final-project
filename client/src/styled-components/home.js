@@ -19,15 +19,23 @@ export const Hero = styled.div`
   background-image: url(${hero});
   height: 400px;
   width: 100%;
-  /* position: absolute; */
   background-size: auto;
   background-repeat: no-repeat;
   background-position: 50% 50%;
+  position: relative;
 `;
 
 export const HeroTextBox = styled.div`
-  /* position: relative; */
+  color: #FFFBFB;
+  position: absolute;
+  top: 64px;
+  margin-left: 18px;
+  margin-right: 9px;
 `;
+export const HeroParagraph = styled.p`
+  font-weight: 600;
+`;
+  
 
 export const ImageList = styled.div`
   display: flex;
