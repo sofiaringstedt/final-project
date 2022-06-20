@@ -11,7 +11,7 @@ import resources from "../assets/resources.svg";
 
 import Header from "../reusables/Header";
 
-import { Hero, HeroTextBox,HeroParagraph, ImageList, LogInButton } from "../styled-components/home"
+import { Hero, HeroTextBox, HeroParagraph, HeroHeading, ImageListWrapper, ImageList, StyledListImg, LogInButtonWrapper, LogInButton } from "../styled-components/home"
 
 const Home = () => {
   const navigate = useNavigate();
@@ -26,7 +26,7 @@ const Home = () => {
         <Hero>
           {/* <Hero src={hero} alt="green background" /> */}
           <HeroTextBox>
-            <h1>Vaccination against TBE</h1>
+            <HeroHeading>Vaccination against TBE</HeroHeading>
             <HeroParagraph>
               {" "}
               TBE, tick-borne encephalitis is a viral disease that is spread by ticks. 
@@ -37,35 +37,37 @@ const Home = () => {
           </HeroTextBox>
         </Hero>
       </section>
-      <ImageList>
-        <ul>
+      <ImageListWrapper>
+        <ImageList>
           <li onClick={() => accessToken !== undefined ? navigate("/card") : navigate("/login")}>
             {" "}
-            <img src={dose} alt="syringe icon" />
+            <StyledListImg src={dose} alt="syringe icon" />
           </li>
           <li>
             {" "}
-            <img src={tick} alt="tick icon" />
+            <StyledListImg src={tick} alt="tick icon" />
           </li>
           <li onClick={() => navigate("/login")}>
             {" "}
-            <img src={profile} alt="profile icon" />{" "}
+            <StyledListImg src={profile} alt="profile icon" />{" "}
           </li>
           <li>
             {" "}
-            <img src={images} alt="images icon" />
+            <StyledListImg src={images} alt="images icon" />
           </li>
           <li onClick={() => navigate("/map")}>
             {" "}
-            <img src={map} alt="sign out icon" />
+            <StyledListImg src={map} alt="sign out icon" />
           </li>
           <li onClick={() => navigate("/resources")}>
             {" "}
-            <img src={resources} alt="resources icon" />
+            <StyledListImg src={resources} alt="resources icon" />
           </li>
-        </ul>
-      </ImageList>
+        </ImageList>
+      </ImageListWrapper>
+      <LogInButtonWrapper>
       <LogInButton onClick={handleLogin}>Login</LogInButton>
+      </LogInButtonWrapper>
     </>
   );
 };
