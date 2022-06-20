@@ -10,6 +10,7 @@ import Map from "./components/Map";
 import Reminder from "./components/Reminder"
 import NotFound from "./components/NotFound";
 import Resources from "components/Resources";
+import Information from "components/Information"
 
 import { API_URL } from "utils/urls"; 
 
@@ -72,6 +73,8 @@ const App = () => {
         <Route path="/resources" element={<Resources />} />
         <Route path="/404" element={<NotFound />} />
         <Route path="*" element={<Navigate to={"/404"} replace />} />
+        <Route path="/information" element={<Information />} />
+        
       </Routes>
     </BrowserRouter>
   );

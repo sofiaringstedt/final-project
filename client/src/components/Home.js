@@ -83,7 +83,7 @@ const Home = ({ loggedIn }) => {
             {" "}
             <StyledListImg src={images} alt="images icon" />
           </li>
-          <li>
+          <li onClick={() => navigate("/information")}>
             {" "}
             <StyledListImg src={tick} alt="tick icon" />
           </li>
@@ -102,11 +102,11 @@ const Home = ({ loggedIn }) => {
         </ImageList>
       </ImageListWrapper>
       <LogInButtonWrapper>
-        {isLoggedIn ? (
-          <LogInButton> Logout </LogInButton>
-        ) : (
+        {!isLoggedIn ? (
           <LogInButton onClick={handleLogin}>Login</LogInButton>
-        )}
+          ) : (
+            <LogInButton> Logout </LogInButton>
+            )}
       </LogInButtonWrapper>
     </>
   );
