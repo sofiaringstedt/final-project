@@ -11,12 +11,22 @@ import resources from "../assets/resources.svg";
 
 import Header from "../reusables/Header";
 
-import { Hero, HeroTextBox, HeroParagraph, HeroHeading, ImageListWrapper, ImageList, StyledListImg, LogInButtonWrapper, LogInButton } from "../styled-components/home"
+import {
+  Hero,
+  HeroTextBox,
+  HeroParagraph,
+  HeroHeading,
+  ImageListWrapper,
+  ImageList,
+  StyledListImg,
+  LogInButtonWrapper,
+  LogInButton,
+} from "../styled-components/home";
 
 const Home = () => {
   const navigate = useNavigate();
   const handleLogin = () => navigate("/login");
-  
+
   const accessToken = JSON.parse(localStorage.getItem("user"))?.accessToken;
 
   return (
@@ -29,17 +39,29 @@ const Home = () => {
             <HeroHeading>Vaccination against TBE</HeroHeading>
             <HeroParagraph>
               {" "}
-              TBE, tick-borne encephalitis is a viral disease that is spread by ticks. 
-              The virus can cause inflammation in the brain or meninges. You should be 
-              vaccinated against TBE if you are staying in areas where the TBE virus is
-              present.
+              TBE, tick-borne encephalitis is a viral disease that is spread by
+              ticks. The virus can cause inflammation in the brain or meninges.
+              You should be vaccinated against TBE if you are staying in areas
+              where the TBE virus is present.
             </HeroParagraph>
+            {/* <HeroParagraph>
+              In Sweden, TBE is found mainly in southern and central Sweden.
+              Abroad, the virus is found in large parts of Central Europe, in
+              the Baltic countries, in Russia and on Åland.
+            </HeroParagraph> */}
           </HeroTextBox>
         </Hero>
       </section>
+      <section>
+        <p></p>
+      </section>
       <ImageListWrapper>
         <ImageList>
-          <li onClick={() => accessToken !== undefined ? navigate("/card") : navigate("/login")}>
+          <li
+            onClick={() =>
+              accessToken !== undefined ? navigate("/card") : navigate("/login")
+            }
+          >
             {" "}
             <StyledListImg src={dose} alt="syringe icon" />
           </li>
@@ -66,7 +88,7 @@ const Home = () => {
         </ImageList>
       </ImageListWrapper>
       <LogInButtonWrapper>
-      <LogInButton onClick={handleLogin}>Login</LogInButton>
+        <LogInButton onClick={handleLogin}>Login</LogInButton>
       </LogInButtonWrapper>
     </>
   );

@@ -17,7 +17,7 @@ export const Hero = styled.div`
     width: 100%;
     background-size: cover;
     top: 25px;
-  } 
+  }
 `;
 
 export const HeroTextBox = styled.div`
@@ -31,6 +31,10 @@ export const HeroTextBox = styled.div`
     top: 80px;
     margin-left: 40px;
     margin-right: 40px;
+  }
+  @media ${devices.desktop}{
+    margin-left: 50px;
+    margin-right: 50px;
   }
 `;
 export const HeroParagraph = styled.p`
@@ -79,8 +83,13 @@ export const ImageList = styled.ul`
   }
 `;
 export const StyledListImg = styled.img`
-  height: 170px;
-  width: 170px;
+  height: 100px;
+  width: 100px;
+
+  @media ${devices.tablet} {
+    height: 170px;
+    width: 170px;
+  }
 `;
 export const LogInButton = styled.button`
   background-color: #175c4c;

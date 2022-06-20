@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import Logo from "../assets/markup-cropped.svg";
+import { devices } from "styled-components/globalStyles";
 
 const Header = () => {
   return (
@@ -16,11 +17,24 @@ export const StyledHeader = styled.header`
   height: 90px;
   display: flex;
   position: relative;
+  
+  @media ${devices.tablet}{
+    height: 120px;
+  }
 `;
 
 export const StyledLogo =  styled.img`
 height: 60px;
-width: 130px;
+width: 140px;
 margin-top: 10px;
+
+@media ${devices.tablet}{
+  height: 120px;
+  width: 180px;
+  margin-left: 20px;
+  }
+  @media ${devices.desktop}{
+  width: 200px;
+  }
 `;
 
