@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { MapContainer, TileLayer, Circle, Popup } from "react-leaflet";
 
 import { displayCities } from "actions/mapActions";
@@ -6,7 +6,9 @@ import { displayCities } from "actions/mapActions";
 const Map = () => {
   const [riskAreas, setRiskAreas] = useState([]);
   
-  displayCities(setRiskAreas)
+  useEffect(() => {
+    displayCities(setRiskAreas)
+  }, [])
 
   const filteredLowRiskAreas = riskAreas.filter(lowRiskAreas => lowRiskAreas.riskLevel === "low");
   const filteredMidRiskAreas = riskAreas.filter(midRiskAreas => midRiskAreas.riskLevel === "mid");
