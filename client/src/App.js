@@ -35,7 +35,7 @@ const App = () => {
 
     setLoading(true);
 
-    fetch(API_URL(`user/${userId}`), options)
+  userId && fetch(API_URL (`user/${userId}`), options)
       .then((response) => response.json())
       .then((doseData) => {
         setDosesArray(doseData.response.doses);
