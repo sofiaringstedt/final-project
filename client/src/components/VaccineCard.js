@@ -70,7 +70,7 @@ const VaccineCard = ({ dosesArray, setDosesArray, setTrackDose }) => {
     <>
       <Header>
         <HomeButton />
-        <CountdownTitle>Book next dose in</CountdownTitle>
+        <CountdownTitle>Book next dose to</CountdownTitle>
         {dosesArray.length > 0 &&
           <CountdownContainer>
             {countDownYear === 0

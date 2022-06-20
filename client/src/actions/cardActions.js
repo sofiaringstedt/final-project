@@ -146,7 +146,6 @@ export const startCounter = (
 ) => {
   const latestDoseTime = new Date(`${latestDoseDate}, 24:00:0`).getTime();
   const currentTime = new Date().getTime();
-
   const nextDoseTime = latestDoseTime - currentTime;
 
   const second = 1000;

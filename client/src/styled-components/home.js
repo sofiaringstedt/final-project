@@ -35,7 +35,6 @@ export const HeroTextBox = styled.div`
 export const HeroParagraph = styled.p`
   font-weight: 600;
 `;
-  
 
 export const ImageList = styled.div`
   display: flex;

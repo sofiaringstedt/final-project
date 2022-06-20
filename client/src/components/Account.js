@@ -8,7 +8,9 @@ import clipBoard from "../assets/clipboard.svg";
 import dots from "../assets/dots.svg";
 import signOut from "../assets/log-out.svg";
 
-import { Icons } from "../styled-components/account"
+import { AccountWrapper, HeaderContainer, Icons, Iconimages, LogoImage, IconsContainer } from "../styled-components/account"
+import NavigateBackButton from "reusables/NavigateBackButton";
+
 
 const Account = ({ setMode, setMethod, setLoggedIn, totalDoses }) => {
   const navigate = useNavigate();
@@ -39,23 +41,25 @@ const Account = ({ setMode, setMethod, setLoggedIn, totalDoses }) => {
   }, [accessToken, navigate]);
 
   return (
-    <>
-      <h1>Hello, {firstName}</h1>
-      <img src={tickInfoLogo} alt="Tick info logo" />
-      <div>
-        <p>{firstName} {lastName}</p>
-        <p>{email}</p>
-        <p>Doses taken: {totalDoses}</p>
-      </div>
-      <hr />
-      <ul>
-        <li onClick={()=> navigate("/")}> <Icons src={house} alt="home icon"></Icons> Home</li>
-        <li onClick={() => navigate("/reminder")}> <Icons src={bell} alt="bell icon"></Icons> Reminder</li>
-        <li onClick={() => navigate("/card")}> <Icons src={clipBoard} alt="clipboard icon"></Icons> Vaccine card</li>
-        <li onClick={handleEditUser}> <Icons src={dots} alt="three dots icon"></Icons>Edit profile</li>
-        <li onClick={handleSignOut}> <Icons src={signOut} alt="sign out icon"></Icons> sign out</li>
-      </ul>
-    </>
+    <AccountWrapper>
+      <NavigateBackButton />
+        <HeaderContainer>
+        <h1>Hello, {firstName}</h1>
+        <LogoImage src={tickInfoLogo} alt="Tick info logo" />
+        <div>
+          <p>{firstName} {lastName}</p>
+          <p>{email}</p>
+          <p>Doses taken: {totalDoses}</p>
+        </div>
+        </HeaderContainer>
+        <IconsContainer>
+          <Icons onClick={()=> navigate("/")}> <Iconimages src={house} alt="home icon"></Iconimages> Home</Icons>
+          <Icons onClick={() => navigate("/reminder")}> <Iconimages src={bell} alt="bell icon"></Iconimages> Reminder</Icons>
+          <Icons onClick={() => navigate("/card")}> <Iconimages src={clipBoard} alt="clipboard icon"></Iconimages> Vaccine card</Icons>
+          <Icons onClick={handleEditUser}> <Iconimages src={dots} alt="three dots icon"></Iconimages>Edit profile</Icons>
+          <Icons onClick={handleSignOut}> <Iconimages src={signOut} alt="sign out icon"></Iconimages> Sign out</Icons>
+        </IconsContainer>
+    </AccountWrapper>
   );
 };
 
