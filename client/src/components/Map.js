@@ -5,7 +5,7 @@ import { displayCities } from "actions/mapActions";
 
 const Map = () => {
   const [riskAreas, setRiskAreas] = useState([]);
-
+  
   displayCities(setRiskAreas)
 
   const filteredLowRiskAreas = riskAreas.filter(lowRiskAreas => lowRiskAreas.riskLevel === "low");

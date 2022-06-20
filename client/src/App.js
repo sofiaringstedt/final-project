@@ -18,6 +18,7 @@ const App = () => {
   const [method, setMethod] = useState("POST");
   const [nextDose, setNextDose] = useState("");
   const [totalDoses, setTotalDoses] = useState(0);
+  // eslint-disable-next-line 
   const [loading, setLoading] = useState(false);
   const [trackDose, setTrackDose] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
@@ -43,7 +44,7 @@ const App = () => {
       })
       .catch((error) => console.log(error))
       .finally(() => setLoading(false))
-  }, [loggedIn, trackDose]);
+  }, [loggedIn, trackDose, token, userId]);
   
   return (
     <BrowserRouter>
