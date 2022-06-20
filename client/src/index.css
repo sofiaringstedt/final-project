@@ -10,6 +10,14 @@ code {
     monospace;
 }
 
+hr {
+  border: 0;
+  width: 96%;             
+  background-color: gray;
+  height: 1px;
+}
+
+
 ol, ul {
 	list-style: none;
   padding: 0;

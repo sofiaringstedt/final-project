@@ -1,17 +1,20 @@
 import React from "react";
 
-import HomeButton from "../reusables/HomeButton";
+import { ReminderWrapper, ReminderContainer } from "../styled-components/reminder"
+
+import NavigateBackButton from "reusables/NavigateBackButton";
 
 const Reminder = ({ nextDose }) => {
   const dateOptions = { month: "long", day: "numeric", year: "numeric" };
   const formattedDate = new Date(nextDose).toLocaleDateString("en-US", dateOptions);
 
   return (
-    <>
-      <HomeButton />
-      <h1>Reminders</h1>
+    <ReminderWrapper>
+      <NavigateBackButton />
+      <ReminderContainer>
+      <h1>Friendly Reminder</h1>
       <p>
-        A single tick bite can give you TBE, there are currently no medicines that
+        A single tick bite can give you TBE and there are currently no medicines that
         cures TBE, but vaccines protect.
         {" "}
         The basic vaccination against TBE consists of three doses. You usually get
@@ -22,8 +25,9 @@ const Reminder = ({ nextDose }) => {
         To maintain your protection, you need to take a fourth dose three years after the third
         dose and then one dose every five years.
       </p>
-      <p>{nextDose ? `Next dose on ${formattedDate}` : "There are no doses in your vaccine card."}</p>
-    </>
+      <p>{nextDose ? `Your next dose is on ${formattedDate}.` : "There are no doses in your vaccine card."}</p>
+      </ReminderContainer>
+    </ReminderWrapper>
   );
 };
 

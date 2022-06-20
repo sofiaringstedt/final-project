@@ -3,6 +3,10 @@ import { MapContainer, TileLayer, Circle, Popup } from "react-leaflet";
 
 import { displayCities } from "actions/mapActions";
 
+import { MapWrapper, InfoText } from "../styled-components/map"
+
+import NavigateBackButton from "reusables/NavigateBackButton";
+
 const Map = () => {
   const [riskAreas, setRiskAreas] = useState([]);
   
@@ -23,15 +27,19 @@ const Map = () => {
   }
 
   return (
-    <MapContainer center={[63, 16]} zoom={5} scrollWheelZoom={true}>
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      {filteredLowRiskAreas && mapRiskAreas(filteredLowRiskAreas, "yellow")}
-      {filteredMidRiskAreas && mapRiskAreas(filteredMidRiskAreas, "orange")}
-      {filteredHighRiskAreas && mapRiskAreas(filteredHighRiskAreas, "red")}
-    </MapContainer>
+    <MapWrapper>
+    <NavigateBackButton />
+    <InfoText>Click on markers to see city names</InfoText>
+      <MapContainer center={[63, 16]} zoom={5} scrollWheelZoom={true}>
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        {filteredLowRiskAreas && mapRiskAreas(filteredLowRiskAreas, "yellow")}
+        {filteredMidRiskAreas && mapRiskAreas(filteredMidRiskAreas, "orange")}
+        {filteredHighRiskAreas && mapRiskAreas(filteredHighRiskAreas, "red")}
+      </MapContainer>
+    </MapWrapper>
   );
 };
 
