@@ -49,7 +49,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home loggedIn={loggedIn}/>} />
         <Route path="/login" element={<Login setLoggedIn={setLoggedIn}  />} />
         <Route path="/register" element={<Register mode={mode} method={method} />} />
         <Route path="/account" element={
