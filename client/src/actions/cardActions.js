@@ -169,5 +169,3 @@ export const startCounter = (
   setCountDownMinute(Math.floor((nextDoseTime % hour) / minute) || 0);
   setCountDownSecond(Math.floor((nextDoseTime % minute) / second) || 0);
 };
-
-
