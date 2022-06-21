@@ -5,7 +5,7 @@ import { addDose, handleDoseDelete, startCounter } from "../actions/cardActions"
 import CardForm from "../reusables/CardForm";
 import HomeButton from "reusables/HomeButton";
 
-import { Spinner } from "../styled-components/mainStyles";
+import { Spinner } from "../styled-components/globalStyles";
 import {
   Header,
   CountdownTitle,

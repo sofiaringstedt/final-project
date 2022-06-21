@@ -6,7 +6,7 @@ import HomeButton from "reusables/HomeButton";
 
 import { loginUser } from "../actions/userActions";
 
-import { Spinner } from "../styled-components/mainStyles";
+import { Spinner } from "../styled-components/globalStyles";
 import { FormContainer, StyledHeading } from "../styled-components/login";
 
 const Login = ({ setLoggedIn }) => {

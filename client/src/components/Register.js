@@ -7,7 +7,7 @@ import UserForm from "../reusables/UserForm";
 import HomeButton from "reusables/HomeButton";
 import {FormContainer, StyledHeading} from "../styled-components/login"
 
-import { Spinner } from "../styled-components/mainStyles";
+import { Spinner } from "../styled-components/globalStyles";
 
 const Register = ({ mode, method }) => {
   const [firstName, setFirstName] = useState("");
