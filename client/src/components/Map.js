@@ -3,7 +3,7 @@ import { MapContainer, TileLayer, Circle, Popup } from "react-leaflet";
 
 import { displayCities } from "actions/mapActions";
 
-import { MapWrapper, InfoText } from "../styled-components/map"
+import { MapWrapper, HeaderText, InfoText } from "../styled-components/map"
 
 import NavigateBackButton from "reusables/NavigateBackButton";
 
@@ -28,8 +28,9 @@ const Map = () => {
 
   return (
     <MapWrapper>
-    <NavigateBackButton />
-    <InfoText>Click on markers to see city names</InfoText>
+        <NavigateBackButton />
+        <HeaderText>High Risk Area Map</HeaderText>
+        <InfoText>Click on markers to see city names</InfoText>
       <MapContainer center={[63, 16]} zoom={5} scrollWheelZoom={true}>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

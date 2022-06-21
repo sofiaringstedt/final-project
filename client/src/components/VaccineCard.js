@@ -7,16 +7,26 @@ import NavigateBackButton from "reusables/NavigateBackButton";
 
 import { Spinner } from "../styled-components/globalStyles";
 import {
+  CardContainer,
   Header,
   CountdownTitle,
   CountdownContainer,
   CountdownWrapper,
   Time,
   Interval,
+  CardWrapper,
+  CardGrid,
   DoseContainer,
-  DoseParagraph,
   HeaderTags,
-  TagParagraph
+  DoseHeader,
+  DateHeader,
+  BatchHeader,
+  NextDoseHeader,
+  DoseParagraph,
+  DateParagraph,
+  BatchParagraph,
+  NextDoseParagraph,
+  DeleteButton
 } from "../styled-components/vaccineCard";
 
 const VaccineCard = ({ dosesArray, setDosesArray, setTrackDose }) => {
@@ -67,35 +77,35 @@ const VaccineCard = ({ dosesArray, setDosesArray, setTrackDose }) => {
   };
 
   return (
-    <>
+    <CardContainer>
       <Header>
         <NavigateBackButton />
-        <CountdownTitle>Book next dose to</CountdownTitle>
+        <CountdownTitle>Book next dose to...</CountdownTitle>
         {dosesArray.length > 0 &&
           <CountdownContainer>
-            {countDownYear
+            {countDownYear > 0
               ?
               <CountdownWrapper>
                 <Time>{countDownYear < 10 ? `0${countDownYear}` : countDownYear}</Time>
-                <Interval>Years</Interval>
+                <Interval>{countDownYear === 1 ? "Year" : "Years"}</Interval>
               </CountdownWrapper>
               :
               null
             }
-            {countDownMonth
+            {countDownMonth > 0
               ?
               <CountdownWrapper>
                 <Time>{countDownMonth < 10 ? `0${countDownMonth}` : countDownMonth}</Time>
-                <Interval>Months</Interval>
+                <Interval>{countDownMonth === 1 ? "Month" : "Months"}</Interval>
               </CountdownWrapper>
               :
               null
             }
-            {countDownDay
+            {countDownDay > 0
               ?
               <CountdownWrapper>
                 <Time>{countDownDay < 10 ? `0${countDownDay}` : countDownDay}</Time>
-                <Interval>Days</Interval>
+                <Interval>{countDownDay === 1 ? "Day" : "Days"}</Interval>
               </CountdownWrapper>
               :
               <CountdownWrapper>
@@ -103,11 +113,11 @@ const VaccineCard = ({ dosesArray, setDosesArray, setTrackDose }) => {
                 <Interval>Days</Interval>
               </CountdownWrapper>
             }
-            {countDownHour
+            {countDownHour > 0
               ?
               <CountdownWrapper>
                 <Time>{countDownHour < 10 ? `0${countDownHour}` : countDownHour}</Time>
-                <Interval>Hours</Interval>
+                <Interval>{countDownHour === 1 ? "Hour" : "Hours"}</Interval>
               </CountdownWrapper>
               :
 
@@ -121,11 +131,11 @@ const VaccineCard = ({ dosesArray, setDosesArray, setTrackDose }) => {
               null
               :
               <>
-                {countDownMinute
+                {countDownMinute > 0
                   ?
                   <CountdownWrapper>
                     <Time>{countDownMinute < 10 ? `0${countDownMinute}` : countDownMinute}</Time>
-                    <Interval>Mins</Interval>
+                    <Interval>{countDownMinute === 1 ? "Min" : "Mins"}</Interval>
                   </CountdownWrapper>
                   :
                   <CountdownWrapper>
@@ -140,7 +150,7 @@ const VaccineCard = ({ dosesArray, setDosesArray, setTrackDose }) => {
               null
               :
               <>
-                {countDownSecond
+                {countDownSecond > 0
                   ?
                   <CountdownWrapper>
                     <Time>{countDownSecond < 10 ? `0${countDownSecond}` : countDownSecond}</Time>
@@ -157,6 +167,28 @@ const VaccineCard = ({ dosesArray, setDosesArray, setTrackDose }) => {
           </CountdownContainer>
         }
       </Header>
+        <CardWrapper>
+        <h2>Vaccine Card</h2>
+        <CardGrid>
+        <HeaderTags>
+          <DoseHeader>Dose</DoseHeader>
+          <DateHeader>Date</DateHeader>
+          <NextDoseHeader>Next</NextDoseHeader>
+          <BatchHeader>Batch</BatchHeader>
+        </HeaderTags>
+        {dosesArray?.map((dose) => {
+          return <DoseContainer key={dose._id}>
+            <DoseParagraph>{dose.dose}</DoseParagraph>
+            <DateParagraph>{dose.date}</DateParagraph>
+            <NextDoseParagraph>{dose.nextDose}</NextDoseParagraph>
+            <BatchParagraph>{dose?.batchNumber}</BatchParagraph>
+            <DeleteButton onClick={() => {
+              handleDoseDelete(dose, dosesArray, setDosesArray, setTrackDose, setErrorMessage)
+            }}>X</DeleteButton>
+          </DoseContainer>
+        })}
+        </CardGrid>
+      </CardWrapper>
       <CardForm
         dose={dose}
         date={date}
@@ -167,28 +199,8 @@ const VaccineCard = ({ dosesArray, setDosesArray, setTrackDose }) => {
         handleForm={onDoseSubmit}
         dosesArray={dosesArray}
       />
-      <div>
-        <h2>Vaccine Card</h2>
         {errorMessage && <p>{errorMessage}</p>}
-        <HeaderTags>
-          <TagParagraph>Dose</TagParagraph>
-          <TagParagraph>Date</TagParagraph>
-          <TagParagraph>Batch Number</TagParagraph>
-          <TagParagraph>Next Dose</TagParagraph>
-        </HeaderTags>
-        {dosesArray?.map((dose) => {
-          return <DoseContainer key={dose._id}>
-            <DoseParagraph>{dose.dose}</DoseParagraph>
-            <DoseParagraph>{dose.date}</DoseParagraph>
-            <DoseParagraph>{dose?.batchNumber}</DoseParagraph>
-            <DoseParagraph>{dose.nextDose}</DoseParagraph>
-            <button onClick={() => {
-              handleDoseDelete(dose, dosesArray, setDosesArray, setTrackDose, setErrorMessage)
-            }}>Delete</button>
-          </DoseContainer>
-        })}
-      </div>
-    </>
+    </CardContainer>
   );
 };
 

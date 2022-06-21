@@ -1,6 +1,6 @@
 import React from "react";
 
-import { ReminderWrapper, ReminderContainer } from "../styled-components/reminder"
+import { ReminderWrapper, ReminderContainer, NextDoseTag } from "../styled-components/reminder"
 
 import NavigateBackButton from "reusables/NavigateBackButton";
 
@@ -25,7 +25,7 @@ const Reminder = ({ nextDose }) => {
         To maintain your protection, you need to take a fourth dose three years after the third
         dose and then one dose every five years.
       </p>
-      <p>{nextDose ? `Your next dose is on ${formattedDate}.` : "There are no doses in your vaccine card."}</p>
+      <NextDoseTag>{nextDose ? `Your next dose is on ${formattedDate}.` : "There are no doses in your vaccine card."}</NextDoseTag>
       </ReminderContainer>
     </ReminderWrapper>
   );
