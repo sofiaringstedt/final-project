@@ -10,6 +10,31 @@ const CardForm = (props) => {
   const trackedDoseThree = currentDose.includes("Dose 3");
   const trackedDoseFour = currentDose.includes("Dose 4");
 
+  const setMinDate = () => {
+    let minDate = ""
+    const today = new Date();
+
+    switch (dose) {
+      case "Dose 1": 
+      case "Dose 2":
+        const thirtyDaysAgo = today.setDate(today.getDate() - 30);
+        minDate = new Date(thirtyDaysAgo).toISOString().split('T')[0]
+        break;
+      case "Dose 3":
+        const fiveMonthsAgo = today.setDate(today.getDate() - 152);
+        minDate = new Date(fiveMonthsAgo).toISOString().split('T')[0]
+        break;
+      case "Dose 4":
+        const threeYearsAgo = today.setDate(today.getDate() - 1095);
+        minDate = new Date(threeYearsAgo).toISOString().split('T')[0]
+        break;
+      default:
+        break;
+    };
+    
+    return minDate;
+  };
+
   return (
     <form onSubmit={handleForm}>
       <select value={dose} onChange={(event) => setDose(event.target.value)}>
@@ -38,7 +63,7 @@ const CardForm = (props) => {
       <input
         type="date"
         value={date}
-        // min={new Date().toISOString().split('T')[0]}
+        min={setMinDate()}
         onChange={((event) => setDate(event.target.value))} />
       <input
         type="text"

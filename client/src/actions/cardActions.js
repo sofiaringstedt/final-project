@@ -145,7 +145,7 @@ export const startCounter = (
   latestDoseDate
 ) => {
   const currentDose = dosesArray.map(dose => dose.dose);
-  const latestDoseTime = new Date(`${latestDoseDate}, 00:00:0`).getTime();
+  const latestDoseTime = new Date(`${latestDoseDate}, 24:00:00`).getTime();
   const today = new Date();
   let currentTime; 
 
