@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import dose from "../assets/dose.svg";
@@ -7,65 +7,107 @@ import profile from "../assets/profile.svg";
 import images from "../assets/images.svg";
 import map from "../assets/map.svg";
 import resources from "../assets/resources.svg";
-// import hero from "../assets/hero.svg";
 
 import Header from "../reusables/Header";
 
-import { Hero, HeroTextBox,HeroParagraph, ImageList, LogInButton } from "../styled-components/home"
+import {
+  Hero,
+  HeroTextBox,
+  HeroParagraph,
+  HeroHeading,
+  ImageListWrapper,
+  ImageList,
+  StyledListImg,
+  LogInButtonWrapper,
+  LogInButton,
+} from "../styled-components/home";
 
 const Home = () => {
   const navigate = useNavigate();
+  const [isDesktop, setDesktop] = useState(window.innerWidth > 1024);
   const handleLogin = () => navigate("/login");
-  
+
   const accessToken = JSON.parse(localStorage.getItem("user"))?.accessToken;
 
+  const updateMedia = () => {
+    setDesktop(window.innerWidth > 1024);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", updateMedia);
+    return () => window.removeEventListener("resize", updateMedia);
+  });
   return (
     <>
       <Header />
       <section>
         <Hero>
-          {/* <Hero src={hero} alt="green background" /> */}
           <HeroTextBox>
-            <h1>Vaccination against TBE</h1>
+            <HeroHeading>Vaccination against TBE</HeroHeading>
             <HeroParagraph>
               {" "}
-              TBE, tick-borne encephalitis is a viral disease that is spread by ticks. 
-              The virus can cause inflammation in the brain or meninges. You should be 
-              vaccinated against TBE if you are staying in areas where the TBE virus is
-              present.
+              TBE, tick-borne encephalitis is a viral disease that is spread by
+              ticks. The virus can cause inflammation in the brain or meninges.
+              You should be vaccinated against TBE if you are staying in areas
+              where the TBE virus is present.
             </HeroParagraph>
+            {isDesktop ? (
+              <div>
+                <HeroParagraph>
+                  In Sweden, TBE is found mainly in southern and central Sweden.
+                  Abroad, the virus is found in large parts of Central Europe,
+                  in the Baltic countries, in Russia and on Åland.
+                </HeroParagraph>
+              </div>
+            ) : (
+              <div>{""}</div>
+            )}
           </HeroTextBox>
         </Hero>
       </section>
-      <ImageList>
-        <ul>
-          <li onClick={() => accessToken !== undefined ? navigate("/card") : navigate("/login")}>
+      <section>
+        <p></p>
+      </section>
+      <ImageListWrapper>
+        <ImageList>
+          <li
+            onClick={() =>
+              accessToken !== undefined ? navigate("/card") : navigate("/login")
+            }
+          >
             {" "}
-            <img src={dose} alt="syringe icon" />
+            <StyledListImg src={dose} alt="syringe icon" />
           </li>
           <li>
             {" "}
-            <img src={tick} alt="tick icon" />
+            <StyledListImg src={images} alt="images icon" />
           </li>
-          <li onClick={() => navigate("/login")}>
+          <li onClick={() => navigate("/information")}>
             {" "}
-            <img src={profile} alt="profile icon" />{" "}
-          </li>
-          <li>
-            {" "}
-            <img src={images} alt="images icon" />
+            <StyledListImg src={tick} alt="tick icon" />
           </li>
           <li onClick={() => navigate("/map")}>
             {" "}
-            <img src={map} alt="sign out icon" />
+            <StyledListImg src={map} alt="sign out icon" />
+          </li>
+          <li onClick={() => navigate("/login")}>
+            {" "}
+            <StyledListImg src={profile} alt="profile icon" />{" "}
           </li>
           <li onClick={() => navigate("/resources")}>
             {" "}
-            <img src={resources} alt="resources icon" />
+            <StyledListImg src={resources} alt="resources icon" />
           </li>
-        </ul>
-      </ImageList>
-      <LogInButton onClick={handleLogin}>Login</LogInButton>
+        </ImageList>
+      </ImageListWrapper>
+      <LogInButtonWrapper>
+        {accessToken 
+          ?
+           <LogInButton> Logout </LogInButton>
+          : 
+          <LogInButton onClick={handleLogin}>Login</LogInButton>
+        }
+      </LogInButtonWrapper>
     </>
   );
 };

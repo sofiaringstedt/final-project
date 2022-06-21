@@ -5,6 +5,7 @@ import { registerOrEditUser } from "../actions/userActions";
 
 import UserForm from "../reusables/UserForm";
 import HomeButton from "reusables/HomeButton";
+import {FormContainer, StyledHeading} from "../styled-components/login"
 
 import { Spinner } from "../styled-components/mainStyles";
 
@@ -29,8 +30,9 @@ const Register = ({ mode, method }) => {
 
   return (
     <>
+    <FormContainer>
       <HomeButton />
-      <h1>Create account</h1>
+      <StyledHeading>Create account</StyledHeading>
       <UserForm
         firstName={firstName}
         lastName={lastName}
@@ -43,6 +45,7 @@ const Register = ({ mode, method }) => {
         setPassword={setPassword}
         handleForm={onRegisterOrEditUser}
       />
+      </FormContainer>
     </>
   );
 };
