@@ -115,8 +115,8 @@ export const handleDoseDelete = (removeDose, dosesArray, setDosesArray, setTrack
 
         const allDosesFromLocalStorage = JSON.parse(localStorage.getItem("allDoses"));
 
-        allDosesFromLocalStorage?.pop();
-        allDoses?.pop();
+        allDosesFromLocalStorage.pop();
+        allDoses.pop();
 
         localStorage.setItem("allDoses", JSON.stringify(allDosesFromLocalStorage));
         localStorage.setItem("dose", JSON.stringify(allDosesFromLocalStorage[allDosesFromLocalStorage?.length - 1]));
@@ -144,8 +144,35 @@ export const startCounter = (
   dosesArray,
   latestDoseDate
 ) => {
-  const latestDoseTime = new Date(`${latestDoseDate}, 24:00:0`).getTime();
-  const currentTime = new Date().getTime();
+  const currentDose = dosesArray.map(dose => dose.dose);
+  const latestDoseTime = new Date(`${latestDoseDate}, 00:00:0`).getTime();
+  const today = new Date();
+  let currentTime; 
+
+  if (currentDose.includes("Dose 1") || currentDose.includes("Dose 2")) {
+    if (latestDoseTime < new Date().getTime()) {
+      currentTime = today.setDate(today.getDate() - 30) || 0;
+    } else {
+      currentTime = today.setDate(today.getDate() + 30) || 0;
+    }
+  };
+
+ if (currentDose.includes("Dose 3")) {
+   if (latestDoseTime < new Date().getTime()) {
+     currentTime = today.setDate(today.getDate() - 152) || 0;
+   } else {
+     currentTime = today.setDate(today.getDate() + 152) || 0;
+   }
+ };
+ 
+  if (currentDose.includes("Dose 4")) {
+    if (latestDoseTime < new Date().getTime()) {
+      currentTime = today.setDate(today.getDate() - 1095) || 0;
+    } else {
+      currentTime = today.setDate(today.getDate() + 1095) || 0;
+    }
+  };
+
   const nextDoseTime = latestDoseTime - currentTime;
 
   const second = 1000;
@@ -156,16 +183,10 @@ export const startCounter = (
   const year = month * 12;
   const decade = year * 10;
 
-  const currentDose = dosesArray.map(dose => dose.dose);
-
-  setCountDownYear(Math.floor((nextDoseTime % year) / decade) || 0);
-  if (currentDose.includes("Dose 4")) setCountDownYear(Math.floor((nextDoseTime % year) / decade) + 3 || 0);
-  setCountDownMonth(Math.floor((nextDoseTime % year) / month) || 0);
-  if (currentDose.includes("Dose 3")) setCountDownMonth(Math.floor((nextDoseTime % year) / month) + 5 || 0);
-  setCountDownDay(Math.floor((nextDoseTime % month) / day) || 0);
-  if (currentDose.includes("Dose 1")) setCountDownDay(Math.floor(nextDoseTime / day) + 30 || 0);
-  if (currentDose.includes("Dose 2")) setCountDownDay(Math.floor(nextDoseTime / day) + 30 || 0);
-  setCountDownHour(Math.floor((nextDoseTime % day) / hour) || 0);
-  setCountDownMinute(Math.floor((nextDoseTime % hour) / minute) || 0);
-  setCountDownSecond(Math.floor((nextDoseTime % minute) / second) || 0);
+  setCountDownYear(Math.floor((Math.abs(nextDoseTime) % decade) / year) || 0);
+  setCountDownMonth(Math.floor((Math.abs(nextDoseTime) % year) / month) || 0);
+  setCountDownDay(Math.floor((Math.abs(nextDoseTime) % month) / day) || 0);
+  setCountDownHour(Math.floor((Math.abs(nextDoseTime) % day) / hour) || 0);
+  setCountDownMinute(Math.floor((Math.abs(nextDoseTime) % hour) / minute) || 0);
+  setCountDownSecond(Math.floor((Math.abs(nextDoseTime) % minute) / second) || 0);
 };
