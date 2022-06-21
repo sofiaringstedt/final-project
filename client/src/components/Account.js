@@ -30,7 +30,7 @@ const Account = ({ setMode, setMethod, setLoggedIn, totalDoses }) => {
   const email = JSON.parse(localStorage.getItem("user"))?.email;
   const userId = JSON.parse(localStorage.getItem("user"))?.userId;
   
-  const handleSignOut = () => {
+ const handleSignOut = () => {
     const keysToRemove = ["user", "dose", "allDoses"];
     keysToRemove.forEach(key => localStorage.removeItem(key));
     setLoggedIn(false);

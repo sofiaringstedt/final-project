@@ -2,6 +2,10 @@ import styled from "styled-components";
 import hero from "../assets/heroimg.svg";
 import { devices } from "./globalStyles";
 
+export const HomeContainer = styled.section`
+  width: 100%;
+`;
+
 export const Hero = styled.div`
   background-image: url(${hero});
   height: 400px;
@@ -57,6 +61,7 @@ export const HeroHeading = styled.h1`
     font-size: 30px;
   }
 `;
+
 export const ImageListWrapper = styled.div`
   display: flex;
   justify-content: center;
