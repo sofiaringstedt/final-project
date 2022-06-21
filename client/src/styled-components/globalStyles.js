@@ -22,6 +22,8 @@ export const Spinner = styled.div`
 
 export const devices = {
     mobile: "(min-width: 375px)",
+    largeMobile: "(min-width: 460px)", 
+    smallTablet: "(min-width: 600px)",
     tablet: "(min-width: 768px)",
     desktop: "(min-width: 1025px)",
 };

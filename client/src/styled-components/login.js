@@ -14,13 +14,13 @@ export const StyledHeading = styled.h1`
   font-weight: 600;
   font-size: 20px;
 
-  @media ${devices.tablet}{
+  @media ${devices.tablet} {
     margin-left: 248px;
     margin-bottom: 27px;
     font-weight: 600;
     font-size: 33px;
   }
-  @media ${devices.desktop}{
+  @media ${devices.desktop} {
     margin-left: 353px;
   }
 `;

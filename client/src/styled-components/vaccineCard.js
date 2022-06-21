@@ -1,4 +1,24 @@
 import styled from "styled-components";
+import { devices } from "./globalStyles";
+
+// @media ${ devices.tablet } {
+//   margin - left: 248px;
+//   margin - bottom: 27px;
+//   font - weight: 600;
+//   font - size: 33px;
+// }
+// @media ${ devices.desktop } {
+//   margin - left: 353px;
+// }
+
+const userWrappers = styled.div`
+  width: 320px;
+  @media ${devices.mobile} { width: 375px; };
+  @media ${devices.largeMobile} { width: 400px; };
+  @media ${devices.smallTablet} { width: 450px; };
+  @media ${devices.tablet} { width: 500px; };
+  @media ${devices.desktop} { width: 600px; };
+`;
 
 export const CardContainer = styled.section`
   display: flex;
@@ -6,12 +26,16 @@ export const CardContainer = styled.section`
 `;
 
 export const Header = styled.div`
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 10px;
   background: #E2F5FA;
+
+  padding: ${props => props.addTop ? "10px" : "20px 10px" };
+`;
+
+export const CountdownTitle = styled.h1`
+  color: #175C4C;
 `;
 
 export const CountdownContainer = styled.div`
@@ -22,42 +46,17 @@ export const CountdownContainer = styled.div`
 export const CountdownWrapper = styled.div`
   display: flex;
   flex-direction : column;
-  justify-content: center;
   align-items: center;
   margin-right: 20px;
   background: darkorange;
   opacity: 0.9;
   border-radius: 10px;
   padding: 10px;
-`;
+  width: 45px;
 
-export const CardWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: lightyellow;
-  padding-bottom: 20px;
-`;
-
-export const CardGrid = styled.div`
-  display: grid;
-  position: relative;
-  grid-template-rows: 1fr 1fr;
-  width: 80%;
-`;
-
-export const HeaderTags = styled.div`
-  display: grid;
-  grid-template-columns: repeat(4,1fr);
-`;
-
-export const DoseContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(4,1fr);
-`;
-
-export const CountdownTitle = styled.h1`
-  color: #175C4C;
+  :last-of-type {
+    margin-right: 0;
+  }
 `;
 
 export const Time = styled.p`
@@ -71,58 +70,84 @@ export const Interval = styled.p`
   color: white;
 `;
 
-export const DoseHeader = styled.p`
-  grid-column: 1;
-  font-size: 16px;
-  text-decoration: underline;
+export const CardWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 20px;
 `;
 
-export const DoseParagraph = styled.p`
-  grid-column: 1;
-  grid-row: 2;
-  font-size: 16px;
+export const CardHeader = styled.h2`
+  font-size: 19px;
+  margin: 40px 0 60px 0;
 `;
 
-export const DateHeader = styled.p`
-  grid-column: 2;
-  font-size: 16px;
-  text-decoration: underline;
+export const UserDetailsContainer = styled(userWrappers)`
+  display: flex;
+  margin-bottom: 15px;
 `;
 
-export const DateParagraph = styled.p`
-  grid-column: 2;
-  grid-row: 2;
-  font-size: 16px;
+export const UserDetailsWrapper = styled(userWrappers)`
+ 
 `;
 
-export const NextDoseHeader = styled.p`
-  grid-column: 3;
-  font-size: 16px;
-  text-decoration: underline;
+export const UserName = styled.p`
+  margin: 0 0 -5px 7px;
+  font-weight: 600;
+
+   &:first-letter {
+    text-transform: uppercase;
+  }
 `;
 
-export const NextDoseParagraph = styled.p`
-  grid-column: 3;
-  grid-row: 2;
-  font-size: 16px;
+export const NameLabel = styled.p`
+  margin: -5px 0 30px 7px;
+  font-size: 14px;
 `;
 
-export const BatchHeader = styled.p`
-  grid-column: 4;
-  font-size: 16px;
-  text-decoration: underline;
+export const Table = styled.table`
+  width: 320px;
+  border-collapse: collapse;
+  background-color: #fafafa;
+
+  @media ${devices.mobile} { width: 375px; };
+  @media ${devices.largeMobile} { width: 400px; };
+  @media ${devices.smallTablet} { width: 450px; };
+  @media ${devices.tablet} { width: 500px; };
+  @media ${devices.desktop} { width: 600px; };
 `;
 
-export const BatchParagraph = styled.p`
-  grid-column: 4;
-  grid-row: 2;
-  font-size: 16px;
+export const Label = styled.tr`
+  border-top: 2px solid #1c1c1c;
+  border-bottom: 2px solid #1c1c1c;
 `;
 
-export const DeleteButton = styled.button`
-  position: absolute;
-  right: -15px;
-  bottom: 18px;
+export const IconWrapper = styled.th`
+   @media ${devices.largeMobile} {
+    position: absolute;
+    margin: 10px 0 0 18px;
+  }
+`;
+
+export const TrashIcon = styled.img`
+  width: 20px;
+`;
+
+export const TableHeader = styled.th`
+  border-right: 1px solid black;
+  padding: 12px 0;
+
+  @media (max-width: 500px) {
+    display: ${props => props.hide ? "none" : null};
+  };
+`;
+
+export const DoseContainer = styled.tr`
+  border-top: 2px solid #1c1c1c;
+  border-bottom: 2px solid #1c1c1c;
+`;
+
+export const DeleteButton = styled.th`
   background: none;
   border: none;
   font-weight: 800;
