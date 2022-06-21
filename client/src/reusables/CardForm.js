@@ -1,5 +1,13 @@
 import React from "react";
 
+import { 
+  Form, 
+  Select, 
+  DateInput, 
+  BatchInput,
+  Button
+} from "../styled-components/cardForm";
+
 const CardForm = (props) => {
   const { dose, date, batchNumber, setDose, setDate, setBatchNumber, handleForm, dosesArray } = props;
 
@@ -11,8 +19,8 @@ const CardForm = (props) => {
   const trackedDoseFour = currentDose.includes("Dose 4");
 
   return (
-    <form onSubmit={handleForm}>
-      <select value={dose} onChange={(event) => setDose(event.target.value)}>
+    <Form onSubmit={handleForm}>
+      <Select value={dose} onChange={(event) => setDose(event.target.value)}>
         <option>Choose dose...</option>
         <option
           value="Dose 1"
@@ -34,19 +42,19 @@ const CardForm = (props) => {
           disabled={trackedDoseOne && trackedDoseTwo && trackedDoseThree && !trackedDoseFour ? false : true}>
             Dose 4
         </option>
-      </select>
-      <input
+      </Select>
+      <DateInput
         type="date"
         value={date}
         // min={new Date().toISOString().split('T')[0]}
         onChange={((event) => setDate(event.target.value))} />
-      <input
+      <BatchInput
         type="text"
         value={batchNumber}
         placeholder="Optional batchnumber"
         onChange={(event) => setBatchNumber(event.target.value)} />
-      <button type="submit">Add dose</button>
-    </form>
+      <Button type="submit">Add dose</Button>
+    </Form>
   );
 };
 

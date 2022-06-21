@@ -15,10 +15,18 @@ import {
   Time,
   Interval,
   CardWrapper,
+  CardGrid,
   DoseContainer,
-  DoseParagraph,
   HeaderTags,
-  TagParagraph
+  DoseHeader,
+  DateHeader,
+  BatchHeader,
+  NextDoseHeader,
+  DoseParagraph,
+  DateParagraph,
+  BatchParagraph,
+  NextDoseParagraph,
+  DeleteButton
 } from "../styled-components/vaccineCard";
 
 const VaccineCard = ({ dosesArray, setDosesArray, setTrackDose }) => {
@@ -159,8 +167,28 @@ const VaccineCard = ({ dosesArray, setDosesArray, setTrackDose }) => {
           </CountdownContainer>
         }
       </Header>
-      <CardWrapper>
-      <h2>Vaccine Card</h2>
+        <CardWrapper>
+        <h2>Vaccine Card</h2>
+        <CardGrid>
+        <HeaderTags>
+          <DoseHeader>Dose</DoseHeader>
+          <DateHeader>Date</DateHeader>
+          <NextDoseHeader>Next</NextDoseHeader>
+          <BatchHeader>Batch</BatchHeader>
+        </HeaderTags>
+        {dosesArray?.map((dose) => {
+          return <DoseContainer key={dose._id}>
+            <DoseParagraph>{dose.dose}</DoseParagraph>
+            <DateParagraph>{dose.date}</DateParagraph>
+            <NextDoseParagraph>{dose.nextDose}</NextDoseParagraph>
+            <BatchParagraph>{dose?.batchNumber}</BatchParagraph>
+            <DeleteButton onClick={() => {
+              handleDoseDelete(dose, dosesArray, setDosesArray, setTrackDose, setErrorMessage)
+            }}>X</DeleteButton>
+          </DoseContainer>
+        })}
+        </CardGrid>
+      </CardWrapper>
       <CardForm
         dose={dose}
         date={date}
@@ -172,24 +200,6 @@ const VaccineCard = ({ dosesArray, setDosesArray, setTrackDose }) => {
         dosesArray={dosesArray}
       />
         {errorMessage && <p>{errorMessage}</p>}
-        <HeaderTags>
-          <TagParagraph>Dose</TagParagraph>
-          <TagParagraph>Date</TagParagraph>
-          <TagParagraph>Batch Number</TagParagraph>
-          <TagParagraph>Next Dose</TagParagraph>
-        </HeaderTags>
-        {dosesArray?.map((dose) => {
-          return <DoseContainer key={dose._id}>
-            <DoseParagraph>{dose.dose}</DoseParagraph>
-            <DoseParagraph>{dose.date}</DoseParagraph>
-            <DoseParagraph>{dose?.batchNumber}</DoseParagraph>
-            <DoseParagraph>{dose.nextDose}</DoseParagraph>
-            <button onClick={() => {
-              handleDoseDelete(dose, dosesArray, setDosesArray, setTrackDose, setErrorMessage)
-            }}>Delete</button>
-          </DoseContainer>
-        })}
-      </CardWrapper>
     </CardContainer>
   );
 };
