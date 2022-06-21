@@ -21,9 +21,6 @@ import {
   SignOutIcon 
 } from "../styled-components/account"
 
-import NavigateBackButton from "reusables/NavigateBackButton";
-
-
 const Account = ({ setMode, setMethod, setLoggedIn, totalDoses }) => {
   const navigate = useNavigate();
 
@@ -54,7 +51,6 @@ const Account = ({ setMode, setMethod, setLoggedIn, totalDoses }) => {
 
   return (
     <AccountWrapper>
-      <NavigateBackButton />
         <HeaderContainer>
         <h1>Hello, {firstName}</h1>
         <LogoImage src={tickInfoLogo} alt="Tick info logo" />

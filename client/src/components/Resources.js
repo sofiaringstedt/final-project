@@ -1,10 +1,10 @@
 import React from "react";
-import HomeButton from "reusables/HomeButton";
+import NavigateBackButton from "reusables/NavigateBackButton";
 
 const Resources = () => {
   return (
     <>
-    <HomeButton />
+    <NavigateBackButton />
       <ul>
         <li>
           Map of reported cases of TBE per municipality in 2021 data:

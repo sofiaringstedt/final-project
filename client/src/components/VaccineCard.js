@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { addDose, handleDoseDelete, startCounter } from "../actions/cardActions";
 
 import CardForm from "../reusables/CardForm";
-import HomeButton from "reusables/HomeButton";
+import NavigateBackButton from "reusables/NavigateBackButton";
 
 import { Spinner } from "../styled-components/globalStyles";
 import {
@@ -69,7 +69,7 @@ const VaccineCard = ({ dosesArray, setDosesArray, setTrackDose }) => {
   return (
     <>
       <Header>
-        <HomeButton />
+        <NavigateBackButton />
         <CountdownTitle>Book next dose to</CountdownTitle>
         {dosesArray.length > 0 &&
           <CountdownContainer>

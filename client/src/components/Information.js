@@ -1,8 +1,10 @@
 import React from "react";
+import NavigateBackButton from "reusables/NavigateBackButton";
 
 const Information = () => {
   return (
     <>
+    <NavigateBackButton />
       <h1>Bitten by a tick</h1>
       <h4>
         Ticks are small insects that bite into the skin and suck blood. Remove

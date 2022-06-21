@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import UserForm from "../reusables/UserForm";
-import HomeButton from "reusables/HomeButton";
+import NavigateBackButton from "reusables/NavigateBackButton";
 
 import { loginUser } from "../actions/userActions";
 
@@ -36,7 +36,7 @@ const Login = ({ setLoggedIn }) => {
 
   return (
     <FormContainer>
-      <HomeButton />
+      <NavigateBackButton />
       <StyledHeading>Log in</StyledHeading>
       <UserForm
         email={email}

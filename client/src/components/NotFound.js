@@ -1,11 +1,10 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import NavigateBackButton from "reusables/NavigateBackButton";
 
 const NotFound = () => {
-  const navigate = useNavigate();
   return (
     <>
-      <button onClick={() => navigate("/")}>Home</button>
+      <NavigateBackButton />
       <h1>404 Page not found</h1>
     </>
   )
