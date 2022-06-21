@@ -1,16 +1,6 @@
 import styled from "styled-components";
 import { devices } from "./globalStyles";
 
-// @media ${ devices.tablet } {
-//   margin - left: 248px;
-//   margin - bottom: 27px;
-//   font - weight: 600;
-//   font - size: 33px;
-// }
-// @media ${ devices.desktop } {
-//   margin - left: 353px;
-// }
-
 const userWrappers = styled.div`
   width: 320px;
   @media ${devices.mobile} { width: 375px; };
@@ -88,7 +78,7 @@ export const UserDetailsContainer = styled(userWrappers)`
 `;
 
 export const UserDetailsWrapper = styled(userWrappers)`
- 
+  margin-bottom: 5px;
 `;
 
 export const UserName = styled.p`

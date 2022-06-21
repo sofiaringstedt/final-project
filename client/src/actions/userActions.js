@@ -38,6 +38,7 @@ export const registerOrEditUser = (
   password,
   mode,
   method,
+  setEditAccount,
   setLoading,
   setErrorMessage,
   navigate
@@ -67,6 +68,7 @@ export const registerOrEditUser = (
           accessToken: userData.response.accessToken
         }));
 
+        setEditAccount(false);
         navigate("/account")
       } else {
         setErrorMessage(userData.response)

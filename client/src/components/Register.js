@@ -9,7 +9,7 @@ import {FormContainer, StyledHeading} from "../styled-components/login"
 
 import { Spinner } from "../styled-components/globalStyles";
 
-const Register = ({ mode, method }) => {
+const Register = ({ mode, method, editAccount, setEditAccount }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -21,7 +21,7 @@ const Register = ({ mode, method }) => {
 
   const onRegisterOrEditUser = (event) => {
     event.preventDefault();
-    registerOrEditUser(firstName, lastName, email, password, mode, method, setLoading, setErrorMessage, navigate)
+    registerOrEditUser(firstName, lastName, email, password, mode, method, setEditAccount, setLoading, setErrorMessage, navigate)
   };
 
   if (loading) {
@@ -32,7 +32,7 @@ const Register = ({ mode, method }) => {
     <>
     <FormContainer>
       <NavigateBackButton />
-      <StyledHeading>Create account</StyledHeading>
+        <StyledHeading>{editAccount ? "Edit account" : "Create account"}</StyledHeading>
       <UserForm
         firstName={firstName}
         lastName={lastName}
@@ -44,6 +44,8 @@ const Register = ({ mode, method }) => {
         setEmail={setEmail}
         setPassword={setPassword}
         handleForm={onRegisterOrEditUser}
+        editAccount={editAccount}
+        setEditAccount={setEditAccount}
       />
       </FormContainer>
     </>

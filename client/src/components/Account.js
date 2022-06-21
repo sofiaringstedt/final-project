@@ -21,7 +21,7 @@ import {
   SignOutIcon 
 } from "../styled-components/account"
 
-const Account = ({ setMode, setMethod, setLoggedIn, totalDoses }) => {
+const Account = ({ setMode, setMethod, setLoggedIn, setEditAccount, totalDoses }) => {
   const navigate = useNavigate();
 
   const accessToken = JSON.parse(localStorage.getItem("user"))?.accessToken;
@@ -40,6 +40,7 @@ const Account = ({ setMode, setMethod, setLoggedIn, totalDoses }) => {
   const handleEditUser = () => {
     setMode(`user/${userId}`);
     setMethod("PUT");
+    setEditAccount(true);
     navigate("/register");
   };
 

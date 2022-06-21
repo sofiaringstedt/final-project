@@ -23,6 +23,7 @@ const App = () => {
   const [loading, setLoading] = useState(false);
   const [trackDose, setTrackDose] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
+  const [editAccount, setEditAccount] = useState(false);
   const [dosesArray, setDosesArray] = useState([]);
 
   const userId = JSON.parse(localStorage.getItem("user"))?.userId;
@@ -58,7 +59,13 @@ const App = () => {
         <Route path="/login" element={<Login setLoggedIn={setLoggedIn} />} />
         <Route
           path="/register"
-          element={<Register mode={mode} method={method} />}
+          element={
+            <Register 
+              mode={mode} 
+              method={method} 
+              editAccount={editAccount}
+              setEditAccount={setEditAccount}
+            />}
         />
         <Route
           path="/account"
@@ -67,6 +74,7 @@ const App = () => {
               setMode={setMode}
               setMethod={setMethod}
               setLoggedIn={setLoggedIn}
+              setEditAccount={setEditAccount}
               totalDoses={totalDoses}
             />
           }

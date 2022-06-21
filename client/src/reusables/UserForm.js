@@ -24,6 +24,7 @@ const UserForm = (props) => {
     setEmail,
     setPassword,
     handleForm,
+    editAccount
   } = props;
 
   const handleFirstNameChange = (event) => setFirstName(event.target.value);
@@ -86,8 +87,8 @@ const UserForm = (props) => {
           </StyledParagraph>
         }
          <ButtonWrapper>
-        <SubmitButton type="submit">
-          {displayOnlyInRegistration ? "Register" : "Login"}
+          <SubmitButton type="submit">
+            {editAccount ? "edit" : displayOnlyInRegistration ? "Register" : "Login" }
         </SubmitButton>
         </ButtonWrapper>
       </Form>
