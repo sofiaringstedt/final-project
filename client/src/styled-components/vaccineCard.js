@@ -1,8 +1,17 @@
 import styled from "styled-components";
 
+export const CardContainer = styled.section`
+  display: flex;
+  flex-direction: column;
+`;
+
 export const Header = styled.div`
-  background: #E2F5FA;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 10px;
+  background: #E2F5FA;
 `;
 
 export const CountdownTitle = styled.h1`
@@ -28,11 +37,19 @@ export const CountdownWrapper = styled.div`
 
 export const Time = styled.p`
   font-size: 32px;
+  color: white;
   margin: 0;
 `;
 
 export const Interval = styled.p`
   margin-bottom: 0;
+  color: white;
+`;
+
+export const CardWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export const DoseContainer = styled.div`

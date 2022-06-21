@@ -7,12 +7,14 @@ import NavigateBackButton from "reusables/NavigateBackButton";
 
 import { Spinner } from "../styled-components/globalStyles";
 import {
+  CardContainer,
   Header,
   CountdownTitle,
   CountdownContainer,
   CountdownWrapper,
   Time,
   Interval,
+  CardWrapper,
   DoseContainer,
   DoseParagraph,
   HeaderTags,
@@ -67,10 +69,10 @@ const VaccineCard = ({ dosesArray, setDosesArray, setTrackDose }) => {
   };
 
   return (
-    <>
+    <CardContainer>
       <Header>
         <NavigateBackButton />
-        <CountdownTitle>Book next dose to</CountdownTitle>
+        <CountdownTitle>Book next dose to...</CountdownTitle>
         {dosesArray.length > 0 &&
           <CountdownContainer>
             {countDownYear
@@ -157,6 +159,8 @@ const VaccineCard = ({ dosesArray, setDosesArray, setTrackDose }) => {
           </CountdownContainer>
         }
       </Header>
+      <CardWrapper>
+      <h2>Vaccine Card</h2>
       <CardForm
         dose={dose}
         date={date}
@@ -167,8 +171,6 @@ const VaccineCard = ({ dosesArray, setDosesArray, setTrackDose }) => {
         handleForm={onDoseSubmit}
         dosesArray={dosesArray}
       />
-      <div>
-        <h2>Vaccine Card</h2>
         {errorMessage && <p>{errorMessage}</p>}
         <HeaderTags>
           <TagParagraph>Dose</TagParagraph>
@@ -187,8 +189,8 @@ const VaccineCard = ({ dosesArray, setDosesArray, setTrackDose }) => {
             }}>Delete</button>
           </DoseContainer>
         })}
-      </div>
-    </>
+      </CardWrapper>
+    </CardContainer>
   );
 };
 
