@@ -7,19 +7,19 @@ import Register from "./components/Register";
 import Account from "./components/Account";
 import VaccineCard from "./components/VaccineCard";
 import Map from "./components/Map";
-import Reminder from "./components/Reminder"
+import Reminder from "./components/Reminder";
 import NotFound from "./components/NotFound";
 import Resources from "components/Resources";
-import Information from "components/Information"
+import Information from "components/Information";
 
-import { API_URL } from "utils/urls"; 
+import { API_URL } from "utils/urls";
 
 const App = () => {
   const [mode, setMode] = useState("register");
   const [method, setMethod] = useState("POST");
   const [nextDose, setNextDose] = useState("");
   const [totalDoses, setTotalDoses] = useState(0);
-  // eslint-disable-next-line 
+  // eslint-disable-next-line
   const [loading, setLoading] = useState(false);
   const [trackDose, setTrackDose] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
@@ -36,45 +36,57 @@ const App = () => {
 
     setLoading(true);
 
-  userId && fetch(API_URL (`user/${userId}`), options)
-      .then((response) => response.json())
-      .then((doseData) => {
-        setDosesArray(doseData.response.doses);
-        setTotalDoses(doseData.response.doses.length);
-        setNextDose(doseData.response.doses[doseData.response.doses.length - 1]?.nextDose);
-      })
-      .catch((error) => console.log(error))
-      .finally(() => setLoading(false))
+    userId &&
+      fetch(API_URL(`user/${userId}`), options)
+        .then((response) => response.json())
+        .then((doseData) => {
+          setDosesArray(doseData.response.doses);
+          setTotalDoses(doseData.response.doses.length);
+          setNextDose(
+            doseData.response.doses[doseData.response.doses.length - 1]
+              ?.nextDose
+          );
+        })
+        .catch((error) => console.log(error))
+        .finally(() => setLoading(false));
   }, [loggedIn, trackDose, token, userId]);
-  
+
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home loggedIn={loggedIn}/>} />
-        <Route path="/login" element={<Login setLoggedIn={setLoggedIn}  />} />
-        <Route path="/register" element={<Register mode={mode} method={method} />} />
-        <Route path="/account" element={
-          <Account 
-            setMode={setMode} 
-            setMethod={setMethod}
-            setLoggedIn={setLoggedIn} 
-            totalDoses={totalDoses} 
-            />} 
-          />
-        <Route path="/card" element={
-          <VaccineCard 
-            dosesArray={dosesArray}
-            setDosesArray={setDosesArray} 
-            setTrackDose={setTrackDose}
-            />} 
-          />
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login setLoggedIn={setLoggedIn} />} />
+        <Route
+          path="/register"
+          element={<Register mode={mode} method={method} />}
+        />
+        <Route
+          path="/account"
+          element={
+            <Account
+              setMode={setMode}
+              setMethod={setMethod}
+              setLoggedIn={setLoggedIn}
+              totalDoses={totalDoses}
+            />
+          }
+        />
+        <Route
+          path="/card"
+          element={
+            <VaccineCard
+              dosesArray={dosesArray}
+              setDosesArray={setDosesArray}
+              setTrackDose={setTrackDose}
+            />
+          }
+        />
         <Route path="/reminder" element={<Reminder nextDose={nextDose} />} />
         <Route path="/map" element={<Map />} />
         <Route path="/resources" element={<Resources />} />
         <Route path="/404" element={<NotFound />} />
         <Route path="*" element={<Navigate to={"/404"} replace />} />
         <Route path="/information" element={<Information />} />
-        
       </Routes>
     </BrowserRouter>
   );

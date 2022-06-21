@@ -22,11 +22,10 @@ import {
   LogInButton,
 } from "../styled-components/home";
 
-const Home = ({ loggedIn }) => {
+const Home = () => {
   const navigate = useNavigate();
   const [isDesktop, setDesktop] = useState(window.innerWidth > 1024);
   const handleLogin = () => navigate("/login");
-  const { isLoggedIn } = loggedIn;
 
   const accessToken = JSON.parse(localStorage.getItem("user"))?.accessToken;
 
@@ -102,11 +101,12 @@ const Home = ({ loggedIn }) => {
         </ImageList>
       </ImageListWrapper>
       <LogInButtonWrapper>
-        {!isLoggedIn ? (
+        {accessToken 
+          ?
+           <LogInButton> Logout </LogInButton>
+          : 
           <LogInButton onClick={handleLogin}>Login</LogInButton>
-          ) : (
-            <LogInButton> Logout </LogInButton>
-            )}
+        }
       </LogInButtonWrapper>
     </>
   );
