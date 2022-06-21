@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { devices } from "./globalStyles";
 
 export const StyledInputField = styled.input`
   height: 45px;
@@ -36,6 +37,11 @@ export const SubmitButton = styled.button`
   box-shadow: 0px 4px 4px rgba(0,0,0,0.25);
   font-family: 'Source Serif Pro', serif;
   font-weight: 600;
+  font-size: 16px;
+
+  @media ${devices.tablet}{
+    font-size: 20px;
+  }
 `;
 
 export const ButtonWrapper = styled.div`

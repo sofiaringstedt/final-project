@@ -11,6 +11,8 @@ import {
   InfoHeadingThree,
   InfoHeadingFour,
   InfoParagraph,
+  NumberedList,
+  BulletList,
   ListItem
 } from "../styled-components/information";
 
@@ -26,8 +28,8 @@ const Information = () => {
     <InformationWrapper>
       <InfoHeadingOne>Bitten by a tick</InfoHeadingOne>
       <InfoHeadingFour>
-        Ticks are small insects that bite into the skin and suck blood. Remove
-        any ticks that you find on your skin. Ticks can sometimes spread
+        Ticks are small insects that bite into the skin and suck blood.
+        Remove any ticks that you find on your skin. Ticks can sometimes spread
         diseases. If you are bitten, you may need to seek medical care.
       </InfoHeadingFour>
       <InfoHeadingThree >Ticks are found in nature</InfoHeadingThree >
@@ -50,19 +52,21 @@ const Information = () => {
         possible.
       </InfoParagraph>
       <InfoHeadingTwo>How do I remove a tick?</InfoHeadingTwo>
-      <ol>
+      <NumberedList>
         <ListItem>
-          1. Use tweezers to remove ticks. Pharmacies offer different kinds that
+          Use tweezers to remove ticks. Pharmacies offer different kinds that
           you can buy.
         </ListItem>
+        <br/>
         <ListItem>
-          2. Grasp the tick as close to the skin as possible. Gently pull it
+          Grasp the tick as close to the skin as possible. Gently pull it
           straight out. Try to get all of the tick out.
         </ListItem>
+        <br/>
         <ListItem>
-          3. Wash the area where the tick was attached with soap and water.
+          Wash the area where the tick was attached with soap and water.
         </ListItem>
-      </ol>
+      </NumberedList>
       <InfoParagraph>
         If any parts of the tick remain, you can try to remove them. Otherwise,
         they usually disappear on their own. The skin may get a little red and
@@ -74,18 +78,19 @@ const Information = () => {
         healthcare centre if a week has passed and any of the following has
         happened:
       </InfoParagraph>
-      <ol>
+      <BulletList>
         <ListItem>
           There is a red spot in the area where the tick was attached, and this
           spot is larger than a couple of centimetres. The spot can be
           completely red or look like a ring, and it may be lighter in the
           centre.
         </ListItem>
+        <br/>
         <ListItem>
           You have a fever, headaches, aches in your body, and you are more
           tired than usual.
         </ListItem>
-      </ol>
+      </BulletList>
       <InfoParagraph>
         Some clinics are open in the evenings and on weekends. Call the 1177
         hotline if you would like advice about what to do. The hotline is
@@ -93,28 +98,35 @@ const Information = () => {
         care, if necessary.
       </InfoParagraph>
       <InfoHeadingTwo>Tips for not getting bitten by a tick</InfoHeadingTwo>
-      <ol>
+      <BulletList>
         <ListItem>
           Wear a long-sleeved shirt, long trousers, and high shoes or boots
           whenever you are out in nature.
         </ListItem>
+        <br/>
         <ListItem>Check your body for ticks after you have been out in nature.</ListItem>
+        <br/>
         <ListItem>Check your skin when you get undressed or shower/take a bath.</ListItem>
+        <br/>
         <ListItem>Check your children's skin after they have been out in nature.</ListItem>
+        <br/>
         <ListItem>Check your dogs, cats or any other animals in the household</ListItem>
-      </ol>
+      </BulletList>
 
       <InfoHeadingTwo>Vaccination against TBE</InfoHeadingTwo>
       <InfoParagraph>
         There is a particular risk of ticks spreading the disease TBE in certain
         areas, such as:
       </InfoParagraph>
-      <ol>
+      <BulletList>
         <ListItem>Uppland</ListItem>
+        <br/>
         <ListItem>Stockholm County, near the sea</ListItem>
+        <br/>
         <ListItem>Södermanland</ListItem>
+        <br/>
         <ListItem>Västra Götaland County</ListItem>
-      </ol>
+      </BulletList>
       <InfoParagraph>
         There are also other areas where the risk of infection is greater. Call
         the 1177 hotline if you are not sure about whether there is a greater

@@ -21,9 +21,11 @@ import {
   StyledListImg,
   LogInButtonWrapper,
   LogInButton,
+  InformationWrapper,
 } from "../styled-components/home";
 
 import {
+  InfoHeadingThree,
   InfoHeadingFour,
   InfoParagraph,
 } from "../styled-components/information";
@@ -60,6 +62,8 @@ const Home = () => {
               {" "}
               TBE, tick-borne encephalitis is a viral disease that is spread by
               ticks. The virus can cause inflammation in the brain or meninges.
+              <br/>
+              <br/>
               You should be vaccinated against TBE if you are staying in areas
               where the TBE virus is present.
             </HeroParagraph>
@@ -77,14 +81,14 @@ const Home = () => {
           </HeroTextBox>
         </Hero>
         {isDesktop ? (
-          <div>
+          <InformationWrapper>
             <InfoHeadingFour>
               Ticks are small insects that bite into the skin and suck blood.
               Remove any ticks that you find on your skin. Ticks can sometimes
               spread diseases. If you are bitten, you may need to seek medical
               care.
             </InfoHeadingFour>
-            <h3>Ticks are found in nature</h3>
+            <InfoHeadingThree>Ticks are found in nature</InfoHeadingThree>
             <InfoParagraph>
               Ticks are small insects that are found in nature between March and
               October. High grass is one example of where you might find ticks.
@@ -92,7 +96,7 @@ const Home = () => {
               small spider and is 1–4 millimetres long. A tick may grow bigger
               in size once it has sucked blood.
             </InfoParagraph>
-            <h3>Ticks can spread diseases</h3>
+            <InfoHeadingThree>Ticks can spread diseases</InfoHeadingThree>
             <InfoParagraph>
               Ticks are not dangerous, but they can spread diseases. One of
               these diseases is TBE, tick-borne encephalitis, which can cause
@@ -104,7 +108,7 @@ const Home = () => {
               the skin for a long time. You should therefore remove the tick as
               quickly as possible.
             </InfoParagraph>
-          </div>
+          </InformationWrapper>
         ) : (
           <div>{""}</div>
         )}
@@ -120,7 +124,7 @@ const Home = () => {
               {" "}
               <StyledListImg src={dose} alt="syringe icon" />
             </li>
-            <li>
+            <li onClick={() => navigate("/images")}>
               {" "}
               <StyledListImg src={images} alt="images icon" />
             </li>
