@@ -67,14 +67,7 @@ export const HeroHeading = styled.h1`
 export const ImageListWrapper = styled.div`
   display: flex;
   justify-content: center;
-  margin: 15vh;
-
-  @media ${devices.tablet} {
-    /* top: 80px; */
-  }
-  @media ${devices.desktop}{
-    /* margin-top:-8vh; */
-  }
+  margin-top: 50px;
 `;
 
 export const ImageList = styled.ul`
@@ -84,7 +77,6 @@ export const ImageList = styled.ul`
   width: 380px;
   height: 250px;
   align-items: center;
-  /* margin: 0px; */
 
   @media ${devices.tablet} {
     width: 750px;
@@ -96,7 +88,6 @@ export const ImageList = styled.ul`
     justify-content: center;
     margin-left: 10vw;
     margin-right: 10vw;
-    /* margin-top: 0vh; */
   }
 `;
 
@@ -140,7 +131,6 @@ export const LogInButton = styled.button`
   font-family: "Source Serif Pro", serif;
   font-weight: 600;
   font-size: medium;
-  /* margin-top: -20px; */
   margin-bottom: 40px;
 
   @media ${devices.tablet} {
