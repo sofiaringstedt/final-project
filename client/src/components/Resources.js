@@ -5,13 +5,21 @@ import SH from "../assets/SH.png";
 import SR from "../assets/SR.png";
 import FA from "../assets/FA.jpeg";
 
-import { ResourcesContainer, LinkWrapper, ResourcesWrapper, ProfileLinkTag, LinkTag, BioPics} from "styled-components/resources";
+import { 
+  ResourcesContainer,
+  Header, 
+  LinkWrapper, 
+  ResourcesWrapper, 
+  ProfileLinkTag, 
+  LinkTag, 
+  BioPics
+} from "../styled-components/resources";
 
 const Resources = () => {
   return (
     <ResourcesContainer>
     <NavigateBackButton />
-    <h1>This Site Was Created By</h1>
+    <Header>This Site Was Created By</Header>
       <LinkWrapper>
           <ProfileLinkTag
             target="_blank"

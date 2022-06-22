@@ -9,6 +9,10 @@ export const ResourcesContainer = styled.section`
   margin: 20px 0 40px 0;
 `;
 
+export const Header = styled.h1`
+  color: #175C4C;
+`;
+
 export const ResourcesWrapper = styled.ul`
   margin-top: 80px;
   max-width: 80%;
@@ -46,6 +50,12 @@ export const ProfileLinkTag = styled.a`
 export const LinkTag = styled.a`
   text-decoration: none;
   color: black;
+
+  @media ${devices.desktop} {
+    &:hover {
+      color: #cf1d44;
+    }
+  }
 `;
 
 export const BioPics = styled.img`

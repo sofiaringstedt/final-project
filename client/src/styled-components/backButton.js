@@ -21,10 +21,12 @@ export const BackCross = styled.img`
 
 export const BackArrow = styled.img`
   width: 50px;
+  transform:scale(1, 1);
+  transition: 1s;
 
-  @media ${devices.desktop}{
+  @media ${devices.desktop} {
     &:hover {
-      width: 53px;
+      transform:scale(1.1, 1.1);
     }
   }
 `;

@@ -1,50 +1,51 @@
 import React from "react";
-import styled from "styled-components";
 
 import NavigateBackButton from "reusables/NavigateBackButton";
 import Header from "reusables/Header";
-import Livingtick from "../assets/livingtick.jpg";
-import { devices } from "styled-components/globalStyles";
+import removal from "../assets/removal.jpg";
+import bite from "../assets/bite.jpg";
 
+import {
+  ImageContainer,
+  ImageWrapper,
+  TickImage,
+  OrderedList,
+  Paragraph,
+  Title
+} from "../styled-components/images";
 
 const Images = () => {
   return (
     <>
-    <Header />
+      <Header />
+      <NavigateBackButton />
+      <Title>IMAGES</Title>
       <ImageContainer>
-        <NavigateBackButton />
-        <ImageWrapper>
-          <TickImage src={Livingtick} alt=" living tick on a hand" />
-        </ImageWrapper>
+      <ImageWrapper>
+        <h2>Tick Bites</h2>
+        <div>
+          <TickImage border src={bite} alt=" living tick on a hand" />
+        </div>
+        <Paragraph>Many who suffer from tick-borne infections have not
+          even noticed that they have been bitten by a tick. Ticks that bite into the
+          skin should be removed as soon as possible as infectious agents such as
+          Lyme disease and anaplasma bacteria are transmitted after 1-2 days.
+        </Paragraph>
+      </ImageWrapper>
+      <ImageWrapper>
+        <h2>Tick Removal</h2>
+        <div>
+          <TickImage src={removal} alt=" living tick on a hand" />
+        </div>
+        <OrderedList>
+          <li>Use a fine-tipped tweezer or a tick remover to remove the tick.</li>
+          <li>Grasp the tick's mouthparts as close to the skin as possible.</li>
+          <li>Gently pull straight out.</li>
+        </OrderedList>
+      </ImageWrapper>
       </ImageContainer>
     </>
   );
 };
+
 export default Images;
-
-export const ImageContainer = styled.div`
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-`;
-export const ImageWrapper = styled.div`
-  width: 80%;
-  margin-top: 5vh;
-  position: absolute;
-  top: 15vh;
-`;
-export const TickImage = styled.img`
-  height: 20vh;
-  width: 60vw;
-
-  @media ${devices.tablet} {
-    height: 30vh;
-    width: 60vw;
-  }
-
-  @media ${devices.desktop} {
-    height: 20vh;
-    width: 40vw;
-  }
-`;

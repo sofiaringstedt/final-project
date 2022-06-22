@@ -17,8 +17,7 @@ hr {
   height: 1px;
 }
 
-
-ol, ul {
+ul {
 	list-style: none;
   padding: 0;
 }
