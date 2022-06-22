@@ -3,7 +3,7 @@ import hero from "../assets/heroimg.svg";
 import { devices } from "./globalStyles";
 
 export const HomeContainer = styled.section`
-  width: 100%;
+  width: 100vw;
 `;
 
 export const Hero = styled.div`
@@ -22,7 +22,7 @@ export const Hero = styled.div`
     background-size: cover;
     background-position: 50% 50%;
     top: 25px;
-  }
+  };
 `;
 
 export const HeroTextBox = styled.div`
@@ -35,11 +35,12 @@ export const HeroTextBox = styled.div`
     top: 80px;
     margin-left: 40px;
     margin-right: 40px;
-  }
+  };
+
   @media ${devices.desktop}{
-    margin-left: 50px;
-    margin-right: 50px;
-  }
+    margin-left: 18vw;
+    margin-right: 18vw;
+  };
 `;
 
 export const HeroParagraph = styled.p`
@@ -50,7 +51,7 @@ export const HeroParagraph = styled.p`
     font-weight: 600;
     font-size: larger;
     line-height: 33px;
-  }
+  };
 `;
 
 export const HeroHeading = styled.h1`
@@ -61,7 +62,11 @@ export const HeroHeading = styled.h1`
   @media ${devices.tablet} {
     font-weight: 600;
     font-size: 30px;
-  }
+  };
+
+  @media ${devices.desktop}{
+    margin-bottom: 50px;
+  };
 `;
 
 export const ImageListWrapper = styled.div`
@@ -81,14 +86,15 @@ export const ImageList = styled.ul`
   @media ${devices.tablet} {
     width: 750px;
     height: 400px;
-  }
+  };
+
   @media ${devices.desktop}{
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: center;
     margin-left: 10vw;
     margin-right: 10vw;
-  }
+  };
 `;
 
 export const ListItem = styled.li`
@@ -96,7 +102,7 @@ export const ListItem = styled.li`
     &:hover {
       cursor: pointer;
     }
-  }
+  };
 `;
 
 export const StyledListImg = styled.img`
@@ -106,7 +112,7 @@ export const StyledListImg = styled.img`
   @media ${devices.tablet} {
     height: 170px;
     width: 170px;
-  }
+  };
 
   @media ${devices.desktop}{
     height: 140px;
@@ -116,7 +122,7 @@ export const StyledListImg = styled.img`
       height: 150px;
       width: 150px;
     }
-  }
+  };
 `;
 
 export const LogInButton = styled.button`
@@ -144,11 +150,12 @@ export const LogInButton = styled.button`
       cursor: pointer;
       background-color: #094739;
       color: #ffffff;
-    }
+    };
+
     @media ${devices.desktop} {
       margin-top: 10px;
     }
-  }
+  };
 `;
 
 export const LogInButtonWrapper = styled.div`

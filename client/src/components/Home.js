@@ -58,7 +58,7 @@ const Home = () => {
       <HomeContainer>
         <Hero>
           <HeroTextBox>
-            <HeroHeading>Vaccination against TBE</HeroHeading>
+            <HeroHeading>Vaccination Against TBE</HeroHeading>
             <HeroParagraph>
               {" "}
               TBE, tick-borne encephalitis is a viral disease that is spread by
