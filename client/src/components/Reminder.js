@@ -1,6 +1,11 @@
 import React from "react";
 
-import { ReminderWrapper, ReminderContainer, NextDoseTag } from "../styled-components/reminder"
+import { 
+  ReminderWrapper, 
+  ReminderContainer,
+  Header, 
+  NextDoseTag 
+} from "../styled-components/reminder"
 
 import NavigateBackButton from "reusables/NavigateBackButton";
 
@@ -12,7 +17,7 @@ const Reminder = ({ nextDose }) => {
     <ReminderWrapper>
       <NavigateBackButton />
       <ReminderContainer>
-      <h1>Friendly Reminder</h1>
+      <Header>Friendly Reminder</Header>
       <p>
         A single tick bite can give you TBE and there are currently no medicines that
         cures TBE, but vaccines protect.

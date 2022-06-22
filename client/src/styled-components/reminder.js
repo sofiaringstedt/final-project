@@ -7,6 +7,10 @@ export const ReminderWrapper = styled.section`
   width: 100%;
 `;
 
+export const Header = styled.h1`
+  color: #175c4c;
+`;
+
 export const ReminderContainer = styled.div`
   margin-top: 80px;
   width: 80%;
@@ -17,4 +21,5 @@ export const ReminderContainer = styled.div`
 
 export const NextDoseTag = styled.p`
   font-weight: 600;
+  font-style: italic; 
 `;

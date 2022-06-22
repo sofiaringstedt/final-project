@@ -11,7 +11,7 @@ const Resources = () => {
   return (
     <ResourcesContainer>
     <NavigateBackButton />
-    <h1>This site was created by</h1>
+    <h1>This Site Was Created By</h1>
       <LinkWrapper>
           <ProfileLinkTag
             target="_blank"

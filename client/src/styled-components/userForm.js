@@ -6,6 +6,7 @@ export const StyledInputField = styled.input`
   width: 320px;
   border-radius: 10px;
   border: solid #aaaaaa 1px;
+   padding: 2px 5px 2px 7px;
 `;
 
 export const InputContainer = styled.div`
@@ -41,6 +42,14 @@ export const SubmitButton = styled.button`
 
   @media ${devices.tablet}{
     font-size: 20px;
+  }
+
+  @media ${devices.desktop}{
+    &:hover {
+      cursor: pointer;
+      background-color: #094739;
+      color: #ffffff;
+    }
   }
 `;
 

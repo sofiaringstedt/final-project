@@ -43,6 +43,7 @@ export const HeroTextBox = styled.div`
     margin-right: 50px;
   }
 `;
+
 export const HeroParagraph = styled.p`
   font-weight: 600;
   font-size: medium;
@@ -53,6 +54,7 @@ export const HeroParagraph = styled.p`
     line-height: 33px;
   }
 `;
+
 export const HeroHeading = styled.h1`
   font-weight: 600;
   font-size: medium;
@@ -101,6 +103,15 @@ export const ImageList = styled.ul`
     margin-top: 0vh;
   }
 `;
+
+export const ListItem = styled.li`
+ @media ${devices.desktop}{
+    &:hover {
+      cursor: pointer;
+    }
+  }
+`;
+
 export const StyledListImg = styled.img`
   height: 100px;
   width: 100px;
@@ -109,11 +120,18 @@ export const StyledListImg = styled.img`
     height: 170px;
     width: 170px;
   }
+
   @media ${devices.desktop}{
     height: 140px;
     width: 140px;
+
+    &:hover {
+      height: 150px;
+      width: 150px;
+    }
   }
 `;
+
 export const LogInButton = styled.button`
   background-color: #175c4c;
   color: #ffffff;
@@ -135,19 +153,26 @@ export const LogInButton = styled.button`
     height: 65px;
     width: 200px;
     font-size: 25px;
+
+    &:hover {
+      cursor: pointer;
+      background-color: #094739;
+      color: #ffffff;
+    }
   }
 `;
+
 export const LogInButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
 `;
+
 export const InformationWrapper = styled.div`
-display: flex;
-flex-direction: column;
-align-items: flex-start;
-text-align: left;
-margin-left: 15vw;
-margin-right: 15vw;
-margin-top: 5vh;
-/* margin-bottom: 0vh; */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  margin-left: 15vw;
+  margin-right: 15vw;
+  margin-top: 5vh;
 `;

@@ -85,7 +85,7 @@ export const UserName = styled.p`
   margin: 0 0 -5px 7px;
   font-weight: 600;
 
-   &:first-letter {
+  &:first-letter {
     text-transform: uppercase;
   }
 `;
@@ -113,14 +113,39 @@ export const Label = styled.tr`
 `;
 
 export const IconWrapper = styled.th`
-   @media ${devices.largeMobile} {
+  position: relative;
+
+  @media ${devices.largeMobile} {
     position: absolute;
     margin: 10px 0 0 18px;
+  }
+
+  @media ${devices.desktop}{
+    &:before {
+      content: attr(data-hover);
+      visibility: hidden;
+      opacity: 0;
+      width: 130px;
+      background-color: #737272;
+      color: #fff;
+      text-align: center;
+      border-radius: 5px;
+      padding: 5px 0;
+      transition: opacity 1s ease-in-out;
+      position: absolute;
+      z-index: 1;
+      margin: -15px 0px 0 25px;
+    }
+  }
+  
+  &:hover:before {
+    opacity: 1;
+    visibility: visible;
   }
 `;
 
 export const TrashIcon = styled.img`
-  width: 20px;
+  width: 20px; 
 `;
 
 export const TableHeader = styled.th`

@@ -9,10 +9,12 @@ import dots from "../assets/dots.svg";
 import signOut from "../assets/log-out.svg";
 
 import { 
-  AccountWrapper, 
+  AccountWrapper,
+  CapitalizeName,
   HeaderContainer, 
   Iconimages, 
   LogoImage, 
+  CapitalizeFullName,
   IconsContainer, 
   HomeIcon, 
   ReminderIcon, 
@@ -53,15 +55,15 @@ const Account = ({ setMode, setMethod, setLoggedIn, setEditAccount, totalDoses }
   return (
     <AccountWrapper>
         <HeaderContainer>
-        <h1>Hello, {firstName}</h1>
+        <h1>Hello, <CapitalizeName>{firstName}</CapitalizeName></h1>
         <LogoImage src={tickInfoLogo} alt="Tick info logo" />
         <div>
-          <p>{firstName} {lastName}</p>
+          <CapitalizeFullName>{firstName} {lastName}</CapitalizeFullName>
           <p>{email}</p>
-          <p>Doses taken: {totalDoses}</p>
+          <p>Doses Taken: {totalDoses}</p>
         </div>
         </HeaderContainer>
-        <><hr /></>
+        <hr />
         <IconsContainer>
           <HomeIcon onClick={()=> navigate("/")}> <Iconimages src={house} alt="home icon"></Iconimages> Home</HomeIcon>
           <ReminderIcon onClick={() => navigate("/reminder")}> <Iconimages src={bell} alt="bell icon"></Iconimages> Reminder</ReminderIcon>

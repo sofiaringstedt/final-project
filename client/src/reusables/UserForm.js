@@ -32,6 +32,10 @@ const UserForm = (props) => {
   const handleEmailChange = (event) => setEmail(event.target.value);
   const handlePasswordChange = (event) => setPassword(event.target.value);
 
+  const firstNameFromLocalStorage = JSON.parse(localStorage.getItem("user"))?.firstName;
+  const lastNameFromLocalStorage = JSON.parse(localStorage.getItem("user"))?.lastName;
+  const emailFromLocalStorage = JSON.parse(localStorage.getItem("user"))?.email;
+
   const displayOnlyInRegistration = firstName !== undefined || lastName !== undefined;
 
   return (
@@ -45,7 +49,7 @@ const UserForm = (props) => {
                 id="firstname"
                 value={firstName}
                 onChange={handleFirstNameChange}
-                placeholder="Anna"
+                placeholder={firstNameFromLocalStorage ? firstNameFromLocalStorage : "Anna"}
               ></StyledInputField>
             </InputWrapper>
             <InputWrapper htmlFor="lastname">
@@ -54,7 +58,7 @@ const UserForm = (props) => {
                 id="lastname"
                 value={lastName}
                 onChange={handleLastNameChange}
-                placeholder="Jönsson"
+                placeholder={lastNameFromLocalStorage ? lastNameFromLocalStorage : "Jönsson"}
               ></StyledInputField>
             </InputWrapper>
           </>
@@ -65,7 +69,7 @@ const UserForm = (props) => {
             id="email"
             value={email}
             onChange={handleEmailChange}
-            placeholder="email@yourdomain.something"
+            placeholder={emailFromLocalStorage ? emailFromLocalStorage : "email@yourdomain.something"}
           ></StyledInputField>
         </InputWrapper>
         <InputWrapper htmlFor="password">
@@ -74,7 +78,7 @@ const UserForm = (props) => {
             id="password"
             value={password}
             onChange={handlePasswordChange}
-            placeholder="Password!"
+            placeholder="********"
           ></StyledInputField>
         </InputWrapper>
         {errorMessage && <p>{errorMessage}</p>}
@@ -88,7 +92,7 @@ const UserForm = (props) => {
         }
          <ButtonWrapper>
           <SubmitButton type="submit">
-            {editAccount ? "edit" : displayOnlyInRegistration ? "Register" : "Login" }
+            {editAccount ? "Edit" : displayOnlyInRegistration ? "Register" : "Login" }
         </SubmitButton>
         </ButtonWrapper>
       </Form>
