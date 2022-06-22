@@ -86,7 +86,7 @@ const VaccineCard = ({ dosesArray, setDosesArray, setTrackDose }) => {
         <NavigateBackButton />
         {dosesArray.length > 0 &&
           <>
-            <CountdownTitle>Take next dose in...</CountdownTitle>
+            <CountdownTitle>Take Next Dose In...</CountdownTitle>
             <CountdownContainer>
               {countDownYear > 0
                 ?
@@ -216,7 +216,7 @@ const VaccineCard = ({ dosesArray, setDosesArray, setTrackDose }) => {
                 <TableHeader>{dose.date}</TableHeader>
                 <TableHeader hide>{dose?.batchNumber}</TableHeader>
                 <th>{dose.nextDose}</th>
-                <IconWrapper onClick={() => {
+                <IconWrapper data-hover={`Remove ${dose.dose}`} onClick={() => {
                   handleDoseDelete(dose, dosesArray, setDosesArray, setTrackDose, setErrorMessage)
                 }}><TrashIcon src={waste}></TrashIcon></IconWrapper>
               </DoseContainer>

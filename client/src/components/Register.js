@@ -32,7 +32,7 @@ const Register = ({ mode, method, editAccount, setEditAccount }) => {
     <>
     <FormContainer>
       <NavigateBackButton />
-        <StyledHeading>{editAccount ? "Edit account" : "Create account"}</StyledHeading>
+        <StyledHeading>{editAccount ? "Edit Profile" : "Create Profile"}</StyledHeading>
       <UserForm
         firstName={firstName}
         lastName={lastName}

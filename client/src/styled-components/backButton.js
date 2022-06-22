@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { devices } from "./globalStyles";
 
 export const BackButton = styled.button`
   position: absolute;
@@ -6,6 +7,12 @@ export const BackButton = styled.button`
   left: 10px;
   background: none;
   border: none;
+
+  @media ${devices.desktop}{
+    &:hover {
+      cursor: pointer;
+    }
+  }
 `;
 
 export const BackCross = styled.img`
@@ -14,4 +21,10 @@ export const BackCross = styled.img`
 
 export const BackArrow = styled.img`
   width: 50px;
+
+  @media ${devices.desktop}{
+    &:hover {
+      width: 53px;
+    }
+  }
 `;

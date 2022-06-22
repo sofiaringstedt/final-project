@@ -18,6 +18,7 @@ import {
   HeroHeading,
   ImageListWrapper,
   ImageList,
+  ListItem,
   StyledListImg,
   LogInButtonWrapper,
   LogInButton,
@@ -114,7 +115,7 @@ const Home = () => {
         )}
         <ImageListWrapper>
           <ImageList>
-            <li
+            <ListItem
               onClick={() =>
                 accessToken !== undefined
                   ? navigate("/card")
@@ -123,32 +124,32 @@ const Home = () => {
             >
               {" "}
               <StyledListImg src={dose} alt="syringe icon" />
-            </li>
-            <li onClick={() => navigate("/images")}>
+            </ListItem>
+            <ListItem onClick={() => navigate("/images")}>
               {" "}
               <StyledListImg src={images} alt="images icon" />
-            </li>
-            <li onClick={() => navigate("/information")}>
+            </ListItem>
+            <ListItem onClick={() => navigate("/information")}>
               {" "}
               <StyledListImg src={tick} alt="tick icon" />
-            </li>
-            <li onClick={() => navigate("/map")}>
+            </ListItem>
+            <ListItem onClick={() => navigate("/map")}>
               {" "}
               <StyledListImg src={map} alt="sign out icon" />
-            </li>
-            <li onClick={() => navigate("/login")}>
+            </ListItem>
+            <ListItem onClick={() => navigate("/login")}>
               {" "}
               <StyledListImg src={profile} alt="profile icon" />{" "}
-            </li>
-            <li onClick={() => navigate("/resources")}>
+            </ListItem>
+            <ListItem onClick={() => navigate("/resources")}>
               {" "}
               <StyledListImg src={resources} alt="resources icon" />
-            </li>
+            </ListItem>
           </ImageList>
         </ImageListWrapper>
         <LogInButtonWrapper>
           {accessToken ? (
-            <LogInButton onClick={handleSignOut}> Logout </LogInButton>
+            <LogInButton onClick={handleSignOut}>Logout</LogInButton>
           ) : (
             <LogInButton onClick={handleLogin}>Login</LogInButton>
           )}

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { devices } from "./globalStyles";
 
 export const ResourcesContainer = styled.section`
   display: flex;
@@ -30,6 +31,15 @@ export const ProfileLinkTag = styled.a`
   align-items: center;
   margin: 30px;
   text-decoration: none;
+  transform:scale(1, 1);
+  transition: 1s;
+
+  @media ${devices.desktop} {
+    &:hover {
+      cursor: pointer;
+      transform:scale(1.05, 1.05);
+    }
+  }
 `;
 
 export const LinkTag = styled.a`

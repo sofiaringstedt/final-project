@@ -78,7 +78,7 @@ const CardForm = (props) => {
         value={batchNumber}
         placeholder="Optional batchnumber"
         onChange={(event) => setBatchNumber(event.target.value)} />
-      <Button type="submit">Add dose</Button>
+      <Button type="submit">Add Dose</Button>
     </Form>
   );
 };
