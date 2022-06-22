@@ -2,6 +2,10 @@ import styled from "styled-components";
 import hero from "../assets/heroimg.svg";
 import { devices } from "./globalStyles";
 
+export const HomeContainer = styled.section`
+  width: 100%;
+`;
+
 export const Hero = styled.div`
   background-image: url(${hero});
   height: 400px;
@@ -11,11 +15,13 @@ export const Hero = styled.div`
   background-position: 50% 50%;
   position: relative;
   top: -50px;
+ 
 
   @media ${devices.tablet} {
     height: 500px;
     width: 100%;
     background-size: cover;
+    background-position: 50% 50%;
     top: 25px;
   }
 `;
@@ -57,14 +63,19 @@ export const HeroHeading = styled.h1`
     font-size: 30px;
   }
 `;
+
 export const ImageListWrapper = styled.div`
   display: flex;
   justify-content: center;
   position: relative;
   top: -61px;
+  padding: 0;
 
   @media ${devices.tablet} {
     top: 80px;
+  }
+  @media ${devices.desktop}{
+    margin-top:-8vh;
   }
 `;
 
@@ -81,6 +92,14 @@ export const ImageList = styled.ul`
     width: 750px;
     height: 400px;
   }
+  @media ${devices.desktop}{
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    margin-top: 0vh;
+  }
 `;
 export const StyledListImg = styled.img`
   height: 100px;
@@ -89,6 +108,10 @@ export const StyledListImg = styled.img`
   @media ${devices.tablet} {
     height: 170px;
     width: 170px;
+  }
+  @media ${devices.desktop}{
+    height: 140px;
+    width: 140px;
   }
 `;
 export const LogInButton = styled.button`
@@ -117,4 +140,14 @@ export const LogInButton = styled.button`
 export const LogInButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
+`;
+export const InformationWrapper = styled.div`
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+text-align: left;
+margin-left: 15vw;
+margin-right: 15vw;
+margin-top: 5vh;
+/* margin-bottom: 0vh; */
 `;
