@@ -73,33 +73,33 @@ export const IconsContainer = styled.ul`
 
 export const HomeIcon = styled(AnimateIcons)`
   @media ${devices.desktop} {
-    grid-column-start: 2;
+    grid-column: 2;
   };
 `;
 
 export const ReminderIcon = styled(AnimateIcons)`
   @media ${devices.desktop} {
-    grid-column-start: 3;
+    grid-column: 3;
   };
 `;
 
 export const VaccineIcon = styled(AnimateIcons)`
   @media ${devices.desktop} {
-    grid-column-start: 2;
-    grid-row-start: 2;
+    grid-column: 2;
+    grid-row: 2;
   };
 `;
 
 export const EditIcon = styled(AnimateIcons)`
   @media ${devices.desktop} {
-    grid-column-start: 3;
-    grid-row-start: 2;
+    grid-column: 3;
+    grid-row: 2;
   };
 `;
 
 export const SignOutIcon = styled(AnimateIcons)`
   @media ${devices.desktop} {
-    grid-column-start: 4;
-    grid-row-start: 3;
+    grid-column: 4;
+    grid-row: 3;
   }
 `;

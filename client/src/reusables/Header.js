@@ -16,7 +16,7 @@ export default Header;
 export const StyledHeader = styled.header`
   height: 90px;
   display: flex;
-  position: relative;
+  justify-content: end;
   
   @media ${devices.tablet}{
     height: 120px;
@@ -26,12 +26,12 @@ export const StyledHeader = styled.header`
 export const StyledLogo =  styled.img`
 height: 60px;
 width: 140px;
-margin-top: 10px;
+margin: 10px 10px 0 0;
 
 @media ${devices.tablet}{
   height: 120px;
   width: 180px;
-  margin-left: 20px;
+  /* margin-left: 20px; */
   }
   @media ${devices.desktop}{
   width: 200px;

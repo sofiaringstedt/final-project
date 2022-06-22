@@ -6,7 +6,7 @@ import tick from "../assets/tick.svg";
 import profile from "../assets/profile.svg";
 import images from "../assets/images.svg";
 import map from "../assets/map.svg";
-import resources from "../assets/resources.svg";
+import about from "../assets/about.svg";
 
 import Header from "../reusables/Header";
 
@@ -143,7 +143,7 @@ const Home = () => {
             </ListItem>
             <ListItem onClick={() => navigate("/resources")}>
               {" "}
-              <StyledListImg src={resources} alt="resources icon" />
+              <StyledListImg src={about} alt="about icon" />
             </ListItem>
           </ImageList>
         </ImageListWrapper>

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { devices } from "./globalStyles";
 
 export const ReminderWrapper = styled.section`
   display: flex;
@@ -14,7 +15,7 @@ export const Header = styled.h1`
 export const ReminderContainer = styled.div`
   margin-top: 80px;
   width: 80%;
-  @media (min-width: 768px) {
+  @media ${devices.tablet} {
     max-width: 50%;
   }
 `;

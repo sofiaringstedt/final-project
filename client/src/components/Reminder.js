@@ -30,7 +30,7 @@ const Reminder = ({ nextDose }) => {
         To maintain your protection, you need to take a fourth dose three years after the third
         dose and then one dose every five years.
       </p>
-      <NextDoseTag>{nextDose ? `Your next dose is on ${formattedDate}.` : "There are no doses in your vaccine card."}</NextDoseTag>
+      <NextDoseTag>{nextDose ? `Your next dose is on ${formattedDate}.` : "Make sure to book your next TBE vaccine dose."}</NextDoseTag>
       </ReminderContainer>
     </ReminderWrapper>
   );

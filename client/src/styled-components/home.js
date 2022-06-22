@@ -10,12 +10,11 @@ export const Hero = styled.div`
   background-image: url(${hero});
   height: 400px;
   width: 100%;
-  background-size: auto;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 50%;
-  position: relative;
-  top: -50px;
- 
+  display: flex;
+  justify-content: center;
 
   @media ${devices.tablet} {
     height: 500px;
@@ -28,10 +27,9 @@ export const Hero = styled.div`
 
 export const HeroTextBox = styled.div`
   color: #fffbfb;
-  position: absolute;
-  top: 64px;
   margin-left: 18px;
   margin-right: 9px;
+  margin-top: 5vh;
 
   @media ${devices.tablet} {
     top: 80px;
@@ -69,15 +67,13 @@ export const HeroHeading = styled.h1`
 export const ImageListWrapper = styled.div`
   display: flex;
   justify-content: center;
-  position: relative;
-  top: -61px;
-  padding: 0;
+  margin: 15vh;
 
   @media ${devices.tablet} {
-    top: 80px;
+    /* top: 80px; */
   }
   @media ${devices.desktop}{
-    margin-top:-8vh;
+    /* margin-top:-8vh; */
   }
 `;
 
@@ -88,7 +84,7 @@ export const ImageList = styled.ul`
   width: 380px;
   height: 250px;
   align-items: center;
-  margin: 0px;
+  /* margin: 0px; */
 
   @media ${devices.tablet} {
     width: 750px;
@@ -100,7 +96,7 @@ export const ImageList = styled.ul`
     justify-content: center;
     margin-left: 10vw;
     margin-right: 10vw;
-    margin-top: 0vh;
+    /* margin-top: 0vh; */
   }
 `;
 
@@ -144,7 +140,7 @@ export const LogInButton = styled.button`
   font-family: "Source Serif Pro", serif;
   font-weight: 600;
   font-size: medium;
-  margin-top: -20px;
+  /* margin-top: -20px; */
   margin-bottom: 40px;
 
   @media ${devices.tablet} {
@@ -158,6 +154,9 @@ export const LogInButton = styled.button`
       cursor: pointer;
       background-color: #094739;
       color: #ffffff;
+    }
+    @media ${devices.desktop} {
+      margin-top: 10px;
     }
   }
 `;

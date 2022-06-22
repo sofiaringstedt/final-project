@@ -5,15 +5,13 @@ import NavigateBackButton from "reusables/NavigateBackButton";
 import Header from "reusables/Header";
 import Livingtick from "../assets/livingtick.jpg";
 import { devices } from "styled-components/globalStyles";
-import { HeaderWrapper } from "styled-components/information";
+
 
 const Images = () => {
   return (
     <>
+    <Header />
       <ImageContainer>
-        <HeaderWrapper>
-          <Header />
-        </HeaderWrapper>
         <NavigateBackButton />
         <ImageWrapper>
           <TickImage src={Livingtick} alt=" living tick on a hand" />
@@ -50,4 +48,3 @@ export const TickImage = styled.img`
     width: 40vw;
   }
 `;
-// just adding something

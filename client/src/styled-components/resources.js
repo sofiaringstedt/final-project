@@ -12,7 +12,7 @@ export const ResourcesContainer = styled.section`
 export const ResourcesWrapper = styled.ul`
   margin-top: 80px;
   max-width: 80%;
-  @media (min-width: 768px) {
+  @media ${devices.tablet} {
     max-width: 50%;
   }
 `;
@@ -20,7 +20,7 @@ export const ResourcesWrapper = styled.ul`
 export const LinkWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  @media (min-width: 768px) {
+  @media ${devices.tablet} {
     flex-direction: row;
   }
 `;
@@ -31,6 +31,7 @@ export const ProfileLinkTag = styled.a`
   align-items: center;
   margin: 30px;
   text-decoration: none;
+  color: black;
   transform:scale(1, 1);
   transition: 1s;
 
@@ -44,6 +45,7 @@ export const ProfileLinkTag = styled.a`
 
 export const LinkTag = styled.a`
   text-decoration: none;
+  color: black;
 `;
 
 export const BioPics = styled.img`

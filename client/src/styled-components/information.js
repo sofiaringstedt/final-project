@@ -1,10 +1,5 @@
 import styled from "styled-components";
 
-export const HeaderWrapper = styled.div`
-position: absolute;
-top: 4vh;
-left: 6vw;
-`;
 export const InformationContainer = styled.div`
 width: 100%;
 `;

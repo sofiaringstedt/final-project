@@ -3,7 +3,6 @@ import Header from "reusables/Header";
 import NavigateBackButton from "reusables/NavigateBackButton";
 
 import {
-  HeaderWrapper,
   InformationContainer,
   InformationWrapper,
   InfoHeadingOne,
@@ -21,9 +20,7 @@ const Information = () => {
   return (
     <>
     <InformationContainer>
-      <HeaderWrapper>
-    <Header/>
-    </HeaderWrapper>
+      <Header/>
     <NavigateBackButton />
     <InformationWrapper>
       <InfoHeadingOne>Bitten by a tick</InfoHeadingOne>
