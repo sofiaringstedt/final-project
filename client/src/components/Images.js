@@ -50,3 +50,4 @@ export const TickImage = styled.img`
     width: 40vw;
   }
 `;
+// just adding something
