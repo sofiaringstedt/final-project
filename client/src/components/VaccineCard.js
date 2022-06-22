@@ -4,6 +4,7 @@ import { addDose, handleDoseDelete, startCounter } from "../actions/cardActions"
 
 import CardForm from "../reusables/CardForm";
 import NavigateBackButton from "reusables/NavigateBackButton";
+import checkBrowser from "actions/checkBrowser";
 
 import waste from "../assets/waste.png";
 
@@ -42,6 +43,7 @@ const VaccineCard = ({ dosesArray, setDosesArray, setTrackDose }) => {
   const [countDownMinute, setCountDownMinute] = useState(null);
   const [countDownSecond, setCountDownSecond] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [isDesktop, setDesktop] = useState(window.innerWidth > 1024);
 
   const lastDoseIndex = dosesArray?.length - 1;
   const latestDoseDate = dosesArray[lastDoseIndex]?.date;
@@ -59,6 +61,15 @@ const VaccineCard = ({ dosesArray, setDosesArray, setTrackDose }) => {
       setErrorMessage("Dose and date is required");
     }
   };
+
+  const updateMedia = () => {
+    setDesktop(window.innerWidth > 1024);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", updateMedia);
+    return () => window.removeEventListener("resize", updateMedia);
+  });
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -84,9 +95,14 @@ const VaccineCard = ({ dosesArray, setDosesArray, setTrackDose }) => {
     <CardContainer>
       <Header addTop={dosesArray.length > 0 }>
         <NavigateBackButton />
-        {dosesArray.length > 0 &&
-          <>
-            <CountdownTitle>Take next dose in...</CountdownTitle>
+        {dosesArray.length > 0 && checkBrowser !== "Safari" && isDesktop
+          ?
+          <CountdownTitle>Take next dose in...</CountdownTitle>
+          :
+          <CountdownTitle>Take next dose on...</CountdownTitle>
+        }
+        {dosesArray.length > 0 && checkBrowser !== "Safari" && isDesktop
+          ?
             <CountdownContainer>
               {countDownYear > 0
                 ?
@@ -170,7 +186,8 @@ const VaccineCard = ({ dosesArray, setDosesArray, setTrackDose }) => {
                 </>
               }
             </CountdownContainer>
-          </>
+          : 
+          <p>{dosesArray[dosesArray.length - 1]?.nextDose}</p>
         }
         <CardForm
           dose={dose}
